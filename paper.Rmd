@@ -13,6 +13,9 @@ csl: vancouver-brackets.csl
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(tidyverse)
+cases <- read_csv("phac-cases-april1.csv")
 ```
 
 ## Background
@@ -21,20 +24,20 @@ Recently, NACI recommended against using AstraZeneca COVID-19 Vaccine for Canadi
 
 ## Harm-Benefit Analysis
 
-We need to assess whether mortality risk due to AstraZeneca is larger than or comparable to the risk of mortality due to COVID-19. 
+We need to assess whether mortality risk due to AstraZeneca is larger than or comparable to the risk of mortality due to COVID-19. We limit our analysis to 20 to 50 years old British Columbians and focus on the time period between April 1st, 2021 and July 1st, 2021, when all BCers are expected to have received at least their first dose of a COVID-19 vaccine.
 
 ### Mortality Risk due to AstraZeneca Vaccine
 
 $$
-P(death)_{astrazeneca}  = P(VIPIT|AZ) \times P(death|VIPIT)
+P(death)_{astrazeneca}  = P(AZ) \times P(VIPIT|AZ) \times P(death|VIPIT)
 $$
 
 To err on the side of caution, we will follow NACI's lead and assume the highest reported rate of VIPIT, which is 1 in 100,000 recipients, so $P(VIPIT|AZ) = \frac{1}{100,000}$. On the other hand, as reported by NACI, case fatality due to VIPID is currently estimated at 40%, but is likely to decrease as there will be more awareness and better early treatment. Again to err on the side of caution, we'll keep the estimate at 40%, so
 
 $$
 \begin{aligned}
-P(death)_{astrazeneca} & = \frac{1}{100,000} \times \frac{40}{100} \\
-& = \frac{4}{1,000,000}
+P(death)_{astrazeneca} & = P(AZ) \times \frac{1}{100,000} \times \frac{40}{100} \\
+& = P(AZ) \times \frac{4}{1,000,000}
 \end{aligned}
 $$
 So, the risk of death due to AstraZeneca COVID-19 vaccine is approximately 2 in 1 million vaccine eligible population. The population of BC under 50 years old is approximately 2 million. Assuming an 80% uptake for all COVID-19 vaccines combined and that half of vaccine recipients will receive the AstraZeneca vaccine, we can estimate the expected number of deaths in BC
@@ -48,16 +51,24 @@ E(death)_{astrazeneca} & = 2,000,000 \, \text{persons} \times \frac{80\small{\te
 
 ### Mortality Risk due to COVID-19 
 
-Now let's calculate the mortality risk in BC during COVID. 
-<!-- dsd  -->
-<!-- $$ -->
-<!-- p_{contractingCOVID} \times p_{CaseFatalityCOVID}  = ? -->
-<!-- $$ -->
-<!-- And  -->
+Now let's estimate the mortality risk of COVID-19 and expected number of deaths due to COVID-19 among 20 to 50 years old British Columbians.
 
-<!-- $$ -->
-<!-- p_{contractingCOVID} \times p_{CaseFatalityCOVID} = ? -->
-<!-- $$ -->
+$$
+P(death)_{COVID19}  = P(COVID19) \times P(death|COVID19)
+$$
+where $P(death|COVID19)$ is the case fatality rate of COVID-19 in the age groups of interest. 
+```{r, echo=FALSE}
+knitr::kable(
+  cases, caption = 'COVID-19 cases (n=944,491) and deaths (n=22,655) for cases with case reports reported to PHAC in Canada as of March 26, 2021, 9 am EDT '
+)
+```
+
+Using this table, we can calculate a case fatality rate of 
+`r round(cases %>% filter (Age %in% c("20-29", "30-39", "40-49")) %>% summarise(sum(Deaths))/
+cases %>% filter (Age %in% c("20-29", "30-39", "40-49")) %>% summarise(sum(Cases))*1e6, 0)` per million cases for those who are over 20 and under 50. For simplicity, we assume this value to be constant among provinces. 
+
+We now have to estimate the probability of contracting COVID between April 1st and July 1st, 2021. Proper estimation of this risk requires transmission modelling using a SEIR model. Here, for simplicity we assume the 
+
 
 ## References
 
