@@ -65,5 +65,7 @@ Estimating all benefits of the AstraZeneca vaccine requires transmission and con
 
 # Limitations
 
-Our analysis is based on currently available estimated rates of 1 in million to 1 in 100,000 for VIPIT and might need correction should higher rates of this complication be reported. We have not considered potential sex differences in the risk for VIPIT. Although cases identified to date have been predominantly female, it remains unclear whether this was due to more females receiving the AstraZeneca vaccine or due to an intrinsic difference in risk. 
+Our analysis is based on currently available estimated rates of 1 in million to 1 in 100,000 for VIPIT and might need correction should higher rates of this complication be reported. We also did not consider the difference in logistics of distributing different vaccines. If, for example, it is logistically possible to switch the vaccine allocation for above 55 years old age groups to the AstraZeneca vaccine and use either Pfizer or Moderna vaccines for younger essential workers without delay, that might be the preferred approach.
+
+We have also not considered potential sex differences in the risk for VIPIT. Although cases identified to date have been predominantly female, it remains unclear whether this was due to more females receiving the AstraZeneca vaccine or due to an intrinsic difference in risk. 
 
