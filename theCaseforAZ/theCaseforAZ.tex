@@ -1,0 +1,194 @@
+% interactcadsample.tex
+% v1.03 - April 2017
+
+\documentclass[]{interact}
+
+\usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
+\usepackage{subfigure}% Support for small, `sub' figures and tables
+%\usepackage[nolists,tablesfirst]{endfloat}% To `separate' figures and tables from text if required
+
+\usepackage{natbib}% Citation support using natbib.sty
+\bibpunct[, ]{(}{)}{;}{a}{}{,}% Citation support using natbib.sty
+\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% Bibliography support using natbib.sty
+
+\theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
+
+% see https://stackoverflow.com/a/47122900
+
+% Pandoc citation processing
+
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\def\tightlist{}
+
+
+\begin{document}
+
+\articletype{Preprint}
+
+\title{The Case for Continuing COVID-19 Vaccination of Front-Line
+Workers in BC Despite the Risk for Thrombocytopenia}
+
+
+\author{\name{Amin Adibi$^{a}$}
+\affil{$^{a}$Respiratory Evaluation Sciences Program, Faculty of
+Pharmaceutical Sciences, University of British Columbia, Vancouver, BC,
+Canada}
+}
+
+\thanks{CONTACT Amin
+Adibi. Email: \href{mailto:amin.adibi@ubc.ca}{\nolinkurl{amin.adibi@ubc.ca}}}
+
+\maketitle
+
+\begin{abstract}
+Recently, the National Advisory Committee on Immunization (NACI)
+recommended against using the AstraZeneca COVID-19 vaccine pending
+further review of the risk for Vaccine-Induced Prothrombotic Immune
+Thrombocytopenia (VIPIT). Using straightforward calculations and based
+on current evidence, we propose that even if the risk is found to be
+causally related to the AstraZeneca vaccine, the benefits of continuing
+immunization of essential workers with AstraZeneca by far outweigh the
+risk. We consider the case of British Columbia as an example. The
+province is expected to received an addtional 246700 doses of
+AstraZeneca vaccine through US and COVAX until April 11th, enough to
+provide the first dose of vaccine to all unvacinated front-line
+workers.We estimate that if British Columbia continues the front-line
+worker vaccination program as many as 600 lives could be saved for an
+expected mortalilty of only 1 person, even if all essential workers were
+under 55 and assuming the highest estimated rate of 1 in 100,000
+currently reported for VIPID.
+\end{abstract}
+
+\begin{keywords}
+COVID19; astrazeneca; vaccination; essentialworkers; clots;
+thrombocytopenia; harm-benefit; BC
+\end{keywords}
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+Recently, NACI recommended against using AstraZeneca COVID-19 Vaccine
+for Canadians under the age 55, due to concerns about the incidence of
+Vaccine-Induced Prothrombotic Immune Thrombocytopenia (VIPIT) based on
+European reports \citep{naci_naci_2021}. On Match 18, 2021, the European
+Medicines Agency estimated the incidence of VIPID at approximately 1 per
+1,000,000 people vaccinated with the AstraZeneca vaccine
+\citep{ema_covid-19_2021}. A higher estimated rate of 1 per 100,000 by
+the Paul-Ehrlich Institut in Germany was published on March 19th
+\citep{pei_covid-19_2021}. It was this higher rate reported by the
+Paul-Ehrlich Institut that led NACI to recommend against using this
+vaccine in adults under 55 years old \citep{naci_naci_2021}. BC had
+initially slated the AstraZeneca vaccine for outbreak control and
+essential workers vaccination program. on March 29th and following
+NACI's recommendation, BC paused using the AstraZeneca vaccine for those
+under 55 and put the essential workers program on hold.
+
+On April 1st, the UK Medicines \& Healthcare Products Regulatory Agency
+updated its own previously reported data to report a total of 22
+cerebral venous sinus thrombosis (CVST) and 8 other clot-related events
+from 18.1 million doses of the AstraZeneca vaccine (1.66 incidents per
+million).
+
+Canadian provinces are expected to receive 1.5 million doses of the
+AstraZeneca vaccine through US and another 316,800 doses from the COVAX
+program between now and April 11th.
+
+British Columbia expects to receive 246,700 doses from these two
+AstraZeneca deliveries, enough to finish providing the first dose to all
+remaining essential workers.
+
+The 300,690 doses of Pfizer and 105,900 doses of Moderna vaccines
+expected within the same time frame are currently allocated for the
+priority groups, indigenous population, and age-based vaccination
+campaign currently vaccinating those in their 70s.
+
+\hypertarget{harm-benefit-analysis}{%
+\section{Harm-Benefit Analysis}\label{harm-benefit-analysis}}
+
+Assuming that BC allocates all 246,700 doses to essential workers, we
+can estimate the expected number of deaths due to VIPID,
+\(E(death)_{astrazeneca}\) as shown below. To err on the side of
+caution, we assume that each dose of the vaccine is independently
+associated with the risk for VIPID, and that all recipients are under 55
+and as such at higher risk for VIPID. We also assume that there is
+enough uptake that BC is able to administer all these doses.
+
+\[
+E(death)_{astrazeneca}  = d \times P(VIPIT|AZ) \times P(death|VIPIT)
+\] where \(d\) is the number of doses administered, \(P(VIPIT|AZ)\) is
+the risk of VIPIT after receiving each dose, and \(P(death|VIPIT)\) is
+the case fatality for VIPIT.
+
+To err on the side of caution, we will follow NACI's lead and assume the
+highest reported rate of VIPIT, which is 1 in 100,000 recipients, so
+\(P(VIPIT|AZ) = \frac{1}{100,000}\). On the other hand, as reported by
+NACI, case fatality due to VIPID is currently estimated at 40\%, but is
+likely to decrease as there will be more awareness and better early
+treatment. Again to err on the side of caution, we'll keep the estimate
+at 40\%, so \(P(death|VIPIT)=40\%\)
+
+\[
+\begin{aligned}
+E(death)_{astrazeneca} & = d \times \frac{1}{100,000} \times \frac{40}{100} \\
+& = 246,700 \times \frac{4}{1,000,000} \\
+& \approx 1  
+\end{aligned}
+\] If the second dose of the AstraZeneca vaccine is not associated with
+increased and renewed risk for VIPIT, given the current evidence our
+best estimate for the number of death associated with AstraZeneca
+vaccination campaign for essential workers would be 1. If, however, we
+assume that the second dose will pose additional risk of VIPIT,
+delivering an additional 300,000 doses of the AstraZeneca vaccine will
+likely double that estimate, for an expected mortality of 2 persons in
+BC.
+
+In its analysis of AstraZeneca vaccine, NACI weighed the risk of adverse
+events against age-stratified risk of mortality due to COVID-19, pending
+an overall risk-assessment. However, benefits of the AstraZeneca vaccine
+go beyond preventing COVID-related mortality, and include protection
+against more common COVID complications in younger adults including
+severe disease, hospitalizations, and Long COVID. The recent sharp
+decline of COVID-19 cases in the UK suggests that the AstraZeneca
+vaccine might also provide protection against onward transmission of the
+virus, which could be especially critical in essential workers during
+the current wave of COVID cases.
+
+Estimating all benefits of the AstraZeneca vaccine requires transmission
+and contact-network modelling. A recently published preprint of
+compartmental modelling by Mulberry and colleagues at SFU suggests that
+vaccinating front-line workers alongside the age-based campaign might
+save an additional 600 more lives and prevent as many as 200,000
+infections in BC during a 6-8 months period
+\citep[preprint][]{mulberry_vaccine_2021}.
+
+\hypertarget{limitations}{%
+\section{Limitations}\label{limitations}}
+
+Our analysis is based on currently available estimated rates of 1 in
+million to 1 in 100,000 for VIPIT and might need correction should
+higher rates of this complication be reported. We have not considered
+potential sex differences in the risk for VIPIT. Although cases
+identified to date have been predominantly female, it remains unclear
+whether this was due to more females receiving the AstraZeneca vaccine
+or due to an intrinsic difference in risk.
+
+\bibliographystyle{tfcad}
+\bibliography{AZVIPIT.bib}
+
+
+
+
+\end{document}
