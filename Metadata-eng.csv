@@ -1,0 +1,40 @@
+Product Title,,"Preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada",,
+Product Id,,13260003,,
+URL,,https://www150.statcan.gc.ca/n1/en/catalogue/13260003,,
+DOI,,https://doi.org/10.25318/132600032020001-eng,,
+Survey Code,,5319,,
+Survey Name,,COVID-19 epidemiological reports,,
+Archive Status,,CURRENT - a cube available to the public and that is current,,
+Frequency,,Occasional,,
+Reference Period,,2021 Data,,
+,,,,
+Title Notes,,,,
+1,"Source: Public Health Agency of Canada (PHAC), COVID-19 epidemiological reports, with contribution from Provincial/Territorial Ministries of Health. For more information about this dataset please see the website: https://www150.statcan.gc.ca/n1/en/catalogue/13260002.",,,
+2,"Given that the COVID-19 pandemic is rapidly evolving, these data are considered preliminary. The data published by Statistics Canada only account for those where a detailed case report was provided by the provincial or territorial jurisdiction to the Public Health Agency of Canada (PHAC). Statistics Canada’s detailed preliminary confirmed cases will not match the total case reporting done at the provincial and territorial levels which are reported daily by each jurisdiction and compiled by the PHAC.  The discrepancy is due to delays associated with the submission of the detailed information, its capture and coding. Hence, Statistics Canada’s file on detailed case reporting is a subset of the total counts reported by the health authorities across Canada.",,,
+3,Confirmed cases are laboratory confirmed cases for which a case report form has been received by the Public Health Agency of Canada (PHAC) from provincial or territorial partners.,,,
+4,"On November 26th 2020, the data table 13-10-0781-01 of detailed confirmed cases from the Public Health Agency of Canada (PHAC) was replaced by a direct-download data file available at the website: https://www150.statcan.gc.ca/n1/en/catalogue/13260002.",,,
+5,"On March 4th 2021, symptom variables were removed from the dataset. The quality of the symptom variables was already considered to be low as a large majority of responses were not stated. The case report form used to collect this information from the provinces and territories was also updated to no longer ask this level of detail.",,,
+6,"The file may include some cases for which all of the information is missing, either because no information is available for them or because information is under review. These cases have been kept on the file to reflect a more accurate count of total COVID-19 cases in Canada even though there is no information available on those cases at this point.",,,
+,,,,
+Column Notes,Column Headers,,,Column Definitions
+7,Case Identifier Number,,,Statistics Canada generated case identifier number.
+8,Region,,,"Region: 1 = Atlantic (New Brunswick, Nova Scotia, Prince Edward Island, Newfoundland and Labrador), 2 = Quebec, 3 = Ontario and Nunavut, 4 = Prairies (Alberta, Saskatchewan, and Manitoba) and the Northwest Territories, 5 = British Columbia and Yukon."
+9,Episode week,,,"The episode week and episode year are derived from the episode date. The episode date is created from the earliest date available from the following series: Symptom Onset Date, Specimen Collection Date and Laboratory Testing Date. When no date is available, this field is considered 'Not stated' and given the value 99. These values are corrected as Public Health Agency of Canada (PHAC) receives new information."
+10,,,,"""0"" represents the first days of the year leading up to, but not including the first Sunday. ""1"" represents the first full week of the year, beginning on the first Sunday, and so on."
+11,Episode week group,,,Derived by Statistics Canada from Episode week. Indicates when multiple episode weeks have been grouped together to protect confidentiality.
+9,Episode year,,,"The episode week and episode year are derived from the episode date. The episode date is created from the earliest date available from the following series: Symptom Onset Date, Specimen Collection Date and Laboratory Testing Date. When no date is available, this field is considered 'Not stated' and given the value 99. These values are corrected as Public Health Agency of Canada (PHAC) receives new information."
+12,,,,"Year of episode date. 20 = the year 2020, 21 = the year 2021, 99 = Not stated."
+13,Gender,,,"Gender codes: 1 = Male, 2 = Female, 9 = Not stated. These values are corrected as the Public Health Agency of Canada (PHAC) receives new information. It should be noted that the French form uses the term 'sex' contrary to the English form that uses the term 'gender'. In the context of this table, the term gender is also used in French. The cases that have reported 'other' for sex or 'non-binary' for gender have been reclassified as 'Not stated' gender."
+14,Age group,,,"Age group codes: 1 = 0 to 19 years, 2 = 20 to 29 years, 3 = 30 to 39 years, 4 = 40 to 49 years, 5 = 50 to 59 years, 6 = 60 to 69 years, 7 = 70 to 79 years, 8 = 80 years or older, 99 = Not stated. These values are corrected as the Public Health Agency of Canada (PHAC) receives new information."
+15,Occupation,,,"Occupation: 1 = Health care worker, 2 = School or daycare worker/attendee, 3 = Long term care resident, 4 = Other, 9 = Not stated."
+16,Asymptomatic,,,"Asymptomatic: 1=  Yes, 2  = No, 9 = Not stated."
+17,Onset week of symptoms,,,Week of symptom(s) onset.
+10,,,,"""0"" represents the first days of the year leading up to, but not including the first Sunday. ""1"" represents the first full week of the year, beginning on the first Sunday, and so on."
+18,Onset year of symptoms,,,"Year of symptom(s) onset. 20 = the year 2020, 21 = the year 2021, 99 = Not stated."
+19,Hospital status,,,"Hospitalization status: 1 = Hospitalized and in Intensive care unit 2 = Hospitalized, but not in intensive care unit, 3= Not hospitalized, 9 = Not stated/Unknown."
+20,Recovered,,,"Indicates if the case has recovered. 1 = Yes, 2 = No, 9 = Not stated/Unknown."
+21,Recovery week,,,Week of recovery date.
+10,,,,"""0"" represents the first days of the year leading up to, but not including the first Sunday. ""1"" represents the first full week of the year, beginning on the first Sunday, and so on."
+22,Recovery year,,,"Year of recovery date. 20 = the year 2020, 21 = the year 2021, 99 = Not stated."
+23,Death,,,"Death: 1 = Yes, 2 = No, 9 = Not stated."
+24,Transmission,,,"Transmission: 1 = Domestic acquisition - Contact of COVID case, contact with traveller, or unknown source, 2 = International travel, 9 = Not stated."
