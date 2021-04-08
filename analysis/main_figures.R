@@ -30,12 +30,12 @@ gg_vax <- res %>%
 
 
 fig1a = ggarrange(gg_vax$plot[[1]]+
-                    labs(subtitle = 'A: 80+, 70-79, EW, 60-69, ...') +
+                    labs(title = "", subtitle = 'A: 80+, 70-79, EW, 60-69, ...') +
                     scale_color_viridis(discrete = T)+
                     theme_ipsum_rc(grid="XY") + 
                     theme(axis.title.x = element_blank(),text=element_text(size=16))
                     ,
-                  gg_vax$plot[[2]]+labs(subtitle='B: 80+, 70-79, 60-69, EW, 50-59, ...') +
+                  gg_vax$plot[[2]]+labs(title = "", subtitle='B: 80+, 70-79, 60-69, EW, 50-59, ...') +
                     scale_color_viridis(discrete = T)+
                     theme_ipsum_rc(grid="XY"),
                   ncol=2, nrow=1, common.legend=TRUE, legend="bottom")
