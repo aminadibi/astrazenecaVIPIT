@@ -179,9 +179,13 @@ predicted <- oo %>%
   filter (date < ymd("2021-04-05") & date > ymd("2021-01-02"))
 
 validation <- predicted %>% left_join(observed, by="date")
-validation %>% pivot_longer(cols = c(incid, observed)) %>%
-  ggplot () + geom_line(aes(y=value, x=date, color=name)) + 
-  theme_ipsum_rc(grid="Y")
+validation %>% 
+  rename (predicted = incid) %>%
+  pivot_longer(cols = c(predicted, observed), values_to = "cases") %>%
+  ggplot () + geom_line(aes(y=cases, x=date, color=name), size=2) + 
+  labs(subtitle = "Predicted and observed epi curve for COVID-19 in BC",
+       caption  = "Observed case counts are 7-day rolling averages") + 
+  theme_ipsum_rc(grid="Y") + expand_limits (y = 0)
 
 age.under.80 <- c("0-9", 
                   "10-19",
@@ -207,11 +211,11 @@ countsPerAge <- cases %>% filter (Reported_Date > ymd("2020-12-01")) %>%
 predictedPerAge <- oo %>% 
   filter(scen == "B: 80+, 70-79, 60-69, EW, 50-59, ...") %>% 
   group_by(date, age_band) %>% summarize(incid = sum(incid)) %>% 
+  rename (predicted = incid) %>%
   filter (date < ymd("2021-04-05") & date > ymd("2021-01-02"))
 
 observedPerAge <- as_tibble(countsPerAge) %>% rename(date = Reported_Date) %>%
   mutate(observed7day = zoo::rollmean(n, k = 7, fill = NA))
-
 
 observedPerAge5daySum <- as_tibble(countsPerAge) %>% rename(date = Reported_Date) %>%
   mutate(observed5daysum = 5* zoo::rollmean(n, k = 5, fill = NA))
@@ -221,10 +225,15 @@ observedPerAge5daySum %>% filter(date==ymd("2021-01-01"))
 
 validationPerAge <- predictedPerAge %>% 
   left_join(observedPerAge, by=c("date", "age_band"))
-validationPerAge %>% pivot_longer(cols = c(incid, observed7day)) %>%
-  ggplot () + geom_line(aes(y=value, x=date, color=name)) + 
+validationPerAge %>% pivot_longer(cols = c(predicted, observed7day), values_to = "cases") %>%
+  ggplot () + geom_line(aes(y=cases, x=date, color=name), size = 1.5) + 
+  labs(subtitle = "Predicted and observed cases of COVID-19 per age group in BC",
+       caption  = "Observed case counts are 7-day rolling averages") + 
   facet_wrap(~age_band) +
   theme_ipsum_rc(grid="Y")
+
+ggsave('figures/fig-validation.pdf', width=14, height=10,  device = cairo_pdf)
+
 
 #####################
 # QALYs and Cost
