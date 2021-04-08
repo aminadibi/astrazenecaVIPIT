@@ -386,7 +386,7 @@ compare_sims <- function(sim1, sim2, name1="1", name2="2",
     
   }
   
-  return(list(p1,p2,p3,p4))
+  return(list(p1,p2,p3))
 }
 
 compare_sims_data <- function(sim1, sim2, name1="1", name2="2",
