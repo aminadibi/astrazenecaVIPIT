@@ -101,7 +101,7 @@ All the analysis was performed using publicly-available data and code. This manu
  & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-4}
  Variable & EMA Base Value & EMA Probability Distribution & NACI Base Value\textsuperscript{a}  \\ \midrule
  Rate of VIPIT & 1 in 153,000 & $\beta(222, 3.4\times 10^7)$ & 1 in 100,000 \\
- VIPIT Mortality Risk & $20\%$ &  $\beta(18, 86)$ & $40\%$ \\ \bottomrule
+ VIPIT Mortality Risk & $21\%$ &  $\beta(18, 86)$ & $40\%$ \\ \bottomrule
 \end{tabular}}
 \tabnote{\textsuperscript{a}A probability distribution could not be calculated as numerators and denominators were not reported.}
 \label{sample-table}
@@ -119,12 +119,12 @@ where $d$ is the number of doses administered, $P(VIPIT|AZ)$ is the risk of VIPI
 According to the most recent data from UK and EU submitted to EudraVigilance (as of April 4th, 2021):
 $$
 \begin{aligned}
-E(death)_{VIPIT} & = d \times \frac{1}{153,000} \times \frac{20}{100} \\
-& = 246,700 \times \frac{2}{1,530,000} \\
-& \approx 0.32
+E(death)_{VIPIT} & = d \times \frac{1}{153,000} \times \frac{21}{100} \\
+& = 246,700 \times \frac{2.1}{1,530,000} \\
+& \approx 0.34
 \end{aligned}
 $$
-Deterministic analysis leads to an expected number of death of 0.32 if we immediately offer a first dose of the AZ vaccine to all eligible front-line workers in BC. Probabilistic analysis according to respective beta distributions (Table 1) leads to an expected number of death of 0.28 [95% CI 0.17-0.41], which means the probability of observing at least one death is almost zero.
+Deterministic analysis leads to an expected number of death of 0.34 if we immediately offer a first dose of the AZ vaccine to all eligible front-line workers in BC. Probabilistic analysis according to respective beta distributions (Table 1) leads to an expected number of death of 0.28 [95% CI 0.17-0.41], which means the probability of observing at least one death is almost zero.
 
 NACI had based its analysis on the more pessimistic estimates of a chance of 1 in 100,000 for VIPIT, and a mortality probability of 40%. In this worst-case scenario analysis, the expected number of deaths in BC would be 1:
 
