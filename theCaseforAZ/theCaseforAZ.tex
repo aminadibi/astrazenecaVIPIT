@@ -43,15 +43,14 @@ the AstraZeneca Vaccine: Benefits in the Face of Increased Risk for
 Prothrombotic Thrombocytopenia}
 
 
-\author{\name{Amin Adibi$^{a}$, Mohsen Sadatsafavi$^{a}$}
+\author{\name{Amin Adibi$^{a}$}
 \affil{$^{a}$Respiratory Evaluation Sciences Program, Faculty of
 Pharmaceutical Sciences, University of British Columbia, Vancouver, BC,
 Canada}
 }
 
 \thanks{CONTACT Amin
-Adibi. Email: \href{mailto:amin.adibi@ubc.ca}{\nolinkurl{amin.adibi@ubc.ca}}, Mohsen
-Sadatsafavi. Email: \href{mailto:msafavi@mail.ubc.ca}{\nolinkurl{msafavi@mail.ubc.ca}}}
+Adibi. Email: \href{mailto:amin.adibi@ubc.ca}{\nolinkurl{amin.adibi@ubc.ca}}}
 
 \maketitle
 
@@ -174,16 +173,15 @@ model by Bubar et al \citep{bubar_model-informed_2021}.
 We ran the model from January 2021 to September 2021, which is when
 expect the vaccination campaign to conclude. To follow BC vaccination
 strategy and case counts in the first three months of 2021, we held
-\(R_0\) at 1.05 from January 1, 2021 for 90 days during which people
-over 80 years old followed by those between 70-79 years old became
-eligible for vaccination. Age groups that were offered vaccination were
-considered to be vaccinated at a steady pace until everyone who is not
-vaccine-hesitant is vaccinated. Around the end of March, we raised
-\(R_0\) to either 1.15 or 1.3 to account for variants of concern gaining
-a foothold in BC.
+\(R_0\) at 1.00 from January 1, 2021 for 60 days during which people
+over 80 years old eligible for vaccination. Age groups that were offered
+vaccination were considered to be vaccinated at a steady pace until
+everyone who is not vaccine-hesitant is vaccinated. Around the end of
+March, we raised \(R_0\) to either 1.15 or 1.3 to account for variants
+of concern gaining a foothold in BC.
 
 We assumed the first dose of the vaccine, regardless of the
-manufacturer, to offer a 90\% efficacy against serious illness. We
+manufacturer, to offer a 80\% efficacy against serious illness. We
 further assume that all British Columbians will be offered a first dose
 before July 1st, 2021, and a second dose before the end of September
 2021. We assumed that each dose of the AZ vaccine to be independently
@@ -192,11 +190,12 @@ the risk for anaphylaxis, as all vaccines seem to have a similar risk in
 that regard and the risk can be mitigated in the vaccination clinic.
 
 For harm-benefit analysis from a societal perspective, we compared
-expected number of deaths under each vaccination strategy. For
-harm-benefit analysis from a personal perspective, we compared the
-mortality risk due to VIPIT with mortality risk from COVID-19 due to
-delayed vaccination in each age group. We assumed the risk from VIPIT to
-be constant across all age groups under 60.
+expected number of deaths under each vaccination strategy. We did a
+probabilistic analysis where enough data was available. For harm-benefit
+analysis from a personal perspective, we compared the mortality risk due
+to VIPIT with mortality risk from COVID-19 due to delayed vaccination in
+each age group. We assumed the risk from VIPIT to be constant across all
+age groups under 60.
 
 All the analysis was performed using publicly-available data and code.
 This manuscript is produced by a reproducible R Markdown script, which
@@ -338,19 +337,24 @@ from COVID-19 due to delayed vaccination.
 \caption{Mortality risk comparison for different age groups}\label{fig:covidvsvipit}
 \end{figure}
 
-Figure 3 compares the risk of VIPIT-related mortality from 2 doses of
+Figure 4 compares the risk of VIPIT-related mortality from 2 doses of
 the AZ vaccine with the mortality risk from COVID-19 due to delayed
-vaccination. We did the comparison under two scenarios of \(R_0\) of
-either 1.15 or 1.30, to represent different intensities for the third
-wave, or alternatively to represent different geographical parts of the
-province during the third wave. We found that under both scenarios, the
-mortality risk due to COVID-19 to be much higher than the highest
-estimate of the mortality associated with the risk for VIPIT in 40-49
-and 50-59 age groups. Mortality risk from COVID-19 was also higher for
-30-39 age group, although the difference was negligible under \(R_0\) of
-1.15 scenario. For the 20-29 age group, the estimated risk of
-vaccination with the AZ vaccine was higher than that of COVID-19 from
-April 1st to July 1st, 2021.
+vaccination from April 1st to July 1st, 2021. We did the comparison
+under two scenarios of \(R_0\) of either 1.15 or 1.30, to represent
+different intensities for the third wave, or alternatively to represent
+different geographical parts of the province during the third wave. We
+calculated the mortality risk associated with VIPIT using both the
+latest and most comprehensive evidence by EMA, and the worst-case
+scenario considered by NACI. Using EMA estimates, we found that under
+both \(R_0\) scenarios, the mortality risk due to COVID-19 to be much
+higher than the mortality risk associated with VIPIT in those over 40.
+Mortality risk from COVID-19 was also higher for 30-39 age group,
+although the difference was negligible under \(R_0\) of 1.15 scenario.
+For the 20-29 age group, the estimated mortality risk of vaccination
+with the AZ vaccine was comparable to that of COVID-19. Using the
+worst-case VIPIT estimates considered by NACI, mortality risk from
+COVID-19 was higher than that of VIPIT for those over 40 and those over
+30 in high-risk areas.
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -389,7 +393,7 @@ especially critical for front-line workers during the current wave of
 COVID cases. Of note, two recent studies from Toronto, Ontario have
 shown that neighbourhoods with the highest proportion of front-line
 workers had per capita COVID-19 case and death rates that were 2.5-3
-folds higher than that of neighborhoods with the lowest share of
+folds higher than that of neighbourhoods with the lowest share of
 front-line workers
 \citep[\citet{rao_disproportionate_2021}]{chagla_characterizing_2021}.
 
@@ -439,16 +443,10 @@ vaccine or due to an intrinsic difference in risk.
 \hypertarget{conclusions}{%
 \section{Conclusions}\label{conclusions}}
 
-Immediate prioritization of front-line workers save lives. The optimum
-strategy is, if logistically feasible, is to make Pfizer-BioNTech or
-Moderna vaccine immediately available to front-line workers and
-reallocate the AZ vaccine for older individuals. If that is not
-possible, continuing vaccination of front-line workers using AZ vaccine
-is net-beneficial at a societal level. At a personal level, current
-evidence suggests mortality risk posed by VIPIT is significantly lower
-that mortality risk of contracting COVID-19 due to delayed vaccination
-for 40-59 years old adults and for 30-39 adults who live in an areas
-with larger outbreaks.
+Current evidence suggests that benefits of immediate prioritization of
+front-line workers for vaccination with the AZ vaccine far outweigh the
+risk, both at a societal and at a personal level for those over 40, and
+those over 30 in high-risk areas.
 
 Ultimately, in dynamic situations like this where the evidence is
 uncertain and evolving, vaccine roll-out decision are judgment calls

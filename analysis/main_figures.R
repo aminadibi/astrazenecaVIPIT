@@ -183,7 +183,7 @@ validation %>%
   rename (predicted = incid) %>%
   pivot_longer(cols = c(predicted, observed), values_to = "cases") %>%
   ggplot () + geom_line(aes(y=cases, x=date, color=name), size=2) + 
-  labs(subtitle = "Predicted and observed epi curve for COVID-19 in BC",
+  labs(subtitle = "Predicted and observed COVID-19 cases in BC",
        caption  = "Observed case counts are 7-day rolling averages") + 
   theme_ipsum_rc(grid="Y") + expand_limits (y = 0)
 
