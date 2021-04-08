@@ -143,7 +143,7 @@ knitr::include_graphics("../figures/fig-validation.pdf")
 Predicted epidemiological curve and age-stratified case counts showed good agreement with observed counts reported by BC CDC, as shown in Figure 1. 
 
 
-```{r fig1, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Projection of the progression of the vaccination and COVID-19 cases"), echo=FALSE}
+```{r fig1, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Projection of the progression of the vaccination for different age groups and front-line workers (EW) as well as COVID-19 cases and outcomes"), echo=FALSE}
 knitr::include_graphics("../figures/fig-trajectoriesFull.pdf")
 ```
 
@@ -151,7 +151,7 @@ We compared immediately prioritizing of front-line workers for the AZ vaccine (S
 
 In our analysis, Scenario A led to `r round(b$cases - a$cases, 0)` fewer cases of COVID-19, `r round(b$hosp - a$hosp, 0)` fewer hospitalizations, `r round(b$deaths - a$deaths, 0)` fewer deaths, and `r round(b$long - a$long, 0)` fewer cases of Long COVID, assuming $R_0=1.3$ and that vaccine effeteness in preventing transmission is on average 60%. Figure 3 shows results for a wider range of $R_0$ and efficacy against infection values. 
 
-```{r fig2, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("COVID-19 outcomes under different vaccination scenarios"), echo=FALSE}
+```{r fig2, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("COVID-19 outcomes under different vaccination scenarios for different age group and front line workers (EW)"), echo=FALSE}
 knitr::include_graphics("../figures/fig-barplots.pdf")
 ```
 
@@ -170,7 +170,7 @@ where $P(AZ)$ is the probability of getting the AZ vaccine (assumed to be 1 here
 
 We used results from our compartmental model to project mortality risk from COVID-19 due to delayed vaccination. 
 
-``` {r covidvsvipit,  out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Mortality risk comparison for different age groups"), echo=F}
+``` {r covidvsvipit,  out.width="0.7\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Mortality risk comparison for different age groups based on the estimated risk for VIPIT by the EMA and NACI"), echo=F}
 df <- personalRisk %>% select (age, R0, `VIPIT-NACI`,`VIPIT-EMA`, `COVID-19`) %>% pivot_longer(c(`VIPIT-NACI`,`VIPIT-EMA`, `COVID-19`), names_to = "cause", values_to = "Risk" ) 
 
 ggplot(df) + geom_col(aes(y = Risk*100, x=age, fill=cause), position = "dodge") + labs(x="", y="Risk %",
