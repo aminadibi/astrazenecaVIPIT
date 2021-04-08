@@ -6,9 +6,9 @@ author:
   - name: Amin Adibi
     affil: a
     email: amin.adibi@ubc.ca
-  # - name: Mohsen Sadatsafavi
-  #   affil: a
-  #   email: Mohsen.Sadatsafavi@ubc.ca
+  - name: Mohsen Sadatsafavi
+    affil: a
+    email: Mohsen.Sadatsafavi@ubc.ca
 affiliation:
   - num: a
     address: |
@@ -83,6 +83,21 @@ All the analysis was performed using publicly-available data and code. This manu
 knitr::include_graphics("../figures/fig-validation.pdf")
 ```
 Predicted epidemiological curve and age-stratified case counts showed good agreement with observed counts reported by BC CDC, as shown in Figure 1. 
+
+
+\begin{table}
+\tbl{Harm-benefit parameters and their distribution }
+{\begin{tabular}{lccc} \toprule
+ & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-4}
+ Variable & Base Value & Probability Distribution & Source \\ \midrule
+ Rate of VIPIT\textsuperscript{a} & 1 in 153,000 & $\beta(222, 3.4\times 10^7)$ & EudraVigilance  \\
+ VIPIT Mortality Risk & $40\%$ & $\beta(4, 10)$ & NACI  \\
+ Gamma & C2 & C2 & C3  \\ \bottomrule
+\end{tabular}}
+\tabnote{\textsuperscript{a}This footnote shows how to include
+ footnotes to a table if required.}
+\label{sample-table}
+\end{table}
 
 ## Harm-Benefit From A Societal Perspective
 
