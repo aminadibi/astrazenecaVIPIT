@@ -203,7 +203,5 @@ We have not considered potential sex differences in the risk for VIPIT. Although
 
 # Conclusions
 
-Current evidence suggests that benefits of immediate prioritization of front-line workers for vaccination with the AZ vaccine far outweigh the risk, both at a societal and at a personal level for those over 40, and those over 30 in high-risk areas.
-
-Ultimately, in dynamic situations like this where the evidence is uncertain and evolving, vaccine roll-out decision are judgment calls that need to take a complex network of medical, epidemiological, ethical, logistics, and societal considerations into account. 
+Current evidence suggests that benefits of immediate prioritization of front-line workers for vaccination with the AZ vaccine far outweigh the risk, both at a societal and at a personal level for those over 40, and those over 30 in high-risk areas. Ultimately, in dynamic situations like this where the evidence is uncertain and evolving, vaccine roll-out decision are judgment calls that need to take a complex network of medical, epidemiological, ethical, logistics, and societal considerations into account. 
 
