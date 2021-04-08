@@ -6,13 +6,23 @@ author:
   - name: Amin Adibi
     affil: a
     email: amin.adibi@ubc.ca
+  - name: Mohammad Mozafarihashjin
+    affil: b, c
+    email: mohammad.mozafarihashjin@sinaihealth.ca
   # - name: Mohsen Sadatsafavi
   #   affil: a
   #   email: msafavi@mail.ubc.ca
 affiliation:
   - num: a
     address: |
-            Respiratory Evaluation Sciences Program, Faculty of Pharmaceutical Sciences, University of British Columbia, Vancouver, BC, Canada
+            Respiratory Evaluation Sciences Program, Faculty of Pharmaceutical Sciences, University of British Columbia, Vancouver, British Columbia
+  - num: b
+    address: |
+            Lunenfeld-Tanenbaum Research Institute, Sinai Health System,    Toronto, Ontario
+  - num: c
+    address: |
+            Department of Microbiology, Sinai Health System, Toronto, Ontario
+    
 bibliography: AZVIPIT.bib
 csl: vancouver-brackets.csl
 abstract: |
