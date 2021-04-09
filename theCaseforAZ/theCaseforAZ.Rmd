@@ -83,7 +83,7 @@ Here, we provide a preliminary harm-benefit analysis of immediate vaccination of
 
 # Methods
 
-We estimated benefits of the AZ COVID-19 matrix using a  BC-specific age-structured COVID-19 compartmental model by Mulberry and colleagues that takes into account transmission, age-based contact structure, front-line worker status, and rising $R_0$ due to variants of concern [@mulberry_vaccine_2021]. The model included susceptible, exposed, infectious and recovered (SEIR) status and was based on the transmission model by Bubar et al [@bubar_model-informed_2021].
+We estimated benefits of the AZ COVID-19 vaccine using a BC-specific age-structured COVID-19 compartmental model by Mulberry and colleagues that takes into account transmission, age-based contact structure, front-line worker status, and rising $R_0$ due to variants of concern [@mulberry_vaccine_2021]. The model included susceptible, exposed, infectious and recovered (SEIR) status and was based on the transmission model by Bubar et al [@bubar_model-informed_2021].
 
 We ran the model from January 2021 to September 2021, which is when expect the vaccination campaign to conclude. To follow BC vaccination strategy and case counts in the first three months of 2021, we held $R_0$ at 1.00 from January 1, 2021 for 60 days during which people over 80 years old eligible for vaccination. Age groups that were offered vaccination were considered to be vaccinated at a steady pace until everyone who is not vaccine-hesitant is vaccinated. Around the end of March, we raised $R_0$ to either 1.15 or 1.3 to account for variants of concern gaining a foothold in BC.
 
