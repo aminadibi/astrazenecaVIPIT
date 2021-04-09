@@ -142,24 +142,67 @@ oo <- compare_sims_data(sim1 = filter(res, R==1.3 & scen==1 & ve==0.75),
                                                name1=labels[1], name2=labels[2], startDate=startDate, 
                                                textsize = 16)
 
+# risk60sR1 <- ooR1 %>% filter (age_band == "60-69" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+#                                 date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
+#   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 709300
+# risk50sR1$age <- "60-69"
 
-
-
-oo %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk50sR1 <- oo %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 709300
+risk50sR1$age <- "50-59"
 
-oo %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk40sR1 <- oo %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 617410
+risk40sR1$age <- "40-49"
 
-oo %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk30sR1 <-oo %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 607340
+risk30sR1$age <- "30-39"
 
-oo %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk20sR1 <-oo %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 590560
+risk20sR1$age <- "20-29"
+
+covidRisksR1 <- rbind.data.frame(risk50sR1, risk40sR1, risk30sR1, risk20sR1) %>% 
+              mutate(R0 = 1.3)
+
+ooR2 <- compare_sims_data(sim1 = filter(res, R==1.15 & scen==1 & ve==0.75), 
+                          sim2=filter(res, R==1.15 & scen ==2 & ve==0.75),
+                          name1=labels[1], name2=labels[2], startDate=startDate, 
+                          textsize = 16)
+
+risk50sR2 <- ooR2 %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+                                date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
+  select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 709300
+risk50sR2$age <- "50-59"
+
+risk40sR2 <- ooR2 %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+                                date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
+  select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 617410
+risk40sR2$age <- "40-49"
+
+risk30sR2 <-ooR2 %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+                               date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
+  select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 607340
+risk30sR2$age <- "30-39"
+
+risk20sR2 <-ooR2 %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+                               date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
+  select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 590560
+risk20sR2$age <- "20-29"
+
+covidRisksR2 <- rbind.data.frame(risk50sR2, risk40sR2, risk30sR2, risk20sR2) %>% 
+  mutate(R0 = 1.15)
+
+covidRisk <- rbind(covidRisksR1, covidRisksR2) %>% 
+  mutate(`VIPIT-NACI` = 8E-6, `VIPIT-EMA` = 2.61E-6) %>% 
+  rename(`COVID-19` = newdeaths)
+
+write_csv(covidRisk, "personalRisk.csv")
 
 
 ####### Validation
