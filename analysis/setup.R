@@ -31,15 +31,15 @@ mu_other <-  readRDS("./generated-data/mu_other_essential.rds")
 YLL_vec <- readRDS("./data/yll_vec_CAN.RData")
 #IFR <- readRDS("./data/ifr_vec_CAN.RData")
 # Now based on Ontario Data
-IFR <- c(0.00004, 
+IFR <- c(0.00004,
          0.00004,
-         0.00014,
-         0.00039,
-         0.00130,
-         0.00465,
-         0.01977,
-         0.08069,
-         0.227793
+         0.00015,
+         0.00042,
+         0.00141,
+         0.00504,
+         0.02177,
+         0.09440,
+         0.307134517
 )
 IHR <- readRDS("./data/ihr_vec_CAN.RData")
 

@@ -165,6 +165,23 @@ societal and personal perspective.
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
+\begin{table}
+\tbl{Model parameters}
+{\begin{tabular}{llllll} \toprule
+Age  Group & Hospitalization & Death   & Long COVID & Vaccine Hesitancy & \% Front-Line \\ \hline
+Under 20   & 0.0054          & 0.00004 & 0.04       & NA                & 0.0           \\ 
+20-29      & 0.0110          & 0.00015 & 0.04       & 0.3               & 0.17          \\ 
+30-39      & 0.0203          & 0.00042 & 0.08       & 0.2               & 0.20          \\ 
+40-49      & 0.0283          & 0.00141 & 0.15       & 0.2               & 0.17          \\ 
+50-59      & 0.0557          & 0.00504 & 0.25       & 0.2               & 0.15          \\ 
+60-69      & 0.1280          & 0.02177 & 0.25       & 0.15              & 0.16          \\ 
+70-79      & 0.2750          & 0.09440 & 0.25       & 0.15              & 0.10          \\ 
+80+        & 0.3098          & 0.30713 & 0.25       & 0.15              & 0.0           \\ \bottomrule
+\end{tabular}}
+\tabnote{Death rates are from Public Health Ontario data on concluded cases from January 2021 to April 8th, 2021. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey.}
+\label{model-param}
+\end{table}
+
 We estimated benefits of the AZ COVID-19 vaccine using a BC-specific
 age-structured COVID-19 compartmental model by Mulberry and colleagues
 that takes into account transmission, age-based contact structure,
@@ -217,7 +234,7 @@ is available on
  VIPIT Mortality Risk & $21\%$ &  $\beta(18, 86)$ & $40\%$ \\ \bottomrule
 \end{tabular}}
 \tabnote{\textsuperscript{a}A probability distribution could not be calculated as numerators and denominators were not reported.}
-\label{sample-table}
+\label{harm-param}
 \end{table}
 
 \hypertarget{harm-benefit-from-a-societal-perspective}{%
@@ -295,8 +312,8 @@ vaccinated (Scenario B). Figure 2 shows the progression of the
 vaccination campaign, as well as projections for COVID-19 cases,
 hospitalizations, and deaths under the two scenarios.
 
-In our analysis, Scenario A led to 38425 fewer cases of COVID-19, 738
-fewer hospitalizations, 224 fewer deaths, and 2135 fewer cases of Long
+In our analysis, Scenario A led to 38383 fewer cases of COVID-19, 722
+fewer hospitalizations, 283 fewer deaths, and 2121 fewer cases of Long
 COVID, assuming \(R_0=1.3\) and that vaccine effeteness in preventing
 transmission is on average 60\%. Figure 3 shows results for a wider
 range of \(R_0\) and efficacy against infection values.
