@@ -22,6 +22,32 @@ Please note that if the \verb"endfloat" package is used on a document containing
 
 \section{Troubleshooting}
 
+Assuming that BC allocates all 246,700 doses to front-line workers, we can estimate the expected number of deaths due to VIPIT, $E(death)_{VIPIT}$, as shown below. To err on the side of caution, we assume that each dose of the vaccine is independently associated with the risk for VIPIT and that the risk of VIPIT is uniform across all age groups. We also assume that there is enough uptake that BC is able to administer all these doses.
+
+$$
+E(death)_{VIPIT}  = d \times P(VIPIT|AZ) \times P(death|VIPIT, AZ)
+$$
+where $d$ is the number of doses administered, $P(VIPIT|AZ)$ is the risk of VIPIT after receiving each dose, and $P(death|VIPIT, AZ)$ is the case fatality for VIPIT. 
+
+According to the most recent data from UK and EU submitted to EudraVigilance (as of April 4th, 2021):
+$$
+\begin{aligned}
+E(death)_{VIPIT} & = d \times \frac{1}{153,000} \times \frac{21}{100} \\
+& = 246,700 \times \frac{2.1}{1,530,000} \\
+& \approx 0.34
+\end{aligned}
+$$
+
+NACI had based its analysis on the more pessimistic estimates of a chance of 1 in 100,000 for VIPIT, and a mortality probability of 40%. In this worst-case scenario analysis, the expected number of deaths in BC would be 1:
+
+$$
+\begin{aligned}
+E(death)_{VIPIT-Worst Case} & = d \times \frac{1}{100,000} \times \frac{40}{100} \\
+& = 246,700 \times \frac{4}{1,000,000} \\
+& \approx 1
+\end{aligned}
+$$
+
 Authors may occasionally encounter problems with the preparation of a manuscript using \LaTeX. The appropriate action to take will depend on the nature of the problem:
 \begin{enumerate}
 \item[(i)] If the problem is with \LaTeX\ itself, rather than with the actual macros, please consult an appropriate \LaTeXe\ manual for initial advice. If the solution cannot be found, or if you suspect that the problem does lie with the macros, then please contact Taylor \& Francis for assistance (\texttt{latex.helpdesk@tandf.co.uk}).

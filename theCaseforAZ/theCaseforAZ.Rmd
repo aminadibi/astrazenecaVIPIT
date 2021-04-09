@@ -83,7 +83,27 @@ Here, we provide a preliminary harm-benefit analysis of immediate vaccination of
 
 # Methods
 
+We assumed that BC allocates all 246,700 doses to front-line workers and that there is enough uptake that BC is able to administer all these doses. For harm-benefit analysis from a societal perspective, we compared expected number of deaths under each vaccination strategy. We did a probabilistic analysis where enough data was available. For harm-benefit analysis from a personal perspective, we compared the mortality risk due to VIPIT with mortality risk from COVID-19 due to delayed vaccination in each age group. We assumed the risk from VIPIT to be constant across all age groups under 60. We estimated the expected number of deaths due to VIPIT as $E(death)_{VIPIT} = d \times P(VIPIT|vaccine) \times P(death|VIPIT, vaccine)$, where $d$ is the number of doses administered, $P(VIPIT|vaccine)$ is the risk of VIPIT after receiving each dose of the AZ vaccine, and $P(death|VIPIT, vaccine)$ is the case fatality for VIPIT. 
 
+To err on the side of caution, we assumed that each dose of the vaccine is independently associated with the risk for VIPIT and that the risk of VIPIT is uniform across all age groups. The most recent estimate for these probabilities by EMA, and the estimates NACI used in its calculations are summarized in Table 1.
+
+\begin{table}
+\tbl{Harm-benefit parameters and their distribution }
+{\begin{tabular}{lcccc} \toprule
+ & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-4}
+ Variable & EMA Base Value & EMA Probability Distribution & NACI Base Value\textsuperscript{a}  \\ \midrule
+ Rate of VIPIT & 1 in 153,000 & $\beta(222, 3.4\times 10^7)$ & 1 in 100,000 \\
+ VIPIT Mortality Risk & $21\%$ &  $\beta(18, 86)$ & $40\%$ \\ \bottomrule
+\end{tabular}}
+\tabnote{\textsuperscript{a}A probability distribution could not be calculated as numerators and denominators were not reported.}
+\label{harm-param}
+\end{table}
+
+We estimated benefits of the AZ COVID-19 vaccine using a BC-specific age-structured COVID-19 compartmental model by Mulberry and colleagues that takes into account transmission, age-based contact structure, front-line worker status, and rising $R_0$ due to variants of concern [@mulberry_vaccine_2021]. The model included susceptible, exposed, infectious and recovered (SEIR) status and was based on the transmission model by Bubar et al [@bubar_model-informed_2021].
+
+We ran the model from January 2021 to September 2021, which is when expect the vaccination campaign to conclude. To follow BC vaccination strategy and case counts in the first three months of 2021, we held $R_0$ at 1.00 from January 1, 2021 for 60 days during which people over 80 years old were eligible for vaccination. Age groups that were offered vaccination were considered to be vaccinated at a steady pace until everyone who is not vaccine-hesitant is vaccinated. Around the end of March, we raised $R_0$ to either 1.15 or 1.3 to account for variants of concern gaining a foothold in BC.
+
+We assumed the first dose of the vaccine, regardless of the manufacturer, to offer a 80% efficacy against serious illness. We further assume that all British Columbians will be offered a first dose before July 1st, 2021, and a second dose before the end of September 2021. We assumed the second dose to further prolong the immunity acquired after the first dose, and that each dose, separately, was associated with the risk for VIPIT. We did not consider the risk for anaphylaxis, as all vaccines seem to have a similar risk in that regard and the risk can be mitigated in the vaccination clinic.  Population estimates that were used in the model are summarized in Table 2.
 
 \begin{table}
 \tbl{Model parameters}
@@ -102,65 +122,20 @@ Under 20   & 0.0054          & 0.00004 & 0.04       & NA                & 0.0   
 \label{model-param}
 \end{table}
 
-We estimated benefits of the AZ COVID-19 vaccine using a BC-specific age-structured COVID-19 compartmental model by Mulberry and colleagues that takes into account transmission, age-based contact structure, front-line worker status, and rising $R_0$ due to variants of concern [@mulberry_vaccine_2021]. The model included susceptible, exposed, infectious and recovered (SEIR) status and was based on the transmission model by Bubar et al [@bubar_model-informed_2021].
-
-We ran the model from January 2021 to September 2021, which is when expect the vaccination campaign to conclude. To follow BC vaccination strategy and case counts in the first three months of 2021, we held $R_0$ at 1.00 from January 1, 2021 for 60 days during which people over 80 years old eligible for vaccination. Age groups that were offered vaccination were considered to be vaccinated at a steady pace until everyone who is not vaccine-hesitant is vaccinated. Around the end of March, we raised $R_0$ to either 1.15 or 1.3 to account for variants of concern gaining a foothold in BC.
-
-We assumed the first dose of the vaccine, regardless of the manufacturer, to offer a 80% efficacy against serious illness. We further assume that all British Columbians will be offered a first dose before July 1st, 2021, and a second dose before the end of September 2021. We assumed that each dose of the AZ vaccine to be independently associated with the highest reported risk for VIPIT. We did not consider the risk for anaphylaxis, as all vaccines seem to have a similar risk in that regard and the risk can be mitigated in the vaccination clinic. 
-
-For harm-benefit analysis from a societal perspective, we compared expected number of deaths under each vaccination strategy. We did a probabilistic analysis where enough data was available. For harm-benefit analysis from a personal perspective, we compared the mortality risk due to VIPIT with mortality risk from COVID-19 due to delayed vaccination in each age group. We assumed the risk from VIPIT to be constant across all age groups under 60. 
-
 All the analysis was performed using publicly-available data and code. This manuscript is produced by a reproducible R Markdown script, which is available on [Github](https://github.com/aminadibi/astrazenecaVIPIT).
 
 # Results
 
-\begin{table}
-\tbl{Harm-benefit parameters and their distribution }
-{\begin{tabular}{lcccc} \toprule
- & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-4}
- Variable & EMA Base Value & EMA Probability Distribution & NACI Base Value\textsuperscript{a}  \\ \midrule
- Rate of VIPIT & 1 in 153,000 & $\beta(222, 3.4\times 10^7)$ & 1 in 100,000 \\
- VIPIT Mortality Risk & $21\%$ &  $\beta(18, 86)$ & $40\%$ \\ \bottomrule
-\end{tabular}}
-\tabnote{\textsuperscript{a}A probability distribution could not be calculated as numerators and denominators were not reported.}
-\label{harm-param}
-\end{table}
-
 ## Harm-Benefit From A Societal Perspective
 
-Assuming that BC allocates all 246,700 doses to front-line workers, we can estimate the expected number of deaths due to VIPIT, $E(death)_{VIPIT}$, as shown below. To err on the side of caution, we assume that each dose of the vaccine is independently associated with the risk for VIPIT and that the risk of VIPIT is uniform across all age groups. We also assume that there is enough uptake that BC is able to administer all these doses.
+According to the most recent data from UK and EU submitted to EudraVigilance (as of April 4th, 2021), deterministic analysis leads to an expected number of death of 0.34 if we immediately offer a first dose of the AZ vaccine to all eligible front-line workers in BC. Probabilistic analysis according to respective beta distributions (Table 1) leads to an expected number of death of 0.28 [95% CI 0.17-0.41], which means the probability of observing at least one death is almost zero.
 
-$$
-E(death)_{VIPIT}  = d \times P(VIPIT|AZ) \times P(death|VIPIT, AZ)
-$$
-where $d$ is the number of doses administered, $P(VIPIT|AZ)$ is the risk of VIPIT after receiving each dose, and $P(death|VIPIT, AZ)$ is the case fatality for VIPIT. 
-
-According to the most recent data from UK and EU submitted to EudraVigilance (as of April 4th, 2021):
-$$
-\begin{aligned}
-E(death)_{VIPIT} & = d \times \frac{1}{153,000} \times \frac{21}{100} \\
-& = 246,700 \times \frac{2.1}{1,530,000} \\
-& \approx 0.34
-\end{aligned}
-$$
-Deterministic analysis leads to an expected number of death of 0.34 if we immediately offer a first dose of the AZ vaccine to all eligible front-line workers in BC. Probabilistic analysis according to respective beta distributions (Table 1) leads to an expected number of death of 0.28 [95% CI 0.17-0.41], which means the probability of observing at least one death is almost zero.
-
-NACI had based its analysis on the more pessimistic estimates of a chance of 1 in 100,000 for VIPIT, and a mortality probability of 40%. In this worst-case scenario analysis, the expected number of deaths in BC would be 1:
-
-$$
-\begin{aligned}
-E(death)_{VIPIT-Worst Case} & = d \times \frac{1}{100,000} \times \frac{40}{100} \\
-& = 246,700 \times \frac{4}{1,000,000} \\
-& \approx 1
-\end{aligned}
-$$
-We used a compartmental model of transmission and vaccination of COVID-19 in BC to estimate benefits of immediately continuing the front-line workers vaccination program using the AZ vaccine.
+NACI had based its analysis on the more pessimistic estimates of a chance of 1 in 100,000 for VIPIT, and a mortality probability of 40%. In this worst-case scenario analysis, the expected number of deaths in BC would be 1.
 
 ```{r figValidation, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Face validity of model case counts"), echo=FALSE}
 knitr::include_graphics("../figures/fig-validation.pdf")
 ```
 Predicted epidemiological curve and age-stratified case counts showed good agreement with observed counts reported by BC CDC, as shown in Figure 1. 
-
 
 ```{r fig1, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Projection of the progression of the vaccination for different age groups and front-line workers (EW) as well as COVID-19 cases and outcomes"), echo=FALSE}
 knitr::include_graphics("../figures/fig-trajectoriesFull.pdf")
