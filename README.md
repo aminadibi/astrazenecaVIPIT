@@ -11,6 +11,6 @@ The preprint is on medRxiv. The disease model used here is based on [Mulberry et
   
   **Results:** We estimate that if British Columbia immediately continues the front-line worker vaccination program with the AstraZeneca vaccine, we expect to see no VIPIT-related deaths, about 40,000 fewer cases of COVID-19, 750 fewer hospitalizations, 180 fewer COVID-related deaths, and 2,150 fewer cases of Long COVID.
   
-  **Conclusions:** The benefits of immediately continuing immunization of front-line workers with AstraZeneca far outweigh the risk both at a societal level and at a personal level for recipients over 30 years old.  
-keywords: |
-  COVID19; vaccination; front-line workers; blood clots; vaccine-induced prothrombotic immune thrombocytopenia; harm-benefit; BC
+  **Conclusions:** The benefits of immediately continuing immunization of front-line workers with AstraZeneca far outweigh the risk both at a societal level and at a personal level for recipients over 30 years old.
+  
+keywords: COVID19; vaccination; front-line workers; blood clots; vaccine-induced prothrombotic immune thrombocytopenia; harm-benefit; BC
