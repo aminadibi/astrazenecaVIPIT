@@ -67,13 +67,13 @@ vaccination program which used the AstraZeneca vaccine. The province is
 expected to receive an additional 246,700 doses of AstraZeneca vaccine
 through US and COVAX until April 11th, enough to provide the first dose
 of vaccine to all unvaccinated front-line workers. It is unclear whether
-mRNA vaccines can be immediately made available to front-line workers.
-We evaluated the harms and benefits of delaying vaccination of
-front-line workers in BC.
+the alternative, mRNA vaccines can be immediately made available to
+front-line workers. We evaluated the harms and benefits of delaying
+vaccination of front-line workers in BC.
 
 \textbf{Methods:} We reviewed the latest available evidence and used
 compartmental modelling to \emph{a)} compare the expected number of
-mortality due to COVID-19 and VIPIT under the scenarios of immediately
+deaths due to COVID-19 and VIPIT under the scenarios of immediately
 continuing vaccination of front-line workers with the AstraZeneca
 vaccine or delaying it in favour of mRNA vaccines, and \emph{b)} compare
 the mortality risk of immediately receiving the AstraZeneca vaccine and
@@ -83,7 +83,11 @@ delaying vaccination at a personal level for different age groups.
 continues the front-line worker vaccination program with the AstraZeneca
 vaccine, we expect to see no VIPIT-related deaths, about 40,000 fewer
 cases of COVID-19, 700 fewer hospitalizations, 200 fewer COVID-related
-deaths, and 2,100 fewer cases of Long COVID.
+deaths, and 2,100 fewer cases of Long COVID. Projected risk for
+COVID-related death from April 1st, to July 1st, 2021 was 8.38 per
+100,000 in 60-69 years old, 5.20 per 100,000 in 50-59, 2.29 in 100,000
+in 40-49, 0.67 per 100,000 in 30-39 and 0.23 per 100,000 for 20-29 years
+old, compared to 0.26 per 100,000 due to VIPIT.
 
 \textbf{Conclusions:} The benefits of immediately continuing
 immunization of front-line workers with AstraZeneca far outweigh the
@@ -99,7 +103,8 @@ prothrombotic immune thrombocytopenia; harm-benefit; BC
 \hypertarget{background}{%
 \section{Background}\label{background}}
 
-Recently, NACI recommended against using AstraZeneca (AZ) COVID-19
+On March 29th, 2021, Canada's National Advisory Committee on
+Immunization (NACI) recommended against using AstraZeneca (AZ) COVID-19
 Vaccine for Canadians under the age of 55, due to concerns about the
 incidence of Vaccine-Induced Prothrombotic Immune Thrombocytopenia
 (VIPIT) based on European reports \citep{naci_naci_2021}. On Match 18,
@@ -167,20 +172,19 @@ societal and personal perspective.
 
 We assumed that BC allocates all 246,700 doses to front-line workers and
 that there is enough uptake that BC is able to administer all these
-doses. For harm-benefit analysis from a societal perspective, we
-compared expected number of deaths under each vaccination strategy. We
-did a probabilistic analysis where enough data was available. For
-harm-benefit analysis from a personal perspective, we compared the
-mortality risk due to VIPIT with mortality risk from COVID-19 due to
-delayed vaccination in each age group. We assumed the risk from VIPIT to
-be constant across all age groups under 60. We estimated the expected
-number of deaths due to VIPIT as
+doses. We compared immediately prioritizing of front-line workers for
+the AZ vaccine (Scenario A) and delaying it until after those over 70
+are fully vaccinated (Scenario B). For harm-benefit analysis from a
+societal perspective, we compared expected number of deaths under each
+vaccination strategy. We estimated the expected number of deaths due to
+VIPIT as
 \(E(death)_{VIPIT} = d \times P(VIPIT|vaccine) \times P(death|VIPIT, vaccine)\),
 where \(d\) is the number of doses administered, \(P(VIPIT|vaccine)\) is
 the risk of VIPIT after receiving each dose of the AZ vaccine, and
-\(P(death|VIPIT, vaccine)\) is the case fatality for VIPIT.
+\(P(death|VIPIT, vaccine)\) is the case fatality for VIPIT. We did a
+probabilistic analysis where enough data was available.
 
-To err on the side of caution, we assume that each dose of the vaccine
+To err on the side of caution, we assumed that each dose of the vaccine
 is independently associated with the risk for VIPIT and that the risk of
 VIPIT is uniform across all age groups. The most recent estimate for
 these probabilities by EMA, and the estimates NACI used in its
@@ -214,7 +218,8 @@ over 80 years old were eligible for vaccination. Age groups that were
 offered vaccination were considered to be vaccinated at a steady pace
 until everyone who is not vaccine-hesitant is vaccinated. Around the end
 of March, we raised \(R_0\) to either 1.15 or 1.3 to account for
-variants of concern gaining a foothold in BC.
+variants of concern gaining a foothold in BC. We validated these
+assumptions against observed case counts.
 
 We assumed the first dose of the vaccine, regardless of the
 manufacturer, to offer a 80\% efficacy against serious illness. We
@@ -226,6 +231,14 @@ associated with the risk for VIPIT. We did not consider the risk for
 anaphylaxis, as all vaccines seem to have a similar risk in that regard
 and the risk can be mitigated in the vaccination clinic. Population
 estimates that were used in the model are summarized in Table 2.
+COVID-19 age-based case fatality rates are from Public Health Ontario
+data on concluded cases from January 2021 to April 8th, 2021
+\citep{public_health_ontario_all_2021}. Rates of Long COVID are Mulberry
+et al's estimations from data in Sudre et
+al\citep{sudre_attributes_2021}. The proportion of essential workers by
+age was taken from the COVID Speak survey per Mulberry et al
+\citep{mulberry_vaccine_2021}. Population of BC in each group was
+obtained from Statistics Canada \citep{statistics_canada_census_2017}.
 
 \begin{table}
 \tbl{Model parameters}
@@ -240,9 +253,22 @@ Under 20   & 0.0054          & 0.00004 & 0.04       & NA                & 0.0   
 70-79      & 0.2750          & 0.09440 & 0.25       & 0.15              & 0.10          \\ 
 80+        & 0.3098          & 0.30713 & 0.25       & 0.15              & 0.0           \\ \bottomrule
 \end{tabular}}
-\tabnote{Death rates are from Public Health Ontario data on concluded cases from January 2021 to April 8th, 2021. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey.}
+\tabnote{Death rates are from Public Health Ontario data on concluded cases from January 2021 to April 8th, 2021. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al. }
 \label{model-param}
 \end{table}
+
+For harm-benefit analysis at a personal level, we weighed the
+probability of VIPIT-related death or
+\(P(death)_{VIPIT} = P(vaccine) \times P(VIPIT|vaccine) \times P(death|VIPIT, vaccine)\),
+against the average probability of contracting COVID-19 and dying from
+it in each age groups, or
+\(P(death)_{delayedVaccination} = P(COVID-19) \times P(death|COVID-19)\),
+where \(P(vaccine)\) is the probability of getting the AZ vaccine
+(assumed to be 1 here), and \(P(COVID-19)\) is the average probability
+of contracting COVID-19 due to delayed vaccination.
+
+We used results from our compartmental model to project mortality risk
+from COVID-19 due to delayed vaccination.
 
 All the analysis was performed using publicly-available data and code.
 This manuscript is produced by a reproducible R Markdown script, which
@@ -252,24 +278,8 @@ is available on
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\hypertarget{harm-benefit-from-a-societal-perspective}{%
-\subsection{Harm-Benefit From A Societal
-Perspective}\label{harm-benefit-from-a-societal-perspective}}
-
-According to the most recent data from UK and EU submitted to
-EudraVigilance (as of April 4th, 2021):
-
-Deterministic analysis leads to an expected number of death of 0.34 if
-we immediately offer a first dose of the AZ vaccine to all eligible
-front-line workers in BC. Probabilistic analysis according to respective
-beta distributions (Table 1) leads to an expected number of death of
-0.28 {[}95\% CI 0.17-0.41{]}, which means the probability of observing
-at least one death is almost zero.
-
-NACI had based its analysis on the more pessimistic estimates of a
-chance of 1 in 100,000 for VIPIT, and a mortality probability of 40\%.
-In this worst-case scenario analysis, the expected number of deaths in
-BC would be 1.
+\hypertarget{model-validation}{%
+\subsection{Model validation}\label{model-validation}}
 
 \begin{figure}
 
@@ -281,8 +291,32 @@ BC would be 1.
 \end{figure}
 
 Predicted epidemiological curve and age-stratified case counts showed
-good agreement with observed counts reported by BC CDC, as shown in
-Figure 1.
+good agreement with observed counts reported by BC CDC, except for the
+80 and above age category where the model underestimated case counts
+(Figure 1).
+
+\hypertarget{harm-benefit-from-a-societal-perspective}{%
+\subsection{Harm-Benefit From A Societal
+Perspective}\label{harm-benefit-from-a-societal-perspective}}
+
+EMA evidence as of April 4th, 2021 suggests that if we immediately offer
+a first dose of the AZ vaccine to all eligible front-line workers in BC,
+the expected number of VIPIT-related death by the end of June 2021 is
+0.337 {[}95\% CI 0.203-0.493{]}, which means the probability of
+observing at least one death in the same period is almost zero
+(\ensuremath{1.78\times 10^{-17}}, to be exact). Adding the risk from
+the second dose, the expected number of VIPIT-related deaths until the
+end of summer is 0.672 {[}95\% CI 0.413-0.999{]}. The probability of
+observing at least one VIPIT-related death till the end of the summer
+will be 25\%, and the probability of observing two deaths would be
+almost zero (\ensuremath{6.26\times 10^{-18}}, to be exact).
+
+NACI had based its analysis on the older and more pessimistic estimates
+of a chance of 1 in 100,000 for VIPIT, and a mortality probability of
+40\%, based on the data that was available in late March. In this
+worst-case scenario analysis, the expected number of deaths in BC would
+be 1 after the first dose is completed for all front-line workers and 2
+after the second doses are delivered
 
 \begin{figure}
 
@@ -293,17 +327,18 @@ Figure 1.
 \caption{Projection of the progression of the vaccination for different age groups and front-line workers (EW) as well as COVID-19 cases and outcomes}\label{fig:fig1}
 \end{figure}
 
-We compared immediately prioritizing of front-line workers for the AZ
-vaccine (Scenario A) and delaying it until after those over 70 are fully
-vaccinated (Scenario B). Figure 2 shows the progression of the
-vaccination campaign, as well as projections for COVID-19 cases,
-hospitalizations, and deaths under the two scenarios.
+Figure 2 shows the progression of the vaccination campaign, as well as
+projections for COVID-19 cases, hospitalizations, and deaths under the
+two scenarios of immediately prioritizing front-line workers (A) and
+delaying their vaccination to after all those over 60 are offered a dose
+of the vaccine.
 
-In our analysis, Scenario A led to 38383 fewer cases of COVID-19, 722
-fewer hospitalizations, 283 fewer deaths, and 2121 fewer cases of Long
-COVID, assuming \(R_0=1.3\) and that vaccine effeteness in preventing
-transmission is on average 60\%. Figure 3 shows results for a wider
-range of \(R_0\) and efficacy against infection values.
+In our analysis, Scenario A led to \ensuremath{3.8383\times 10^{4}}
+fewer cases of COVID-19, 722 fewer hospitalizations, 283 fewer deaths,
+and 2121 fewer cases of Long COVID, assuming \(R_0=1.3\) and that
+vaccine effeteness in preventing transmission is on average 60\%. Figure
+3 shows results for a wider range of \(R_0\) and efficacy against
+infection values.
 
 \begin{figure}
 
@@ -318,26 +353,9 @@ range of \(R_0\) and efficacy against infection values.
 \subsection{Harm-Benefit From a Personal
 Perspective}\label{harm-benefit-from-a-personal-perspective}}
 
-Not all interventions that are net-beneficial at a societal level are
-net-beneficial for each member of the society, as those who carry the
-burden of the risk of adverse events may not be the same people who
-benefit from mitigation of the risk from contracting COVID19.
-
-In mathematical terms, we compared \[
-\begin{aligned}
-P(death)_{VIPIT}  &= P(AZ) \times P(VIPIT|AZ) \times P(death|VIPIT, AZ) \\
-P(death)_{delayedVaccination} &= P(COVID-19) \times P(death|COVID-19)
-\end{aligned}
-\] where \(P(AZ)\) is the probability of getting the AZ vaccine (assumed
-to be 1 here), and \(P(COVID-19)\) is the probability of contracting
-COVID-19 due to delayed vaccination.
-
-We used results from our compartmental model to project mortality risk
-from COVID-19 due to delayed vaccination.
-
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{theCaseforAZ_files/figure-latex/covidvsvipit-1} 
+{\centering \includegraphics[width=0.9\linewidth]{theCaseforAZ_files/figure-latex/covidvsvipit-1} 
 
 }
 
@@ -358,10 +376,11 @@ higher than the mortality risk associated with VIPIT in those over 40.
 Mortality risk from COVID-19 was also higher for 30-39 age group,
 although the difference was negligible under \(R_0\) of 1.15 scenario.
 For the 20-29 age group, the estimated mortality risk of vaccination
-with the AZ vaccine was comparable to that of COVID-19. Using the
-worst-case VIPIT estimates considered by NACI, mortality risk from
-COVID-19 was higher than that of VIPIT for those over 40 and those over
-30 in high-risk areas.
+with the AZ vaccine was comparable (under \(R_0-1.3\)) or higher (under
+\(R_0\)=1.15) than that of COVID-19. Using the worst-case VIPIT
+estimates considered by NACI, mortality risk from COVID-19 was higher
+than that of VIPIT for those over 50 in all areas and those over 40 in
+high-risk areas.
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -386,8 +405,17 @@ February 22, 2021 when a roadmap to easing lockdowns was announced to
 about 6000 cases per day on March 8, 2021 when the first phase of easing
 public health restrictions was commenced \citep{bbc_lockdown_2021} and
 has continuously declined since then to just above 3121 cases as of
-April 7, 2021 (as of April 7th, 2021, 61\% of the UK population have so
-far received one dose of a COVID-19 vaccine). As about half of all
+April 7, 2021 (as of April 7th, 2021, 61\% of the UK population had
+received one dose of a COVID-19 vaccine).
+
+In addition to the death aversion resulting from strict public health
+measures, based on a recent analysis by Public Health England and
+University of Warwick, it has been estimated that as of March 31, 2021,
+10,400 deaths have been avoided in the UK solely due to the direct
+implementation of a nationwide vaccination program (indirect effects
+were not measured; 87.5\% of these averted deaths were in the 80+ years
+old age group, 11.5\% of them in 70+ years old, and 1\% in 60+ years
+old) \citep{public_health_england_impact_2021}. As about half of all
 vaccine doses administered in the UK have been AZ vaccines, and based on
 the estimated AZ vaccine efficacy of about 76\% against symptomatic
 COVID-19 and 64\% against any NAAT-positive COVID-19 infection between
@@ -416,14 +444,26 @@ high-risk areas.
 
 For a public health intervention to be deemed ethically acceptable,
 being net-beneficial at a societal level is not enough in and of itself.
-We recognize that many intuitively consider mortality due a public
-health intervention in an otherwise healthy person to be ethically worse
-than failing to protect someone from mortality due to COVID-19. We
-believe that our conclusions hold regardless of the position we take
-with respect to the \emph{doing vs.~allowing harm}
-problem\citep{woollard_doing_2016}, as long as the expected benefit
-outweighs the harm at a personal level, as seems to be the case for most
-age groups in our study.
+Not all interventions that are net-beneficial at a societal level are
+net-beneficial for each member of the society, as those who carry the
+burden of the risk of adverse events may not be the same people who
+benefit from protection against COVID-19. We also recognize that many
+intuitively consider mortality due a public health intervention in an
+otherwise healthy person to be ethically worse than failing to protect
+someone from mortality due to COVID-19. We believe that our conclusions
+hold regardless of the position we take with respect to the \emph{doing
+vs.~allowing harm} problem\citep{woollard_doing_2016}, as long as the
+expected benefit outweighs the harm at a personal level, as seems to be
+the case for most age groups in our study.
+
+Our analysis was based on the assumption that immediate deployment of
+alternative mRNA vaccines for front-line workers was not logistically
+feasible. If feasible, and assuming that the effectiveness of mRNA
+vaccines are 10-15\% higher than the AZ vaccine, offering mRNA vaccines
+to front-line workers will be more in line with the principle of
+reciprocity in BC COVID-19 ethical decision-making
+framework\citep{bccdc_covid-19_2020}, and the more general principle of
+justice in bioethics \citep{mccormick_principles_2021}.
 
 Our findings confirm the recent recommendation by the UK Joint Committee
 on Vaccination and Immunisation (JCVI) that the benefits of the AZ
@@ -433,12 +473,18 @@ vaccine far outweigh the risk in 30 years old or older recipients
 \hypertarget{limitations}{%
 \section{Limitations}\label{limitations}}
 
-Our analysis does not consider ethical aspects of vaccine roll-out and
-factors such as uptake and vaccine hesitancy, as they were beyond our
-expertise. However, we recognize that each time a recommendation for
-vaccine safety is reversed, there might be a penalty in public trust,
-which could fuel vaccine hesitancy. Potential for these effects should
-be weighed carefully by policy makers.
+Our analysis from a personal perspective was based on average rates of
+COVID-19 and its related outcomes per age group. However, the true risk
+within age groups is still heterogeneous and is affected by many factors
+including but not limited to exposure, medical history, work
+environment, and socioeconomic status.
+
+Our analysis did not consider social aspects of vaccine roll-out such as
+uptake and vaccine hesitancy, as they were beyond our expertise.
+However, we recognize that each time a recommendation for vaccine safety
+is reversed, there might be a penalty in public trust which could fuel
+vaccine hesitancy. Potential for these effects should be weighed
+carefully by policy makers.
 
 Our analysis is based on currently available estimated rates of 1 in
 million to 1 in 100,000 for VIPIT and might need correction should
