@@ -32,11 +32,13 @@ gg_vax <- res %>%
 fig1a = ggarrange(gg_vax$plot[[1]]+
                     labs(title = "", subtitle = 'A: 80+, 70-79, FLW, 60-69, ...') +
                     scale_color_viridis(discrete = T)+
+                    ylab ("prop. vaccinated") +
                     theme_ipsum_rc(grid="XY") + 
                     theme(axis.title.x = element_blank(),text=element_text(size=16))
                     ,
                   gg_vax$plot[[2]]+labs(title = "", subtitle='B: 80+, 70-79, 60-69, FLW, 50-59, ...') +
                     scale_color_viridis(discrete = T)+
+                    ylab ("prop. vaccinated") +
                     theme_ipsum_rc(grid="XY"),
                   ncol=2, nrow=1, common.legend=TRUE, legend="bottom")
 saveRDS(fig1a, "fig1a.rds")
@@ -168,7 +170,7 @@ risk20sR1 <-oo %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, 
 risk20sR1$age <- "20-29"
 
 covidRisksR1 <- rbind.data.frame(risk60sR1, risk50sR1, risk40sR1, risk30sR1, risk20sR1) %>% 
-              mutate(R0 = 1.3)
+              mutate(R0 = 1.35)
 
 ooR2 <- compare_sims_data(sim1 = filter(res, R==1.15 & scen==1 & ve==0.75), 
                           sim2=filter(res, R==1.15 & scen ==2 & ve==0.75),

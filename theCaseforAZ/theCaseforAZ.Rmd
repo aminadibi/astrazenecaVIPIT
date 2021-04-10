@@ -29,11 +29,11 @@ abstract: |
 
   **Background:** On March 29th, 2021, Canada's National Advisory Committee on Immunization (NACI) recommended against using the AstraZeneca COVID-19 vaccine in younger adults pending further review of the risk for Vaccine-Induced Prothrombotic Immune Thrombocytopenia (VIPIT). As a result, the province of British Columbia halted its front-line workers vaccination program which used the AstraZeneca vaccine. The province is expected to receive an additional 246,700 doses of AstraZeneca vaccine through US and COVAX until April 11th, enough to provide the first dose of vaccine to all unvaccinated front-line workers. It is unclear whether the alternative, mRNA vaccines can be immediately made available to front-line workers. We evaluated the harms and benefits of delaying vaccination of front-line workers in BC. 
   
-  **Methods:** We reviewed the latest available evidence and used compartmental modelling to *a)* compare the expected number of deaths due to COVID-19 and VIPIT under the scenarios of immediately continuing vaccination of front-line workers with the AstraZeneca vaccine or delaying it in favour of mRNA vaccines, and *b)* compare the mortality risk of immediately receiving the AstraZeneca vaccine and delaying vaccination at a personal level for different age groups. 
+  **Methods:** We reviewed the latest available evidence and used compartmental modelling to *a)* compare the expected number of deaths due to COVID-19 and VIPIT under the scenarios of immediately continuing vaccination of front-line workers with the AstraZeneca vaccine or delaying it in favour of mRNA vaccines, and *b)* compare the mortality risk of immediately receiving the AstraZeneca vaccine and delaying vaccination at a individual risk level for different age groups. 
   
-  **Results:** We estimate that if British Columbia continues the front-line worker vaccination program with the AstraZeneca vaccine, we expect to see no VIPIT-related deaths, about 40,000 fewer cases of COVID-19, 700 fewer hospitalizations, 250 fewer COVID-related deaths, and 2,100 fewer cases of Long COVID. Projected risk for COVID-related death from April 1st, to July 1st, 2021 was 8.38 per 100,000 in 60-69 years old, 5.20 per 100,000 in 50-59, 2.29 per 100,000 in 40-49 years old, 0.67 per 100,000 in 30-39 years old and 0.23 per 100,000 for 20-29 years old, compared to 0.26 (95% CI 0.16-0.39) per 100,000 due to VIPIT.
+  **Results:** We estimate that if British Columbia continues the front-line worker vaccination program with the AstraZeneca vaccine, we expect to see no VIPIT-related deaths, about 31,000 fewer cases of COVID-19, 650 fewer hospitalizations, 290 fewer COVID-related deaths, and 1,700 fewer cases of Long COVID. Projected risk for COVID-related death from April 1st, to July 1st, 2021 was 8.38 per 100,000 in 60-69 years old, 5.20 per 100,000 in 50-59, 2.29 per 100,000 in 40-49 years old, 0.67 per 100,000 in 30-39 years old and 0.23 per 100,000 for 20-29 years old, compared to 0.26 (95% CI 0.16-0.39) per 100,000 due to VIPIT.
   
-  **Conclusions:** The benefits of immediately continuing immunization of front-line workers with AstraZeneca far outweigh the risk both at a societal level and at a personal level for those over 40, and those over 30 in high-risk areas.  
+  **Conclusions:** The benefits of immediately continuing immunization of front-line workers with AstraZeneca far outweigh the risk both at a societal level and at a individual risk level for those over 40, and those over 30 in high-risk areas.  
 keywords: |
   COVID19; vaccination; front-line workers; blood clots; vaccine-induced prothrombotic immune thrombocytopenia; harm-benefit; BC
 header-includes: |
@@ -60,9 +60,8 @@ fig1b <- readRDS("../fig1b.rds")
 bar <- readRDS("../bars.rds")
 res2 <- readRDS("../res2.rds")
 
-a <- res2 %>% filter(R==1.35 & ve==0.60 & type == "A: 80+, 70-79, EW, 60-69, ...")
-
-b <- res2 %>% filter(R==1.35 & ve==0.60 & type == "B: 80+, 70-79, 60-69, EW, 50-59, ...") 
+a <- res2 %>% filter(R==1.35 & ve==0.60 & type == "A: 80+, 70-79, FLW, 60-69, ...")
+b <- res2 %>% filter(R==1.35 & ve==0.60 & type == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") 
 ```
 
 # Background
@@ -73,13 +72,13 @@ On April 1st, the UK Medicines & Healthcare Products Regulatory Agency (MHRA) up
 
 On the same day, the Pharmacovigilance Risk Assessment Committee (PRAC) of the European Medicines Agency (EMA) concluded that VIPIT should be listed as a very rare side effect of the AZ vaccine. PRAC noted that as of March 22nd, a total of 86 cases of VIPIT (62 cases of CVST and 24 cases of splanchnic vein thrombosis) and 18 fatalities out of about 25 million vaccine doses were reported in EudraVigilance, the EU drug safety database [@ema_astrazenecas_2021]. As of April 4th, 2021, 222 cases of VIPIT (169 cases of CVST and 53 cases of splanchnic vein thrombosis) had been reported to EudraVigilance out of around 34 million people who had received the AZ vaccine [@ema_astrazenecas_2021].
 
-BC had initially slated the AZ vaccine for outbreak control and front-line workers vaccination program. on March 29th and following NACI's recommendation, BC paused using the AZ vaccine for those under 60 and put the front-line workers vaccination program on hold.
+BC had initially slated the AZ vaccine for outbreak control and front-line workers vaccination program. On March 29th and following NACI's recommendation, BC paused using the AZ vaccine for those under 60 and put the front-line workers vaccination program on hold.
 
 Canadian provinces are expected to receive 1.5 million doses of the AZ vaccine from the US and another 316,800 doses from the COVAX program between now and April 11th [@government_of_canada_vaccines_2021]. British Columbia expects to receive 246,700 doses from these two AZ deliveries, enough to finish providing the first dose to all remaining front-line workers. 
 
 The 300,690 doses of Pfizer-BioNTech and 105,900 doses of Moderna vaccines expected within the same time frame are currently allocated for the priority groups, indigenous population, and the currently ongoing age-based vaccination campaign. The AZ vaccine was initially allocated to front-line workers due to its easier handling and storage requirements. If it is not logistically possible to switch the vaccine allocation for above 55 years old age groups to the AZ vaccine and use either Pfizer-BioNTech or Moderna vaccines for younger front-line workers without delay, one might ask whether the benefits of immediately deploying the AZ vaccine for front-line workers outweigh the rare but serious risk for VIPIT. 
 
-Here, we provide a preliminary harm-benefit analysis of immediate vaccination of all front-line workers with the AZ COVID-19 vaccine. We based our analysis on mortality alone, and explore the risk both from a societal and personal perspective. 
+Here, we provide a preliminary harm-benefit analysis of immediate vaccination of all front-line workers with the AZ COVID-19 vaccine. We based our analysis on mortality alone, and explore the risk both from a societal and individual risk perspective. 
 
 # Methods
 
@@ -103,7 +102,7 @@ We estimated benefits of the AZ COVID-19 vaccine using a BC-specific age-structu
 
 We ran the model from January 2021 to September 2021, which is when the vaccination campaign is expected to conclude. To follow BC vaccination strategy and case counts in the first three months of 2021, we held $R_0$ at 1.03 from January 1, 2021 for 60 days during which people over 80 years old were eligible for vaccination. Age groups that were offered vaccination were considered to be vaccinated at a steady pace until everyone who is not vaccine-hesitant is vaccinated. Around the end of March, we raised $R_0$ to either 1.15 or 1.35 to account for variants of concern gaining a foothold in BC. We validated these assumptions against observed case counts.
 
-We assumed the first dose of the vaccine, regardless of the manufacturer, to be, on average, 80% effecrive against illness and 60% effective in preventing transmission. We further assume that all British Columbians will be offered a first dose before July 1st, 2021, and a second dose before the end of September 2021. We assumed the second dose to merely prolong the immunity acquired after the first dose, and that each dose, separately, to cause a risk for VIPIT. We did not consider the risk for anaphylaxis, as all vaccines seem to have a similar risk in that regard and the risk can be mitigated in the vaccination clinic.  Population estimates that were used in the model are summarized in Table 2. COVID-19 age-based case fatality rates were obtained from Public Health Ontario data on concluded cases from January 15th, 2020 to April 8th, 2021 [@public_health_ontario_all_2021]. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al[@sudre_attributes_2021]. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al [@mulberry_vaccine_2021]. Population of BC in each group was obtained from Statistics Canada [@statistics_canada_census_2017].
+We assumed the first dose of the vaccine, regardless of the manufacturer, to be, on average, 80% effective against illness and 60% effective in preventing transmission. We further assume that all British Columbians will be offered a first dose before July 1st, 2021, and a second dose before the end of September 2021. We assumed the second dose to have no effect other than prolonging the immunity acquired after the first dose and posing a risk for VIPIT again. We did not consider the risk for anaphylaxis, as all vaccines seem to have a similar risk in that regard and the risk can be mitigated in the vaccination clinic. Population estimates that were used in the model are summarized in Table 2. COVID-19 age-based case fatality rates were obtained from Public Health Ontario data on concluded cases from January 15th, 2020 to April 8th, 2021 [@public_health_ontario_all_2021]. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al[@sudre_attributes_2021]. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al [@mulberry_vaccine_2021]. Population of BC in each group was obtained from Statistics Canada [@statistics_canada_census_2017].
 
 \begin{table}
 \tbl{Model parameters}
@@ -122,7 +121,7 @@ Under 20   & 0.0054          & 0.00004 & 0.04       & NA                & 0.0   
 \label{model-param}
 \end{table}
 
-For harm-benefit analysis at a personal level, we weighed the probability of VIPIT-related death or $P(death)_{VIPIT} = P(vaccine) \times P(VIPIT|vaccine) \times P(death|VIPIT, vaccine)$, against the average probability of contracting COVID-19 and dying from it in each age groups, or $P(death)_{delayedVaccination} = P(COVID-19) \times P(death|COVID-19)$, where $P(vaccine)$ is the probability of getting the AZ vaccine (assumed to be 1 here), and $P(COVID-19)$ is the average probability of contracting COVID-19 due to delayed vaccination. 
+For harm-benefit analysis at a individual risk level, we weighed the probability of VIPIT-related death or $P(death)_{VIPIT} = P(vaccine) \times P(VIPIT|vaccine) \times P(death|VIPIT, vaccine)$, against the average probability of contracting COVID-19 and dying from it in each age groups, or $P(death)_{delayedVaccination} = P(COVID-19) \times P(death|COVID-19)$, where $P(vaccine)$ is the probability of getting the AZ vaccine (assumed to be 1 here), and $P(COVID-19)$ is the average probability of contracting COVID-19 due to delayed vaccination. 
 
 We used results from our compartmental model to project mortality risk from COVID-19 due to delayed vaccination. 
 
@@ -154,7 +153,7 @@ In our analysis, Scenario A led to `r round(b$cases - a$cases, 0)` fewer cases o
 knitr::include_graphics("../figures/fig-barplots.pdf")
 ```
 
-## Harm-Benefit From a Personal Perspective
+## Harm-Benefit From a Individual Risk Perspective
 
 ``` {r covidvsvipit,  out.width="0.9\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Mortality risk comparison for different age groups based on the estimated risk for VIPIT by the EMA and NACI"), echo=F}
 df <- personalRisk %>% select (age, R0, `VIPIT-NACI`,`VIPIT-EMA`, `COVID-19`) %>% pivot_longer(c(`VIPIT-NACI`,`VIPIT-EMA`, `COVID-19`), names_to = "cause", values_to = "Risk" ) %>%
@@ -179,7 +178,7 @@ In addition to the death aversion resulting from strict public health measures, 
 
 Potential prevention of onward transmission with the AZ vaccine could be especially critical for front-line workers during the current wave of COVID cases. Of note, two recent studies from Toronto, Ontario have shown that neighbourhoods with the highest proportion of front-line workers had per capita COVID-19 case and death rates that were 2.5-3 folds higher than that of neighbourhoods with the lowest share of front-line workers [@chagla_characterizing_2021, @rao_disproportionate_2021]. 
 
-Based on our analysis, immediately making the AZ vaccine available to front-line workers is, assuming optimal uptake, net-beneficial by a wide margin from a societal perspective. Our analysis from a personal perspective shows that the risk of contracting COVID-19 and dying from it due to delayed vaccination is considerably  higher than the risk of dying from VIPIT in those over 40, and also in those over 30 in high-risk areas.
+Based on our analysis, immediately making the AZ vaccine available to front-line workers is, assuming optimal uptake, net-beneficial by a wide margin from a societal perspective. Our analysis from a individual risk perspective shows that the risk of contracting COVID-19 and dying from it due to delayed vaccination is considerably  higher than the risk of dying from VIPIT in those over 40, and also in those over 30 in high-risk areas.
 
 For a public health intervention to be deemed ethically acceptable, being net-beneficial at a societal level is not enough in and of itself. Not all interventions that are net-beneficial at a societal level are net-beneficial for each member of the society, as those who carry the burden of the risk of adverse events may not be the same people who benefit from protection against COVID-19. We also recognize that many intuitively consider mortality due a public health intervention in an otherwise healthy person to be ethically worse than failing to protect someone from mortality due to COVID-19. We believe that our conclusions hold regardless of the position we take with respect to the *doing vs. allowing harm* problem[@woollard_doing_2016], as long as the expected benefit outweighs the harm at a personal level, as seems to be the case for most age groups in our study. 
 
@@ -189,7 +188,7 @@ Our findings confirm the recent recommendation by the UK Joint Committee on Vacc
 
 # Limitations
 
-Our analysis from a personal perspective was based on average rates of COVID-19 and its related outcomes per age group. However, the true risk within age groups is still heterogeneous and is affected by many factors including but not limited to exposure, medical history, work environment, and socioeconomic status. 
+Our analysis from a individual risk perspective was based on average rates of COVID-19 and its related outcomes per age group. However, the true risk within age groups is still heterogeneous and is affected by many factors including but not limited to exposure, medical history, work environment, and socioeconomic status. 
 
 Our analysis did not consider social aspects of vaccine roll-out such as uptake and vaccine hesitancy, as they were beyond our expertise. However, we recognize that each time a recommendation for vaccine safety is reversed, there might be a penalty in public trust which could fuel vaccine hesitancy. Potential for these effects should be weighed carefully by policy makers.
 
