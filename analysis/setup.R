@@ -84,9 +84,9 @@ I_0 <- c(133.0,
          50.8,  
          27.8) # estimated prevalence by age in BC in Jan 2021
 
-u_var <- c(0.48, 0.34, 
-           0.40, 0.49, 0.5, 0.48, 0.88, 1.0, 1.0,
-           0.40, 0.40, 0.5, 0.48, 1.0, 1.0) # rel. susceptibility (this works better with validation than one in bubar)
+u_var <- c(0.48, 0.30, 
+           0.40, 0.40, 0.45, 0.44, 0.70, 1.0, 1.0,
+           0.40, 0.40, 0.45, 0.44, 0.70, 1.0) # rel. susceptibility (this works better with validation than one in bubar)
 
 # u_var <- c(0.58, 0.34, 0.35, 0.34, 0.46, 0.45, 0.88, 1, 1,
 #            0.34, 0.46, 0.45, 0.88, 1, 1) # rel. susceptibility (this works better with validation than one in bubar)
@@ -117,8 +117,8 @@ H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.15,0.20,0.20,
 ##########################
 
 labels <- c(#'A: Oldest to Youngest', 
-            'A: 80+, 70-79, EW, 60-69, ...', 
-            'B: 80+, 70-79, 60-69, EW, 50-59, ...')
+            'A: 80+, 70-79, FLW, 60-69, ...', 
+            'B: 80+, 70-79, 60-69, FLW, 50-59, ...')
 
 strategies <- list(#list(9, c(8,15),c(7,14), c(6,13), c(5,12), c(4,11), c(3,10)), 
                    list(9, 8, 10:15, 7,6,5,4,3),
@@ -137,7 +137,7 @@ run_over_scen_2 = function(R, ve, vp, scen,alpha=0.0){
    T1 <- 60 #extended till April 1st, and adding 70 to 79
    T2 <- 270 - T1
    # Initial stage (vax all 80+)
-   R_init <- 1.00
+   R_init <- 1.03
    n <- ( age_demo[9])/T1
    C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                               target_R0=R_init, in_school=TRUE, alpha_factor=alpha)

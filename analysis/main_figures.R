@@ -2,7 +2,7 @@ library(Cairo)
 source('./analysis/setup.R')
 
 # parameter space
-pars <- crossing(R=c(1.15, 1.3, 1.4, 1.5), ve = c(0.6,0.75,0.9), vp = 0.8, scen=c(1,2))
+pars <- crossing(R=c(1.15, 1.35, 1.4, 1.5), ve = c(0.6,0.75,0.9), vp = 0.8, scen=c(1,2))
 
 # RUN (according to piecewise scenario)
 res <- pars %>%  future_pmap_dfr(run_over_scen_2, .progress=TRUE)
@@ -11,8 +11,8 @@ res <- pars %>%  future_pmap_dfr(run_over_scen_2, .progress=TRUE)
 # FIGURE 1 (trajectories)
 #############################
 # Look at trajectories
-trajA <- compare_sims(sim1 = filter(res, R==1.3 & scen==1 & ve==0.75), 
-                             sim2=filter(res, R==1.3 & scen ==2 & ve==0.75),
+trajA <- compare_sims(sim1 = filter(res, R==1.35 & scen==1 & ve==0.75), 
+                             sim2=filter(res, R==1.35 & scen ==2 & ve==0.75),
                              name1=labels[1], name2=labels[2], startDate=startDate, 
                              textsize = 16)
 
@@ -30,12 +30,12 @@ gg_vax <- res %>%
 
 
 fig1a = ggarrange(gg_vax$plot[[1]]+
-                    labs(title = "", subtitle = 'A: 80+, 70-79, EW, 60-69, ...') +
+                    labs(title = "", subtitle = 'A: 80+, 70-79, FLW, 60-69, ...') +
                     scale_color_viridis(discrete = T)+
                     theme_ipsum_rc(grid="XY") + 
                     theme(axis.title.x = element_blank(),text=element_text(size=16))
                     ,
-                  gg_vax$plot[[2]]+labs(title = "", subtitle='B: 80+, 70-79, 60-69, EW, 50-59, ...') +
+                  gg_vax$plot[[2]]+labs(title = "", subtitle='B: 80+, 70-79, 60-69, FLW, 50-59, ...') +
                     scale_color_viridis(discrete = T)+
                     theme_ipsum_rc(grid="XY"),
                   ncol=2, nrow=1, common.legend=TRUE, legend="bottom")
@@ -74,7 +74,7 @@ res2 <- res %>%
 
 saveRDS(res2, "res2.rds")
 
-R_vec <- c(1.15,1.3) # R vals to plot
+R_vec <- c(1.15,1.35) # R vals to plot
 
 g1 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=cases, group=type, fill=type))+
   geom_col(position='dodge', alpha=1)+ 
@@ -137,32 +137,32 @@ ggsave('figures/fig-barplots.pdf', width=14, height=10,  device = cairo_pdf)
 
 ### Personal Risk
 
-oo <- compare_sims_data(sim1 = filter(res, R==1.3 & scen==1 & ve==0.75), 
-                                               sim2=filter(res, R==1.3 & scen ==2 & ve==0.75),
+oo <- compare_sims_data(sim1 = filter(res, R==1.35 & scen==1 & ve==0.75), 
+                                               sim2=filter(res, R==1.35 & scen ==2 & ve==0.75),
                                                name1=labels[1], name2=labels[2], startDate=startDate, 
                                                textsize = 16)
 
- risk60sR1 <- oo %>% filter (age_band == "60-69" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+ risk60sR1 <- oo %>% filter (age_band == "60-69" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
    select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 611615
  risk60sR1$age <- "60-69"
 
-risk50sR1 <- oo %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk50sR1 <- oo %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 709300
 risk50sR1$age <- "50-59"
 
-risk40sR1 <- oo %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk40sR1 <- oo %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 617410
 risk40sR1$age <- "40-49"
 
-risk30sR1 <-oo %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk30sR1 <-oo %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 607340
 risk30sR1$age <- "30-39"
 
-risk20sR1 <-oo %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk20sR1 <-oo %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                  date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 590560
 risk20sR1$age <- "20-29"
@@ -175,27 +175,27 @@ ooR2 <- compare_sims_data(sim1 = filter(res, R==1.15 & scen==1 & ve==0.75),
                           name1=labels[1], name2=labels[2], startDate=startDate, 
                           textsize = 16)
 
-risk60sR2 <- ooR2 %>% filter (age_band == "60-69" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk60sR2 <- ooR2 %>% filter (age_band == "60-69" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                                 date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 611615
 risk60sR2$age <- "60-69"
 
-risk50sR2 <- ooR2 %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk50sR2 <- ooR2 %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                                 date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 709300
 risk50sR2$age <- "50-59"
 
-risk40sR2 <- ooR2 %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk40sR2 <- ooR2 %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                                 date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 617410
 risk40sR2$age <- "40-49"
 
-risk30sR2 <-ooR2 %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk30sR2 <-ooR2 %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                                date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 607340
 risk30sR2$age <- "30-39"
 
-risk20sR2 <-ooR2 %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, EW, 50-59, ..." & 
+risk20sR2 <-ooR2 %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
                                date<ymd("2021-06-01") & date>ymd("2021-04-01")) %>%
   select(incid, newdeaths, hosp, long) %>% summarise_all(sum) / 590560
 risk20sR2$age <- "20-29"
@@ -222,7 +222,7 @@ observed <- as_tibble(counts) %>% rename(date = Reported_Date) %>%
 
 
 predicted <- oo %>% 
-  filter(scen == "B: 80+, 70-79, 60-69, EW, 50-59, ...") %>% 
+  filter(scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") %>% 
   group_by(date) %>% summarize(incid = sum(incid)) %>% 
   filter (date < ymd("2021-04-05") & date > ymd("2021-01-02"))
 
@@ -257,7 +257,7 @@ countsPerAge <- cases %>% filter (Reported_Date > ymd("2020-12-01")) %>%
 
 
 predictedPerAge <- oo %>% 
-  filter(scen == "B: 80+, 70-79, 60-69, EW, 50-59, ...") %>% 
+  filter(scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") %>% 
   group_by(date, age_band) %>% summarize(incid = sum(incid)) %>% 
   rename (predicted = incid) %>%
   filter (date < ymd("2021-04-05") & date > ymd("2021-01-02"))
