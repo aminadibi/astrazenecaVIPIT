@@ -31,7 +31,7 @@ abstract: |
   
   **Methods:** We reviewed the latest available evidence and used compartmental modelling to *a)* compare the expected number of deaths due to COVID-19 and VIPIT under the scenarios of immediately continuing vaccination of front-line workers with the AstraZeneca vaccine or delaying it in favour of mRNA vaccines, and *b)* compare the mortality risk of immediately receiving the AstraZeneca vaccine and delaying vaccination at a individual risk level for different age groups. 
   
-  **Results:** We estimate that if British Columbia continues the front-line worker vaccination program with the AstraZeneca vaccine, we will see about 31,000 fewer cases of COVID-19, 650 fewer hospitalizations, 290 fewer COVID-related deaths, and 1,700 fewer cases of Long COVID, for an expected number of VIPIT-related deaths of 0.674 [95% CI 0.414-0.997]. In areas of high transmission, projected risk for COVID-related death from April 1st, to July 1st, 2021 was 8.34 per 100,000 in 60-69 years old, 5.74 per 100,000 in 50-59, 2.58 per 100,000 in 40-49 years old, 0.80 per 100,000 in 30-39 years old and 0.30 per 100,000 for 20-29 years old, compared to 0.26 (95% CI 0.16-0.39) per 100,000 due to VIPIT.
+  **Results:** We estimate that if British Columbia continues the front-line worker vaccination program with the AstraZeneca vaccine, we will see about 27,000 fewer cases of COVID-19, about 500 fewer hospitalizations, 100 fewer COVID-related deaths, and 1,500 fewer cases of Long COVID, for an expected number of VIPIT-related deaths of 0.674 [95% CI 0.414-0.997]. In areas of high transmission, projected risk for COVID-related death from April 1st, to July 1st, 2021 was 8.34 per 100,000 in 60-69 years old, 5.74 per 100,000 in 50-59, 2.58 per 100,000 in 40-49 years old, 0.80 per 100,000 in 30-39 years old and 0.30 per 100,000 for 20-29 years old, compared to 0.26 (95% CI 0.16-0.39) per 100,000 due to VIPIT.
   
   **Conclusions:** The benefits of immediately continuing immunization of front-line workers with AstraZeneca far outweigh the risk both at a societal level and at a individual risk level for those over 40, and those over 30 in high-risk areas.  
 keywords: |
@@ -60,8 +60,8 @@ fig1b <- readRDS("../fig1b.rds")
 bar <- readRDS("../bars.rds")
 res2 <- readRDS("../res2.rds")
 
-a <- res2 %>% filter(R==1.35 & ve==0.64 & type == "A: 80+, 70-79, FLW, 60-69, ...")
-b <- res2 %>% filter(R==1.35 & ve==0.64 & type == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") 
+a <- res2 %>% filter(R==1.35 & ve==0.60 & type == "A: 80+, 70-79, FLW, 60-69, ...")
+b <- res2 %>% filter(R==1.35 & ve==0.60 & type == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") 
 ```
 
 # Background
@@ -100,7 +100,7 @@ We ran the model from January 2021 to September 2021, which is when the vaccinat
  & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-4}
   & Base Value & Sensitivity & \\
  $R_0$ & 1.35 & (1.15, 1.5) &  \\ 
- $v_e$ & 0.64 & (0.60, 0.95) &  \\ 
+ $v_e$ & 0.60 & (0.60, 0.75, 0.90) &  \\ 
  $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \bottomrule 
 
 \end{tabular}}

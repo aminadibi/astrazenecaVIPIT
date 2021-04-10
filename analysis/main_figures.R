@@ -2,7 +2,7 @@ library(Cairo)
 source('./analysis/setup.R')
 
 # parameter space
-pars <- crossing(R=c(1.15, 1.35, 1.4, 1.5), ve = c(0.60, 0.64, 0.70,0.9), vp = 0.90, scen=c(1,2))
+pars <- crossing(R=c(1.15, 1.35, 1.4, 1.5), ve = c(0.60, 0.75, 0.9), vp = 0.80, scen=c(1,2))
 
 # RUN (according to piecewise scenario)
 res <- pars %>%  future_pmap_dfr(run_over_scen_2, .progress=TRUE)
@@ -11,8 +11,8 @@ res <- pars %>%  future_pmap_dfr(run_over_scen_2, .progress=TRUE)
 # FIGURE 1 (trajectories)
 #############################
 # Look at trajectories
-trajA <- compare_sims(sim1 = filter(res, R==1.34 & scen==1 & ve==0.64), 
-                             sim2=filter(res, R==1.34 & scen ==2 & ve==0.64),
+trajA <- compare_sims(sim1 = filter(res, R==1.34 & scen==1 & ve==0.60), 
+                             sim2=filter(res, R==1.34 & scen ==2 & ve==0.60),
                              name1=labels[1], name2=labels[2], startDate=startDate, 
                              textsize = 16)
 
@@ -90,7 +90,7 @@ g1 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=cases, group=type, fill=typ
             theme(text=element_text(size=tsize))+
             theme(panel.spacing.x=unit(1.5, "lines"),
                           axis.text.x = element_text(angle = 35,hjust = 1))+
-  scale_x_continuous(breaks=c(0.60,0.70,0.9)) +
+  scale_x_continuous(breaks=c(0.60,0.75,0.9)) +
   scale_y_continuous(labels = scales::comma) +
   theme_ipsum_rc(grid="Y")
 
@@ -104,7 +104,7 @@ g2 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=hosp, group=type, fill=type
   labs(x='Efficacy against Infection', y='Hospitalizations', fill='Strategy') +
             theme(text=element_text(size=16))+theme(panel.spacing.x=unit(1.5, "lines") ,
                           axis.text.x = element_text(angle = 35,hjust = 1))+
-  scale_x_continuous(breaks=c(0.60,0.70,0.9)) + theme_ipsum_rc(grid="Y")
+  scale_x_continuous(breaks=c(0.60,0.75,0.9)) + theme_ipsum_rc(grid="Y")
 
 g3 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=deaths, group=type, fill=type))+
   geom_col(position='dodge',alpha=1)+ 
@@ -116,7 +116,7 @@ g3 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=deaths, group=type, fill=ty
   labs(x='Efficacy against Infection', y='Deaths', fill='Strategy') +
             theme(text=element_text(size=tsize))+theme(panel.spacing.x=unit(1.5, "lines") ,
                           axis.text.x = element_text(angle = 35,hjust = 1))+
-  scale_x_continuous(breaks=c(0.60,0.70,0.9)) + theme_ipsum_rc(grid="Y")
+  scale_x_continuous(breaks=c(0.60,0.75,0.9)) + theme_ipsum_rc(grid="Y")
 
 g4 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=long, group=type, fill=type))+
   geom_col(position='dodge',alpha=1)+ 
@@ -129,7 +129,7 @@ g4 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=long, group=type, fill=type
   labs(x='Efficacy against Infection', y='Long COVID', fill='Strategy') +
             theme(text=element_text(size=tsize))+theme(panel.spacing.x=unit(1.5, "lines") ,
                           axis.text.x = element_text(angle = 35,hjust = 1))+
-  scale_x_continuous(breaks=c(0.60,0.70,0.9)) +
+  scale_x_continuous(breaks=c(0.60,0.75,0.9)) +
   theme_ipsum_rc(grid="Y") 
 
 bars <- ggarrange(g1,g2,g3,g4, ncol=2, nrow=2, common.legend=TRUE, legend='bottom', align='v')
@@ -140,8 +140,8 @@ ggsave('figures/fig-barplots.pdf', width=14, height=10,  device = cairo_pdf)
 
 ### Personal Risk
 
-oo <- compare_sims_data(sim1 = filter(res, R==1.34 & scen==1 & ve==0.64), 
-                                               sim2=filter(res, R==1.34 & scen ==2 & ve==0.64),
+oo <- compare_sims_data(sim1 = filter(res, R==1.34 & scen==1 & ve==0.60), 
+                                               sim2=filter(res, R==1.34 & scen ==2 & ve==0.60),
                                                name1=labels[1], name2=labels[2], startDate=startDate, 
                                                textsize = 16)
 
@@ -173,8 +173,8 @@ risk20sR1$age <- "20-29"
 covidRisksR1 <- rbind.data.frame(risk60sR1, risk50sR1, risk40sR1, risk30sR1, risk20sR1) %>% 
               mutate(R0 = 1.35)
 
-ooR2 <- compare_sims_data(sim1 = filter(res, R==1.34 & scen==1 & ve==0.64), 
-                          sim2=filter(res, R==1.34 & scen ==2 & ve==0.64),
+ooR2 <- compare_sims_data(sim1 = filter(res, R==1.35 & scen==1 & ve==0.60), 
+                          sim2=filter(res, R==1.35 & scen ==2 & ve==0.60),
                           name1=labels[1], name2=labels[2], startDate=startDate, 
                           textsize = 16)
 
