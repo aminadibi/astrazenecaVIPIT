@@ -60,8 +60,8 @@ fig1b <- readRDS("../fig1b.rds")
 bar <- readRDS("../bars.rds")
 res2 <- readRDS("../res2.rds")
 
-a <- res2 %>% filter(R==1.35 & ve==0.60 & type == "A: 80+, 70-79, FLW, 60-69, ...")
-b <- res2 %>% filter(R==1.35 & ve==0.60 & type == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") 
+a <- res2 %>% filter(R==1.35 & ve==0.75 & type == "A: 80+, 70-79, FLW, 60-69, ...")
+b <- res2 %>% filter(R==1.35 & ve==0.75 & type == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") 
 ```
 
 # Background
@@ -100,7 +100,7 @@ We ran the model from January 2021 to September 2021, which is when the vaccinat
  & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-4}
   & Base Value & Sensitivity & \\
  $R_0$ & 1.35 & (1.15, 1.5) &  \\ 
- $v_e$ & 0.75 & (0.60, 0.90) &  \\ 
+ $v_e$ & 0.75 & (0.60, 0.95) &  \\ 
  $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \bottomrule 
 
 \end{tabular}}
@@ -122,16 +122,16 @@ All the analysis was performed using publicly-available data and code. This manu
 \tbl{Model parameters}
 {\begin{tabular}{llllll} \toprule
 Age  Group & Hospitalization & Death   & Long COVID & Vaccine Hesitancy & \% Front-Line \\ \hline
-Under 20   & 0.0054          & 0.00004 & 0.04       & NA                & 0.0           \\ 
-20-29      & 0.0110          & 0.00015 & 0.04       & 0.3               & 0.17          \\ 
-30-39      & 0.0203          & 0.00042 & 0.08       & 0.2               & 0.20          \\ 
-40-49      & 0.0283          & 0.00141 & 0.15       & 0.2               & 0.17          \\ 
-50-59      & 0.0557          & 0.00504 & 0.25       & 0.2               & 0.15          \\ 
-60-69      & 0.1280          & 0.02177 & 0.25       & 0.15              & 0.16          \\ 
-70-79      & 0.2750          & 0.09440 & 0.25       & 0.15              & 0.10          \\ 
-80+        & 0.3098          & 0.30713 & 0.25       & 0.15              & 0.0           \\ \bottomrule
+Under 20   & 0.0054          & 000027  & 0.04       & NA                & 0.0           \\ 
+20-29      & 0.0110          & 0.00010 & 0.04       & 0.3               & 0.17          \\ 
+30-39      & 0.0203          & 0.00029 & 0.08       & 0.2               & 0.20          \\ 
+40-49      & 0.0283          & 0.00096 & 0.15       & 0.2               & 0.17          \\ 
+50-59      & 0.0557          & 0.00343 & 0.25       & 0.2               & 0.15          \\ 
+60-69      & 0.1280          & 0.01483 & 0.25       & 0.15              & 0.16          \\ 
+70-79      & 0.2750          & 0.06431 & 0.25       & 0.15              & 0.10          \\ 
+80+        & 0.3098          & 0.20924 & 0.25       & 0.15              & 0.0           \\ \bottomrule
 \end{tabular}}
-\tabnote{Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Death rates are from Public Health Ontario data on concluded cases from January 2021 to April 8th, 2021. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al. }
+\tabnote{Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Death rates are from Public Health Ontario data on concluded cases from January 2021 to April 8th, 2021, scaled by the overall case fatality of BC divided by overall case fatality of Ontario. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al. }
 \label{model-param}
 \end{table}
 
@@ -155,7 +155,7 @@ knitr::include_graphics("../figures/fig-trajectoriesFull.pdf")
 ```
 Figure 2 shows the progression of the vaccination campaign, as well as projections for COVID-19 cases, hospitalizations, and deaths under the two scenarios of immediately prioritizing front-line workers (A) and delaying their vaccination to after all those over 60 years of age are offered a dose of the vaccine. 
 
-In our analysis, Scenario A led to `r round(b$cases - a$cases, 0)` fewer cases of COVID-19, `r round(b$hosp - a$hosp, 0)` fewer hospitalizations, `r round(b$deaths - a$deaths, 0)` fewer deaths, and `r round(b$long - a$long, 0)` fewer cases of Long COVID, assuming $R_0=1.35$. Figure 3 shows results for a wider range of $R_0$ and efficacy against infection ($v_e$) values. 
+In our analysis, Scenario A led to `r round(b$cases - a$cases, 0)` fewer cases of COVID-19, `r round(b$hosp - a$hosp, 0)` fewer hospitalizations, `r round(b$deaths - a$deaths, 0)` fewer deaths, and `r round(b$long - a$long, 0)` fewer cases of Long COVID, assuming $R_0=1.35$. Figure 3 shows results for a wider range of $R_0$ and efficacy against infection ($v_e$) values. Sensitivity analysis on $v_p$ lead to similar results and conclusions with a slight variation in number of outcomes. As $v_p$ increased, both the overall number of deaths and the number of deaths prevented decreased.
 
 ```{r fig2, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("COVID-19 outcomes under different vaccination scenarios for different age group and front line workers (FLW)"), echo=FALSE}
 knitr::include_graphics("../figures/fig-barplots.pdf")

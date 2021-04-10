@@ -237,6 +237,27 @@ validation %>%
        caption  = "Observed case counts are 7-day rolling averages") + 
   theme_ipsum_rc(grid="Y") + expand_limits (y = 0)
 
+
+predictedDeath <- oo %>% 
+  filter(scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") %>% 
+  group_by(date) %>% summarize(newdeaths = sum(newdeaths)) %>% 
+  filter (date < ymd("2021-04-05") & date > ymd("2021-01-02"))
+
+observedDeath <- read_csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-download.csv") %>%
+  rename (province = "prname") %>% filter (province == "British Columbia") %>%
+  select(date, numdeathstoday) %>%  filter (date < ymd("2021-04-05") & date > ymd("2021-01-02")) %>%
+  mutate(observedDeaths= zoo::rollmean(numdeathstoday, k = 7, fill = NA))
+
+validationDeath <- predictedDeath %>% left_join(observedDeath, by="date")
+
+validationDeath %>% 
+  rename (predictedDeaths = newdeaths) %>%
+  pivot_longer(cols = c(predictedDeaths, observedDeaths), values_to = "cases") %>%
+  ggplot () + geom_line(aes(y=cases, x=date, color=name), size=2) + 
+  labs(subtitle = "Predicted and observed COVID-19 deaths in BC",
+       caption  = "Observed death counts are 7-day rolling averages") + 
+  theme_ipsum_rc(grid="Y") + expand_limits (y = 0)
+
 age.under.80 <- c("0-9", 
                   "10-19",
                   "20-29",

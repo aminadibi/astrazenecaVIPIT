@@ -31,7 +31,8 @@ mu_other <-  readRDS("./generated-data/mu_other_essential.rds")
 YLL_vec <- readRDS("./data/yll_vec_CAN.RData")
 #IFR <- readRDS("./data/ifr_vec_CAN.RData")
 # Now based on Ontario Data
-IFR <- c(0.00004,
+IFR <- 0.013647982/0.020033206* #Scalinng Ontario results to BC based on overall IFR difference
+       c(0.00004,
          0.00004,
          0.00015,
          0.00042,
@@ -39,8 +40,8 @@ IFR <- c(0.00004,
          0.00504,
          0.02177,
          0.09440,
-         0.307134517
-)
+         0.307134517)
+IFR[9] <- 0.1468 # replacing IFR for 80+ with Mulberry's adjusted IFR based on long-term home vaccination.
 IHR <- readRDS("./data/ihr_vec_CAN.RData")
 
 # Symptom duration lognormal. log sigma=0.8. log  mu are 1.9, 2.2, 2.5, 2.8,
