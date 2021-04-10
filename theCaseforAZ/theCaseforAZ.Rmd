@@ -60,8 +60,8 @@ fig1b <- readRDS("../fig1b.rds")
 bar <- readRDS("../bars.rds")
 res2 <- readRDS("../res2.rds")
 
-a <- res2 %>% filter(R==1.35 & ve==0.75 & type == "A: 80+, 70-79, FLW, 60-69, ...")
-b <- res2 %>% filter(R==1.35 & ve==0.75 & type == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") 
+a <- res2 %>% filter(R==1.35 & ve==0.64 & type == "A: 80+, 70-79, FLW, 60-69, ...")
+b <- res2 %>% filter(R==1.35 & ve==0.64 & type == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") 
 ```
 
 # Background
@@ -100,11 +100,11 @@ We ran the model from January 2021 to September 2021, which is when the vaccinat
  & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-4}
   & Base Value & Sensitivity & \\
  $R_0$ & 1.35 & (1.15, 1.5) &  \\ 
- $v_e$ & 0.75 & (0.60, 0.95) &  \\ 
+ $v_e$ & 0.64 & (0.60, 0.95) &  \\ 
  $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \bottomrule 
 
 \end{tabular}}
-\tabnote{$R_0$ is the basic reproduction number. $v_e$ is the effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against disease.\\
+\tabnote{$R_0$ is the basic reproduction number. $v_e$ is the effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against severe disease\\
 \textsuperscript{a} EMA based values and $\beta$ distributions are based on a report of 18 deaths among 68 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipient in Europe and the UK. \\
 \textsuperscript{b} NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported. }
 \label{harm-param}
@@ -157,7 +157,7 @@ Figure 2 shows the progression of the vaccination campaign, as well as projectio
 
 In our analysis, Scenario A led to `r round(b$cases - a$cases, 0)` fewer cases of COVID-19, `r round(b$hosp - a$hosp, 0)` fewer hospitalizations, `r round(b$deaths - a$deaths, 0)` fewer deaths, and `r round(b$long - a$long, 0)` fewer cases of Long COVID, assuming $R_0=1.35$. Figure 3 shows results for a wider range of $R_0$ and efficacy against infection ($v_e$) values. Sensitivity analysis on $v_p$ lead to similar results and conclusions with a slight variation in number of outcomes. As $v_p$ increased, both the overall number of deaths and the number of deaths prevented decreased.
 
-```{r fig2, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("COVID-19 outcomes under different vaccination scenarios for different age group and front line workers (FLW)"), echo=FALSE}
+```{r fig2, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("COVID-19 outcomes under different vaccination scenarios for different age groups and front-line workers (FLW)"), echo=FALSE}
 knitr::include_graphics("../figures/fig-barplots.pdf")
 ```
 

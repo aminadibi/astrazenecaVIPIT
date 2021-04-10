@@ -94,8 +94,9 @@ u_var <- c(0.48, 0.30,
 
 percent_vax <- 1.0 # just a limit we can't exceed
 
-H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.15,0.20,0.20,
+H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.15,0.15,0.10,
       0.3,0.2,0.2,0.2,0.15,0.15)*N_i # Hesitancy. Increased for 80+ to match cases
+
 # H = c(1,
 #       1,
 #       1,
@@ -135,7 +136,7 @@ strategies <- list(#list(9, c(8,15),c(7,14), c(6,13), c(5,12), c(4,11), c(3,10))
 # faster vaccination 
 ########################
 run_over_scen_2 = function(R, ve, vp, scen,alpha=0.0){
-   T1 <- 60 #extended till April 1st, and adding 70 to 79
+   T1 <- 70 #extended till April 1st, and adding 70 to 79
    T2 <- 270 - T1
    # Initial stage (vax all 80+)
    R_init <- 1.03
