@@ -15,10 +15,10 @@ author:
 affiliation:
   - num: a
     address: |
-            Respiratory Evaluation Sciences Program, Faculty of Pharmaceutical Sciences, University of British Columbia, Vancouver, British Columbia
+            Respiratory Evaluation Sciences Program, Collaboration for Outcomes Research and Evaluation, Faculty of Pharmaceutical Sciences, University of British Columbia, Vancouver, British Columbia
   - num: b
     address: |
-            Lunenfeld-Tanenbaum Research Institute, Sinai Health System,    Toronto, Ontario
+            Lunenfeld-Tanenbaum Research Institute, Sinai Health System, Toronto, Ontario
   - num: c
     address: |
             Department of Microbiology, Sinai Health System, Toronto, Ontario
@@ -178,7 +178,7 @@ Figure 4 compares the risk of VIPIT-related mortality from 2 doses of the AZ vac
 
 # Discussion
 
-In its analysis of AZ vaccine published on March 29th, 2021, NACI weighed the risk of adverse events against the age-stratified risk of mortality due to COVID-19, and concluded that the AZ vaccine should not be used in adults under 55 years of age pending an overall risk-assessment. Our analysis confirms that given the evidence available in late March (a risk of 1 in 100,000 for VIPIT and a 40% case fatality) and the lower rates of transmission (i.e. a lower $R_0$) at that time, suspending the use of AZ vaccine in younger adults would have been advisable. However, as of April 8th, 2021, the evidence from has evolved and the EMA is now reporting a risk of 1 in 153,000 for VIPIT and a 20% case fatality. These latest estimates together with a new wave of the disease have changed the harm-benefit landscape considerably. In addition, the benefits of the AZ vaccine go beyond preventing COVID-related mortality and include protection against more common COVID complications in younger adults including severe disease, hospitalizations, and Long COVID, as well as preventing onward transmission of the virus, as evident in the recent sharp decline of COVID-19 cases in the UK [@our_world_in_data_covid-19_2021].
+In its analysis of AZ vaccine published on March 29th, 2021, NACI weighed the risk of adverse events against the age-stratified risk of mortality due to COVID-19, and concluded that the AZ vaccine should not be used in adults under 55 years of age pending an overall risk-assessment. Our analysis confirms that given the evidence available in late March (a risk of 1 in 100,000 for VIPIT and a 40% case fatality) and the lower rates of transmission (i.e. a lower $R_0$) at that time, suspending the use of AZ vaccine in younger adults would have been advisable. However, as of April 8th, 2021, the evidence from has evolved and the EMA is now reporting a risk of 1 in 153,000 for VIPIT and a 20% case fatality. These latest estimates together with a new wave of the disease have changed the harm-benefit landscape considerably. In addition, the benefits of the AZ vaccine go beyond preventing COVID-related mortality and include protection against more common COVID complications in younger adults including severe disease, hospitalizations, and Long COVID, as well as preventing onward transmission of the virus, as evident in the recent sharp decline of COVID-19 cases in the UK [@govuk_official_2021].
 
 The UK vaccination program started on December 8th with the Pfizer-BioNTech vaccine and was complemented with the AZ vaccine since January 4th. The number of confirmed daily COVID-19 cases in the UK has plummeted from about 60,000 cases a day in early January 2021 when a national lockdown was imposed and about 3% of the population had received at least one vaccine dose, to about 11,000 cases per day on February 22, 2021 when a roadmap to easing the lockdown was announced, to about 6000 cases per day on March 8, 2021 when the first phase of easing public health restrictions was commenced [@bbc_lockdown_2021] and has continuously declined since then to just above 2589 cases as of April 10th, 2021, when 61% of the UK population had received one dose of a COVID-19 vaccine [@govuk_official_2021].
 
