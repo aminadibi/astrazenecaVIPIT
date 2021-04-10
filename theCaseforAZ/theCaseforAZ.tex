@@ -94,9 +94,9 @@ in 40-49 years old, 1.21 per 100,000 in 30-39 years old and 0 per
 100,000 due to VIPIT.
 
 \textbf{Conclusions:} The benefits of immediately continuing
-immunization of front-line workers with AstraZeneca far outweigh the
-risk both at a societal level and at an individual risk level for those
-over 40, and those over 30 in high-risk areas.
+immunization of front-line workers with AstraZeneca vaccine far outweigh
+the risk both at a societal level and at an individual risk level for
+those over 40, and those over 30 in high-risk areas.
 \end{abstract}
 
 \begin{keywords}
@@ -218,8 +218,8 @@ case counts.
 {\begin{tabular}{lllll} \toprule
  & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-4}
  Variable & EMA Base Value\textsuperscript{a} & EMA Probability Distribution & NACI Base Value\textsuperscript{b}  \\ \midrule
- $P(VIPIT|vaccine)$ & 1 in 153,000 & $\beta(222, 3.4\times 10^7)$ & 1 in 100,000 \\
- $P(death|VIPIT, vaccine)$ & $21\%$ &  $\beta(18, 68)$ & $40\%$ \\ \\
+ $P(\text{VIPIT}|\text{vaccine})$ & 1 in 153,000 & $\beta(222, 3.4\times 10^7)$ & 1 in 100,000 \\
+ $P(\text{death}|\text{VIPIT}, \text{vaccine})$ & $21\%$ &  $\beta(18, 68)$ & $40\%$ \\ \\
  & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-4}
   & Base Value & Sensitivity & \\
  $R_0$ & 1.35 & (1.15, 1.5) &  \\ 
@@ -257,14 +257,14 @@ obtained from Statistics Canada \citep{statistics_canada_census_2017}.
 
 For harm-benefit analysis at an individual risk level, we weighed the
 probability of VIPIT-related death or
-\(P(death)_{VIPIT} = P(vaccine) \times P(VIPIT|vaccine) \times P(death|VIPIT, vaccine)\),
+\(P(\text{death})_{\text{VIPIT}} = P(\text{vaccine}) \times P(\text{VIPIT}|\text{vaccine}) \times P(\text{death}|\text{VIPIT}, \text{vaccine})\),
 against the average probability of contracting COVID-19 and dying from
 it in each age groups, or
-\(P(death)_{delayedVaccination} = P(COVID-19) \times P(death|COVID-19)\),
-where \(P(vaccine)\) is the probability of getting the AZ vaccine
-(assumed to be 1 here), and \(P(COVID-19)\) is the average probability
-of contracting COVID-19 due to delayed vaccination from April 1st, 2021
-to July 1st, 2020.
+\(P(\text{death})_{\text{delayed vaccination}} = P(\text{COVID-19}) \times P(\text{death}|\text{COVID-19})\),
+where \(P(\text{vaccine})\) is the probability of getting the AZ vaccine
+(assumed to be 1 here), and \(P(\text{COVID-19})\) is the average
+probability of contracting COVID-19 due to delayed vaccination from
+April 1st, 2021 to July 1st, 2020.
 
 We used results from our compartmental model to project mortality risk
 from COVID-19 due to delayed vaccination, and conducted sensitivity
@@ -319,12 +319,12 @@ perspective}\label{harm-benefit-from-a-societal-perspective}}
 EMA evidence as of April 4th, 2021 suggests that if we immediately offer
 a first dose of the AZ vaccine to all eligible front-line workers in BC,
 the expected number of VIPIT-related deaths by the end of June 2021 is
-0.337 {[}95\% CI 0.206-0.496{]}, which means the probability of
+0.336 {[}95\% CI 0.204-0.493{]}, which means the probability of
 observing at least one death in the same period is almost zero. Adding
 the risk from the second dose, the expected number of VIPIT-related
-deaths until the end of summer is 0.672 {[}95\% CI 0.411-0.997{]}. The
+deaths until the end of summer is 0.675 {[}95\% CI 0.408-1{]}. The
 probability of observing at least one VIPIT-related death till the end
-of the summer will be 24.7\%, and the probability of observing two
+of the summer will be 24.5\%, and the probability of observing two
 deaths would be almost zero.
 
 NACI had based its analysis on the older and more pessimistic estimates
@@ -353,7 +353,7 @@ In our analysis, Scenario A led to 27175 fewer cases of COVID-19, 506
 fewer hospitalizations, 87 fewer deaths, and 1462 fewer cases of Long
 COVID, assuming \(R_0=1.35\). Figure 3 shows results for a wider range
 of values for \(R_0\) and the effectiveness of the vaccine against
-transmission, (\(v_e\)). Sensitivity analysis on vaccine effectiveness
+transmission, \(v_e\). Sensitivity analysis on vaccine effectiveness
 against severe disease, \(v_p\), lead to similar results and conclusions
 with a slight variation in number of outcomes. As \(v_p\) increased,
 both the overall number of deaths and the number of deaths prevented
