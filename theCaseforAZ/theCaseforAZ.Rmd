@@ -31,7 +31,7 @@ abstract: |
   
   **Methods:** We reviewed the latest available evidence and used compartmental modelling to *a)* compare the expected number of deaths due to COVID-19 and VIPIT under the scenarios of immediately continuing vaccination of front-line workers with the AstraZeneca vaccine or delaying it in favour of mRNA vaccines, and *b)* compare the mortality risk of immediately receiving the AstraZeneca vaccine and delaying vaccination at a individual risk level for different age groups. 
   
-  **Results:** We estimate that if British Columbia continues the front-line worker vaccination program with the AstraZeneca vaccine, we expect to see no VIPIT-related deaths, about 31,000 fewer cases of COVID-19, 650 fewer hospitalizations, 290 fewer COVID-related deaths, and 1,700 fewer cases of Long COVID. Projected risk for COVID-related death from April 1st, to July 1st, 2021 was 8.38 per 100,000 in 60-69 years old, 5.20 per 100,000 in 50-59, 2.29 per 100,000 in 40-49 years old, 0.67 per 100,000 in 30-39 years old and 0.23 per 100,000 for 20-29 years old, compared to 0.26 (95% CI 0.16-0.39) per 100,000 due to VIPIT.
+  **Results:** We estimate that if British Columbia continues the front-line worker vaccination program with the AstraZeneca vaccine, we will see about 31,000 fewer cases of COVID-19, 650 fewer hospitalizations, 290 fewer COVID-related deaths, and 1,700 fewer cases of Long COVID, for an expected number of VIPIT-related deaths of 0.674 [95% CI 0.414-0.997]. In areas of high transmission, projected risk for COVID-related death from April 1st, to July 1st, 2021 was 8.34 per 100,000 in 60-69 years old, 5.74 per 100,000 in 50-59, 2.58 per 100,000 in 40-49 years old, 0.80 per 100,000 in 30-39 years old and 0.30 per 100,000 for 20-29 years old, compared to 0.26 (95% CI 0.16-0.39) per 100,000 due to VIPIT.
   
   **Conclusions:** The benefits of immediately continuing immunization of front-line workers with AstraZeneca far outweigh the risk both at a societal level and at a individual risk level for those over 40, and those over 30 in high-risk areas.  
 keywords: |
@@ -121,11 +121,11 @@ Under 20   & 0.0054          & 0.00004 & 0.04       & NA                & 0.0   
 \label{model-param}
 \end{table}
 
-For harm-benefit analysis at a individual risk level, we weighed the probability of VIPIT-related death or $P(death)_{VIPIT} = P(vaccine) \times P(VIPIT|vaccine) \times P(death|VIPIT, vaccine)$, against the average probability of contracting COVID-19 and dying from it in each age groups, or $P(death)_{delayedVaccination} = P(COVID-19) \times P(death|COVID-19)$, where $P(vaccine)$ is the probability of getting the AZ vaccine (assumed to be 1 here), and $P(COVID-19)$ is the average probability of contracting COVID-19 due to delayed vaccination. 
+For harm-benefit analysis at a individual risk level, we weighed the probability of VIPIT-related death or $P(death)_{VIPIT} = P(vaccine) \times P(VIPIT|vaccine) \times P(death|VIPIT, vaccine)$, against the average probability of contracting COVID-19 and dying from it in each age groups, or $P(death)_{delayedVaccination} = P(COVID-19) \times P(death|COVID-19)$, where $P(vaccine)$ is the probability of getting the AZ vaccine (assumed to be 1 here), and $P(COVID-19)$ is the average probability of contracting COVID-19 due to delayed vaccination from April 1st, 2021 to July 1st, 2020.
 
 We used results from our compartmental model to project mortality risk from COVID-19 due to delayed vaccination. 
 
-All the analysis was performed using publicly-available data and code. This manuscript is produced by a reproducible R Markdown script, which is available on [Github](https://github.com/aminadibi/astrazenecaVIPIT).
+All the analysis was performed using publicly-available data and code. This manuscript is produced by an open-source and reproducible R Markdown script, which is available on [Github](https://github.com/aminadibi/astrazenecaVIPIT).
 
 # Results
 
