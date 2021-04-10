@@ -30,19 +30,29 @@ mu_other <-  readRDS("./generated-data/mu_other_essential.rds")
 # RATES (10-yr age bins, 0-9,10-19,...,80+)
 YLL_vec <- readRDS("./data/yll_vec_CAN.RData")
 #IFR <- readRDS("./data/ifr_vec_CAN.RData")
-# Now based on Ontario Data
-IFR <- 0.013647982/0.020033206* #Scalinng Ontario results to BC based on overall IFR difference
-       c(0.00004,
-         0.00004,
-         0.00015,
-         0.00042,
-         0.00141,
-         0.00504,
-         0.02177,
-         0.09440,
-         0.307134517)
-IFR[9] <- 0.1468 # replacing IFR for 80+ with Mulberry's adjusted IFR based on long-term home vaccination.
-IHR <- readRDS("./data/ihr_vec_CAN.RData")
+IFR <- #Based on BC and Yukon data from Preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada, updated on April 9th, 2021
+       c(0      ,
+         0      ,
+         0      ,
+         0.00066,
+         0.00128,
+         0.00207,
+         0.00950,
+         0.03864,
+         0.16859)
+#IHR <- readRDS("./data/ihr_vec_CAN.RData")
+
+IHR <- #Based on BC and Yukon data from Preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada, updated on April 9th, 2021
+   c(0.006152945,
+     0.006152945,
+     0.010558274,
+     0.02462661 ,
+     0.034003631,
+     0.058250081,
+     0.11746988 ,
+     0.244958753,
+     0.273594378
+   )
 
 # Symptom duration lognormal. log sigma=0.8. log  mu are 1.9, 2.2, 2.5, 2.8,
 # for ages under 30, 30-39, 40-49, over 50.

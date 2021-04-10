@@ -11,8 +11,8 @@ res <- pars %>%  future_pmap_dfr(run_over_scen_2, .progress=TRUE)
 # FIGURE 1 (trajectories)
 #############################
 # Look at trajectories
-trajA <- compare_sims(sim1 = filter(res, R==1.34 & scen==1 & ve==0.60), 
-                             sim2=filter(res, R==1.34 & scen ==2 & ve==0.60),
+trajA <- compare_sims(sim1 = filter(res, R==1.35 & scen==1 & ve==0.60), 
+                             sim2=filter(res, R==1.35 & scen ==2 & ve==0.60),
                              name1=labels[1], name2=labels[2], startDate=startDate, 
                              textsize = 16)
 
@@ -134,14 +134,14 @@ g4 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=long, group=type, fill=type
 
 bars <- ggarrange(g1,g2,g3,g4, ncol=2, nrow=2, common.legend=TRUE, legend='bottom', align='v')
 
-saveRDS(bars, "bars.rds")s
+saveRDS(bars, "bars.rds")
 ggsave('figures/fig-barplots.pdf', width=14, height=10,  device = cairo_pdf)
 
 
 ### Personal Risk
 
-oo <- compare_sims_data(sim1 = filter(res, R==1.34 & scen==1 & ve==0.60), 
-                                               sim2=filter(res, R==1.34 & scen ==2 & ve==0.60),
+oo <- compare_sims_data(sim1 = filter(res, R==1.35 & scen==1 & ve==0.60), 
+                                               sim2=filter(res, R==1.35 & scen ==2 & ve==0.60),
                                                name1=labels[1], name2=labels[2], startDate=startDate, 
                                                textsize = 16)
 
@@ -173,8 +173,8 @@ risk20sR1$age <- "20-29"
 covidRisksR1 <- rbind.data.frame(risk60sR1, risk50sR1, risk40sR1, risk30sR1, risk20sR1) %>% 
               mutate(R0 = 1.35)
 
-ooR2 <- compare_sims_data(sim1 = filter(res, R==1.35 & scen==1 & ve==0.60), 
-                          sim2=filter(res, R==1.35 & scen ==2 & ve==0.60),
+ooR2 <- compare_sims_data(sim1 = filter(res, R==1.15 & scen==1 & ve==0.60), 
+                          sim2=filter(res, R==1.15 & scen ==2 & ve==0.60),
                           name1=labels[1], name2=labels[2], startDate=startDate, 
                           textsize = 16)
 
