@@ -225,7 +225,7 @@ assumptions against observed case counts.
  $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \bottomrule 
 
 \end{tabular}}
-\tabnote{$R_0$ is the basic reproduction number. $v_e$ is the Effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against disease.\\
+\tabnote{$R_0$ is the basic reproduction number. $v_e$ is the effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against disease.\\
 \textsuperscript{a} EMA based values and $\beta$ distributions are based on a report of 18 deaths among 68 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipient in Europe and the UK. \\
 \textsuperscript{b} NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported. }
 \label{harm-param}
@@ -274,16 +274,16 @@ Markdown script, which is available on
 \tbl{Model parameters}
 {\begin{tabular}{llllll} \toprule
 Age  Group & Hospitalization & Death   & Long COVID & Vaccine Hesitancy & \% Front-Line \\ \hline
-Under 20   & 0.0054          & 0.00004 & 0.04       & NA                & 0.0           \\ 
-20-29      & 0.0110          & 0.00015 & 0.04       & 0.3               & 0.17          \\ 
-30-39      & 0.0203          & 0.00042 & 0.08       & 0.2               & 0.20          \\ 
-40-49      & 0.0283          & 0.00141 & 0.15       & 0.2               & 0.17          \\ 
-50-59      & 0.0557          & 0.00504 & 0.25       & 0.2               & 0.15          \\ 
-60-69      & 0.1280          & 0.02177 & 0.25       & 0.15              & 0.16          \\ 
-70-79      & 0.2750          & 0.09440 & 0.25       & 0.15              & 0.10          \\ 
-80+        & 0.3098          & 0.30713 & 0.25       & 0.15              & 0.0           \\ \bottomrule
+Under 20   & 0.0054          & 000027  & 0.04       & NA                & 0.0           \\ 
+20-29      & 0.0110          & 0.00010 & 0.04       & 0.3               & 0.17          \\ 
+30-39      & 0.0203          & 0.00029 & 0.08       & 0.2               & 0.20          \\ 
+40-49      & 0.0283          & 0.00096 & 0.15       & 0.2               & 0.17          \\ 
+50-59      & 0.0557          & 0.00343 & 0.25       & 0.2               & 0.15          \\ 
+60-69      & 0.1280          & 0.01483 & 0.25       & 0.15              & 0.16          \\ 
+70-79      & 0.2750          & 0.06431 & 0.25       & 0.15              & 0.10          \\ 
+80+        & 0.3098          & 0.20924 & 0.25       & 0.15              & 0.0           \\ \bottomrule
 \end{tabular}}
-\tabnote{Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Death rates are from Public Health Ontario data on concluded cases from January 2021 to April 8th, 2021. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al. }
+\tabnote{Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Death rates are from Public Health Ontario data on concluded cases from January 2021 to April 8th, 2021, scaled by the overall case fatality of BC divided by overall case fatality of Ontario. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al. }
 \label{model-param}
 \end{table}
 
@@ -314,12 +314,12 @@ Perspective}\label{harm-benefit-from-a-societal-perspective}}
 EMA evidence as of April 4th, 2021 suggests that if we immediately offer
 a first dose of the AZ vaccine to all eligible front-line workers in BC,
 the expected number of VIPIT-related deaths by the end of June 2021 is
-0.337 {[}95\% CI 0.205-0.492{]}, which means the probability of
+0.337 {[}95\% CI 0.208-0.497{]}, which means the probability of
 observing at least one death in the same period is almost zero. Adding
 the risk from the second dose, the expected number of VIPIT-related
-deaths until the end of summer is 0.674 {[}95\% CI 0.41-0.984{]}. The
+deaths until the end of summer is 0.673 {[}95\% CI 0.414-0.99{]}. The
 probability of observing at least one VIPIT-related death till the end
-of the summer will be 24.7\%, and the probability of observing two
+of the summer will be 23.4\%, and the probability of observing two
 deaths would be almost zero.
 
 NACI had based its analysis on the older and more pessimistic estimates
@@ -344,15 +344,13 @@ two scenarios of immediately prioritizing front-line workers (A) and
 delaying their vaccination to after all those over 60 years of age are
 offered a dose of the vaccine.
 
-In our analysis, Scenario A led to 28463 fewer cases of COVID-19, 530
-fewer hospitalizations, 139 fewer deaths, and 1550 fewer cases of Long
+In our analysis, Scenario A led to 28475 fewer cases of COVID-19, 537
+fewer hospitalizations, 113 fewer deaths, and 1556 fewer cases of Long
 COVID, assuming \(R_0=1.35\). Figure 3 shows results for a wider range
 of \(R_0\) and efficacy against infection (\(v_e\)) values. Sensitivity
 analysis on \(v_p\) lead to similar results and conclusions with a
 slight variation in number of outcomes. As \(v_p\) increased, both the
-overall number of deaths and the number of deaths prevented decreased
-(236 death prevented when \(v_p=0.95\) and 365 fewer deaths when
-\(v_p=0.60\)).
+overall number of deaths and the number of deaths prevented decreased.
 
 \begin{figure}
 

@@ -74,6 +74,7 @@ res2 <- res %>%
               vax_immunity = map_dbl(data, vax_immunity)
 )
 
+
 saveRDS(res2, "res2.rds")
 
 R_vec <- c(1.15,1.35) # R vals to plot
@@ -213,8 +214,8 @@ write_csv(covidRisk, "personalRisk.csv")
 
 
 ####### Validation
-cases <- read_csv('http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv')
-
+#cases <- read_csv('http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv')
+cases <- readRDS("./bcCDCCases.RDS")
 counts <- cases %>% filter (Reported_Date > ymd("2020-12-01")) %>% 
   group_by(Reported_Date) %>% tally()
 

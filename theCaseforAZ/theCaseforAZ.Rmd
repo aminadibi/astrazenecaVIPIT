@@ -104,7 +104,7 @@ We ran the model from January 2021 to September 2021, which is when the vaccinat
  $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \bottomrule 
 
 \end{tabular}}
-\tabnote{$R_0$ is the basic reproduction number. $v_e$ is the Effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against disease.\\
+\tabnote{$R_0$ is the basic reproduction number. $v_e$ is the effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against disease.\\
 \textsuperscript{a} EMA based values and $\beta$ distributions are based on a report of 18 deaths among 68 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipient in Europe and the UK. \\
 \textsuperscript{b} NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported. }
 \label{harm-param}
