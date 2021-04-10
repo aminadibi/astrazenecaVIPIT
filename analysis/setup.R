@@ -84,8 +84,12 @@ I_0 <- c(133.0,
          50.8,  
          27.8) # estimated prevalence by age in BC in Jan 2021
 
-u_var <- c(0.58, 0.34, 0.35, 0.34, 0.46, 0.45, 0.88, 1, 1,
-  0.79, 0.86, 0.8, 0.82, 1.0,1.0) # rel. susceptibility (this works better with validation than one in bubar)
+u_var <- c(0.48, 0.34, 
+           0.40, 0.49, 0.5, 0.48, 0.88, 1.0, 1.0,
+           0.40, 0.40, 0.5, 0.48, 1.0, 1.0) # rel. susceptibility (this works better with validation than one in bubar)
+
+# u_var <- c(0.58, 0.34, 0.35, 0.34, 0.46, 0.45, 0.88, 1, 1,
+#            0.34, 0.46, 0.45, 0.88, 1, 1) # rel. susceptibility (this works better with validation than one in bubar)
 
 percent_vax <- 1.0 # just a limit we can't exceed
 
