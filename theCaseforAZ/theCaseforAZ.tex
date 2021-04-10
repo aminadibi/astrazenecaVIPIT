@@ -220,9 +220,9 @@ assumptions against observed case counts.
  $P(death|VIPIT, vaccine)$ & $21\%$ &  $\beta(18, 68)$ & $40\%$ \\ \\
  & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-4}
   & Base Value & Sensitivity & \\
- $R_0$ & 1.35 & (1, 1.15, 1.35, 1.4, 1.5) &  \\ 
- $v_e$ & 0.60 & (0.75, 0.90) &  \\ 
- $v_p$ & 0.80  & (0.60, 0.75, 0.90) &  \\ \bottomrule 
+ $R_0$ & 1.35 & (1.15, 1.5) &  \\ 
+ $v_e$ & 0.75 & (0.60, 0.90) &  \\ 
+ $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \bottomrule 
 
 \end{tabular}}
 \tabnote{$R_0$ is the basic reproduction number. $v_e$ is the Effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against disease.\\
@@ -232,7 +232,7 @@ assumptions against observed case counts.
 \end{table}
 
 We assumed the first dose of the vaccine, regardless of the
-manufacturer, to be, on average, 80\% effective against illness and 60\%
+manufacturer, to be, on average, 80\% effective against illness and 75\%
 effective in preventing transmission. We further assume that all British
 Columbians will be offered a first dose before July 1st, 2021, and a
 second dose before the end of September 2021. We assumed the second dose
@@ -314,12 +314,12 @@ Perspective}\label{harm-benefit-from-a-societal-perspective}}
 EMA evidence as of April 4th, 2021 suggests that if we immediately offer
 a first dose of the AZ vaccine to all eligible front-line workers in BC,
 the expected number of VIPIT-related deaths by the end of June 2021 is
-0.336 {[}95\% CI 0.204-0.494{]}, which means the probability of
+0.336 {[}95\% CI 0.206-0.495{]}, which means the probability of
 observing at least one death in the same period is almost zero. Adding
 the risk from the second dose, the expected number of VIPIT-related
-deaths until the end of summer is 0.673 {[}95\% CI 0.411-0.988{]}. The
+deaths until the end of summer is 0.675 {[}95\% CI 0.409-0.989{]}. The
 probability of observing at least one VIPIT-related death till the end
-of the summer will be 22.3\%, and the probability of observing two
+of the summer will be 24.2\%, and the probability of observing two
 deaths would be almost zero.
 
 NACI had based its analysis on the older and more pessimistic estimates
@@ -341,14 +341,13 @@ after the second doses are delivered
 Figure 2 shows the progression of the vaccination campaign, as well as
 projections for COVID-19 cases, hospitalizations, and deaths under the
 two scenarios of immediately prioritizing front-line workers (A) and
-delaying their vaccination to after all those over 60 are offered a dose
-of the vaccine.
+delaying their vaccination to after all those over 60 years of age are
+offered a dose of the vaccine.
 
 In our analysis, Scenario A led to 31489 fewer cases of COVID-19, 641
 fewer hospitalizations, 291 fewer deaths, and 1735 fewer cases of Long
-COVID, assuming \(R_0=1.35\) and that vaccine effectiveness in
-preventing transmission is on average 60\%. Figure 3 shows results for a
-wider range of \(R_0\) and efficacy against infection values.
+COVID, assuming \(R_0=1.35\). Figure 3 shows results for a wider range
+of \(R_0\) and efficacy against infection (\(v_e\)) values.
 
 \begin{figure}
 
@@ -375,7 +374,7 @@ Perspective}\label{harm-benefit-from-a-individual-risk-perspective}}
 Figure 4 compares the risk of VIPIT-related mortality from 2 doses of
 the AZ vaccine with the mortality risk from COVID-19 due to delayed
 vaccination from April 1st to July 1st, 2021. We did the comparison
-under two scenarios of \(R_0\) of either 1.15 or 1.35, to represent
+under two scenarios of an \(R_0\) of 1.15 or 1.35, to represent
 different intensities for the third wave, or alternatively to represent
 different geographical parts of the province during the third wave. We
 calculated the mortality risk associated with VIPIT using both the
@@ -383,49 +382,58 @@ latest and most comprehensive evidence by EMA, and the worst-case
 scenario considered by NACI. Using EMA estimates, we found that under
 both \(R_0\) scenarios, the mortality risk due to COVID-19 to be much
 higher than the mortality risk associated with VIPIT in those over 40.
-Mortality risk from COVID-19 was also higher for 30-39 age group,
-although the difference was negligible under \(R_0\) of 1.15 scenario.
-For the 20-29 age group, the estimated mortality risk of vaccination
-with the AZ vaccine was comparable (under \(R_0=1.35\)) or higher (under
-\(R_0\)=1.15) than that of COVID-19. Using the worst-case VIPIT
-estimates considered by NACI, mortality risk from COVID-19 was higher
-than that of VIPIT for those over 50 in all areas and those over 40 in
-high-risk areas.
+Mortality risk from COVID-19 was also higher for 30-39 age group that
+the mortality risk of VIPIT, although the difference was negligible
+under \(R_0\) of 1.15 scenario. For the 20-29 age group, the estimated
+mortality risk of vaccination with the AZ vaccine was comparable (under
+\(R_0=1.35\)) or higher (under \(R_0\)=1.15) than that of COVID-19.
+Using the worst-case VIPIT estimates considered by NACI, mortality risk
+from COVID-19 was higher than that of VIPIT for those over 50 in all
+areas and those over 40 in high-risk areas.
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-In its analysis of AZ vaccine, NACI weighed the risk of adverse events
-against the age-stratified risk of mortality due to COVID-19, pending an
-overall risk-assessment. However, the benefits of the AZ vaccine go
-beyond preventing COVID-related mortality and include protection against
-more common COVID complications in younger adults including severe
-disease, hospitalizations, and Long COVID. The recent sharp decline of
-COVID-19 cases in the UK suggests that the AZ vaccine might also prevent
-onward transmission of the virus
-\citep{our_world_in_data_covid-19_2021}.
+In its analysis of AZ vaccine published on March 29th, 2021, NACI
+weighed the risk of adverse events against the age-stratified risk of
+mortality due to COVID-19, and concluded that the AZ vaccine should not
+be used in adults under 55 years of age pending an overall
+risk-assessment. Our analysis confirms that given the evidence available
+in late March (a risk of 1 in 100,000 for VIPIT and a 40\% case
+fatality) and the lower rates of transmission (i.e.~a lower \(R_0\)) at
+that time, suspending the use of AZ vaccine in younger adults would have
+been advisable. However, as of April 8th, 2021, the evidence from has
+evolved and the EMA is now reporting a risk of 1 in 153,000 for VIPIT
+and a 20\% case fatality. These latest estimates together with a new
+wave of the disease have changed the harm-benefit landscape
+considerably. The benefits of the AZ vaccine go beyond preventing
+COVID-related mortality and include protection against more common COVID
+complications in younger adults including severe disease,
+hospitalizations, and Long COVID. The recent sharp decline of COVID-19
+cases in the UK suggests that the AZ vaccine likely prevents onward
+transmission of the virus \citep{our_world_in_data_covid-19_2021}.
 
 The UK vaccination program started on December 8 with the
 Pfizer-BioNTech vaccine and was complemented with the AZ vaccine since
-January 4.The number of confirmed daily COVID-19 cases in the UK has
+January 4. The number of confirmed daily COVID-19 cases in the UK has
 plummeted from about 60,000 cases a day in early January 2021 when a
 national lockdown was imposed and about 3\% of the population had
 received at least one vaccine dose, to about 11,000 cases per day on
-February 22, 2021 when a roadmap to easing lockdowns was announced to
-about 6000 cases per day on March 8, 2021 when the first phase of easing
-public health restrictions was commenced \citep{bbc_lockdown_2021} and
-has continuously declined since then to just above 3121 cases as of
-April 7, 2021 (as of April 7th, 2021, 61\% of the UK population had
-received one dose of a COVID-19 vaccine).
+February 22, 2021 when a roadmap to easing the lockdown was announced,
+to about 6000 cases per day on March 8, 2021 when the first phase of
+easing public health restrictions was commenced
+\citep{bbc_lockdown_2021} and has continuously declined since then to
+just above 3121 cases as of April 7, 2021, when 61\% of the UK
+population had received one dose of a COVID-19 vaccine.
 
 In addition to the death aversion resulting from strict public health
-measures, based on a recent analysis by Public Health England and
+measures, based on a recent analysis by Public Health England and the
 University of Warwick, it has been estimated that as of March 31, 2021,
 10,400 deaths have been avoided in the UK solely due to the direct
 implementation of a nationwide vaccination program (indirect effects
 were not measured; 87.5\% of these averted deaths were in the 80+ years
-old age group, 11.5\% of them in 70+ years old, and 1\% in 60+ years
-old) \citep{public_health_england_impact_2021}. As about half of all
+old age group, 11.5\% of them in 70-79, and 1\% in 60-69 years old age
+group) \citep{public_health_england_impact_2021}. As about half of all
 vaccine doses administered in the UK have been AZ vaccines, and based on
 the estimated AZ vaccine efficacy of about 76\% against symptomatic
 COVID-19 and 64\% against any NAAT-positive COVID-19 infection between
@@ -456,15 +464,15 @@ For a public health intervention to be deemed ethically acceptable,
 being net-beneficial at a societal level is not enough in and of itself.
 Not all interventions that are net-beneficial at a societal level are
 net-beneficial for each member of the society, as those who carry the
-burden of the risk of adverse events may not be the same people who
-benefit from protection against COVID-19. We also recognize that many
-intuitively consider mortality due a public health intervention in an
-otherwise healthy person to be ethically worse than failing to protect
-someone from mortality due to COVID-19. We believe that our conclusions
-hold regardless of the position we take with respect to the \emph{doing
-vs.~allowing harm} problem\citep{woollard_doing_2016}, as long as the
-expected benefit outweighs the harm at a personal level, as seems to be
-the case for most age groups in our study.
+burden of the risk of adverse events may not be the same people who reap
+the benefits. We also recognize that many intuitively consider mortality
+due a public health intervention in an otherwise healthy person to be
+ethically worse than failing to protect someone from mortality due to
+COVID-19. We believe that our conclusions hold regardless of the
+position we take with respect to the \emph{doing vs.~allowing harm}
+problem \citep{woollard_doing_2016}, as long as the expected benefit
+outweighs the harm at a personal level, as seems to be the case for most
+age groups in our study.
 
 Our analysis was based on the assumption that immediate deployment of
 alternative mRNA vaccines for front-line workers was not logistically
@@ -475,10 +483,10 @@ reciprocity in BC COVID-19 ethical decision-making
 framework\citep{bccdc_covid-19_2020}, and the more general principle of
 justice in bioethics \citep{mccormick_principles_2021}.
 
-Our findings confirm the recent recommendation by the UK Joint Committee
-on Vaccination and Immunisation (JCVI) that the benefits of the AZ
-vaccine far outweigh the risk in 30 years old or older recipients
-\citep{jcvi_jcvi_2021}.
+Our findings are corroborated by the the recent recommendation of the UK
+Joint Committee on Vaccination and Immunisation (JCVI) that the benefits
+of the AZ vaccine far outweigh the risk in 30 years old or older
+recipients \citep{jcvi_jcvi_2021}.
 
 \hypertarget{limitations}{%
 \section{Limitations}\label{limitations}}
