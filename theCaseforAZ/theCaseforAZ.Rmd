@@ -28,9 +28,9 @@ abstract: |
 
   **Background:** On March 29th, 2021, Canada's National Advisory Committee on Immunization (NACI) recommended against using the AstraZeneca COVID-19 vaccine in younger adults pending further review of the risk for Vaccine-Induced Prothrombotic Immune Thrombocytopenia (VIPIT). As a result, the province of British Columbia halted its front-line workers vaccination program which used the AstraZeneca vaccine. The province is expected to receive an additional 246,700 doses of AstraZeneca vaccine through US and COVAX until April 11th, enough to provide the first dose of vaccine to all unvaccinated front-line workers. It is unclear whether the alternative, mRNA vaccines can be immediately made available to front-line workers. We evaluated the harms and benefits of delaying vaccination of front-line workers in BC. 
   
-  **Methods:** We reviewed the latest available evidence and used compartmental modelling to *a)* compare the expected number of deaths due to COVID-19 and VIPIT under the scenarios of immediately continuing vaccination of front-line workers with the AstraZeneca vaccine or delaying it in favour of mRNA vaccines, and *b)* compare the mortality risk of immediately receiving the AstraZeneca vaccine and delaying vaccination at an individual risk level for different age groups. 
+  **Methods:** We reviewed the latest available evidence and used compartmental modelling to *1)* compare the expected number of deaths due to COVID-19 and VIPIT under the scenarios of immediately continuing vaccination of front-line workers with the AstraZeneca vaccine (Scenario A) or delaying it in favour of mRNA vaccines (Scenario B), and *2)* compare the mortality risk of immediately receiving the AstraZeneca vaccine and delaying vaccination at an individual risk level for different age groups. 
   
-  **Results:** We estimate that if British Columbia continues the front-line worker vaccination program with the AstraZeneca vaccine, we expect to see approximately 27,000 fewer cases of COVID-19, 500 fewer hospitalizations, 80 fewer COVID-related deaths, and 1,400 fewer cases of Long COVID from April 1st to October 1st, 2021, for an expected number of VIPIT-related deaths of 0.674 [95% CI 0.414-0.997]. In areas of high transmission, projected risk for COVID-related death from April 1st to July 1st, 2021 was 4.63 per 100,000 in 60-69 years old, 2.49 per 100,000 in 50-59, 2.29 per 100,000 in 40-49 years old, 1.21 per 100,000 in 30-39 years old and 0 per 100,000 for 20-29 years old, compared to 0.26 (95% CI 0.16-0.39) per 100,000 due to VIPIT.
+  **Results:** We estimate that if British Columbia continues the front-line worker vaccination program with the AstraZeneca vaccine, we expect to see approximately 27,000 fewer cases of COVID-19, 500 fewer hospitalizations, 80 fewer COVID-related deaths, and 1,400 fewer cases of Long COVID from April 1st to October 1st, 2021, for an expected number of VIPIT-related deaths of 0.674 [95% CI 0.414-0.997]. In areas of high transmission, projected excess risk of mortality per 100,000 due to COVID-19 and VIPIT-related death from April 1st to October 1st, 2021 was 2.4 under scenario A compared to 10.9 under Scenario B in 60-69, 1.13 under scenario A compared to 4.27 under scenario B in 50-59, 1.08 under scenario A compared to 4.05 under scenario B in 40-49 years old, 0.77 under scenario A compared to 2.49 under scenario B in 30-39 years old, and 0.27 under scenario A compared to 0 under scenario B for 20-29 years old age group.
   
   **Conclusions:** The benefits of immediately continuing immunization of front-line workers with the AstraZeneca vaccine far outweigh the risk both at a societal level and at an individual risk level for those over 40, and those over 30 in high-risk areas.  
 keywords: |
@@ -154,7 +154,7 @@ NACI had based its analysis on the PEI estimates of a chance of 1 in 100,000 for
 ```{r fig1, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Top Panel: Projection of the progression of the vaccination for different age groups and front-line workers (FLW). Bottom Panel: Projection of COVID-19 cases, hospitalizations, and deaths from January 1st to October 1st, 2021."), echo=FALSE}
 knitr::include_graphics("../figures/fig-trajectoriesFull.pdf")
 ```
-Figure 2 shows the progression of the vaccination campaign, as well as projections for COVID-19 cases, hospitalizations, and deaths under the two scenarios of immediately prioritizing front-line workers (A) and delaying their vaccination to after all those over 60 years of age are offered a dose of the vaccine (B). 
+Figure 2 shows the progression of the vaccination campaign, as well as projections for COVID-19 cases, hospitalizations, and deaths under the two scenarios of immediately prioritizing front-line workers (A) and delaying their vaccination to after all those over 60 years of age are offered a dose of the vaccine and then offer them an mRNA vaccine (B). 
 
 In our analysis, Scenario A led to `r round(b$cases - a$cases, 0)` fewer cases of COVID-19, `r round(b$hosp - a$hosp, 0)` fewer hospitalizations, `r round(b$deaths - a$deaths, 0)` fewer deaths, and `r round(b$long - a$long, 0)` fewer cases of Long COVID, assuming $R_0=1.35$. Figure 3 shows results for a wider range of values for $R_0$ and the effectiveness of the vaccine against transmission, $v_e$. Sensitivity analysis on vaccine effectiveness against severe disease, $v_p$, lead to similar results and conclusions with a slight variation in number of outcomes. As $v_p$ increased, both the overall number of deaths and the number of deaths prevented decreased.
 
@@ -165,13 +165,14 @@ knitr::include_graphics("../figures/fig-barplots.pdf")
 ## Harm-benefit from an individual risk perspective
 
 ``` {r covidvsvipit,  out.width="0.9\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Mortality risk comparison for different age groups based on the estimated risk for VIPIT by the EMA and NACI"), echo=F}
-df <- personalRisk %>% select (age, R0, `VIPIT-NACI`,`VIPIT-EMA`, `COVID-19`) %>% pivot_longer(c(`VIPIT-NACI`,`VIPIT-EMA`, `COVID-19`), names_to = "cause", values_to = "Risk" ) %>%
-  mutate(sd = ifelse (cause=="VIPIT-EMA", 6.004193e-07, NA))
+df <- personalRisk %>% pivot_longer(c(`A-NACI`,`A-EMA`, `B`), names_to = "Scenario", values_to = "Risk" ) %>%
+  mutate(sd = ifelse (Scenario=="A-EMA", 6.004193e-07, NA))
 
-ggplot(df, aes(y = Risk*100, x=age, fill=cause)) + geom_col(position = "dodge") +
+df$Scenario = factor(df$Scenario, levels = c("B", "A-EMA", "A-NACI"))
+ggplot(df, aes(y = Risk*100, x=age, fill=Scenario)) + geom_col(position = "dodge") +
        geom_errorbar(aes(ymin = 100*(Risk-1.96*sd), ymax = 100*(Risk+1.96*sd)), position = "dodge", width = 0.3, alpha=0.5 ) + 
-       labs(x="", y="Risk %",
-       caption="Mortality Risk from April 1st to July 1st, 2021,\n based on receiving two doses of the AstraZeneca vaccine.") + facet_wrap(~R0, labeller=label_both) + 
+       labs(x="", y="Excess Risk %",
+       caption="Excess individual mortality risk due to COVID-19 and VIPIT from April 1st to October 1st, 2021,\n based on receiving two doses of any vaccine.") + facet_wrap(~R0, labeller=label_both) + 
   theme_ipsum_rc(grid="Y", axis_text_size = 10) 
 
 ```
