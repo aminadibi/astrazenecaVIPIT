@@ -86,7 +86,7 @@ g1 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=cases, group=type, fill=typ
   #scale_color_brewer(palette = "Dark2")+
   theme(text=element_text(size=16))+
   theme(panel.spacing.x=unit(1.5, "lines"))+
-  labs(x='Efficacy against Infection', y='Infections', fill='Strategy') +
+  labs(x='Efficacy against Infection', y='Infections', fill='Scenario') +
             theme(text=element_text(size=tsize))+
             theme(panel.spacing.x=unit(1.5, "lines"),
                           axis.text.x = element_text(angle = 35,hjust = 1))+
@@ -101,7 +101,7 @@ g2 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=hosp, group=type, fill=type
   #scale_color_brewer(palette = "Dark2")+
   theme(text=element_text(size=tsize))+
   theme(panel.spacing.x=unit(1.5, "lines"))+
-  labs(x='Efficacy against Infection', y='Hospitalizations', fill='Strategy') +
+  labs(x='Efficacy against Infection', y='Hospitalizations', fill='Scenario') +
             theme(text=element_text(size=16))+theme(panel.spacing.x=unit(1.5, "lines") ,
                           axis.text.x = element_text(angle = 35,hjust = 1))+
   scale_x_continuous(breaks=c(0.60,0.75,0.9)) + theme_ipsum_rc(grid="Y")
@@ -113,7 +113,7 @@ g3 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=deaths, group=type, fill=ty
   #scale_color_brewer(palette = "Dark2")+
   theme(text=element_text(size=16))+
   theme(panel.spacing.x=unit(1.5, "lines"))+
-  labs(x='Efficacy against Infection', y='Deaths', fill='Strategy') +
+  labs(x='Efficacy against Infection', y='Deaths', fill='Scenario') +
             theme(text=element_text(size=tsize))+theme(panel.spacing.x=unit(1.5, "lines") ,
                           axis.text.x = element_text(angle = 35,hjust = 1))+
   scale_x_continuous(breaks=c(0.60,0.75,0.9)) + theme_ipsum_rc(grid="Y")
@@ -126,7 +126,7 @@ g4 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=long, group=type, fill=type
   theme(text=element_text(size=16))+
   theme(panel.spacing.x=unit(1.5, "lines"))+
   
-  labs(x='Efficacy against Infection', y='Long COVID', fill='Strategy') +
+  labs(x='Efficacy against Infection', y='Long COVID', fill='Scenario') +
             theme(text=element_text(size=tsize))+theme(panel.spacing.x=unit(1.5, "lines") ,
                           axis.text.x = element_text(angle = 35,hjust = 1))+
   scale_x_continuous(breaks=c(0.60,0.75,0.9)) +

@@ -17,10 +17,10 @@
 \DeclareOption{largeformat}{\largeformattrue}
 \DeclareOption{suppldata}{\suppldatatrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-\ExecuteOptions{a4paper,oneside,onecolumn,final}
+\ExecuteOptions{letterpaper,oneside,onecolumn,final}
 \ProcessOptions
 %
-\LoadClass[11pt,a4paper]{article}
+\LoadClass[11pt,letterpaper]{article}
 %
 \RequirePackage{amsmath,amssymb,amsfonts,amsbsy,amsthm,booktabs,epsfig,graphicx,rotating}
 %
