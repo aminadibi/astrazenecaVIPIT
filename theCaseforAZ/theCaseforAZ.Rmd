@@ -92,49 +92,48 @@ We estimated the benefits of the AZ COVID-19 vaccine using a BC-specific age-str
 We ran the model from January 2021 to September 2021, which is when the vaccination campaign is expected to conclude. To follow BC vaccination strategy and case counts in the first three months of 2021, we held $R_0$ at 1.03 from January 1, 2021 for 70 days during which people over 80 years old were eligible for vaccination. Age groups that were offered vaccination were considered to be vaccinated at a steady pace until everyone who is not vaccine-hesitant is vaccinated. Around the end of March, we raised $R_0$ to either 1.15 or 1.35 to account for variants of concern gaining a foothold in BC and increased the pace of the vaccination program. We validated these assumptions by comparing model projections under these values against observed case counts for the January 1st to April 1st, 2021 period.
 
 \begin{table}
-\tbl{Harm-benefit parameters and their distributions}
-{\begin{tabular}{lllll} \toprule
- & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-4}
- Variable & EMA Base Value\textsuperscript{a} & EMA Probability Distribution & NACI Base Value\textsuperscript{b}  \\ \midrule
+\tbl{Harm-benefit parameters and model assumptions}
+{\begin{tabular}{llllll} \toprule
+ & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-6}
+ Variable & EMA & EMA  & NACI  \\
+  & Base Value & Probability Distribution & Base Value \\ \midrule
  $P(\text{VIPIT}|\text{vaccine})$ & 1 in 153,000 & $\beta(222, 3.4\times 10^7)$ & 1 in 100,000 \\
  $P(\text{death}|\text{VIPIT})$ & $21\%$ &  $\beta(18, 68)$ & $40\%$ \\ \\
- & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-4}
-  & Base Value & Sensitivity & \\
+ & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-6}
+ Parameter  & Base Value & Sensitivity & \\ \midrule
  $R_0$ & 1.35 & (1.15, 1.5) &  \\ 
  $v_e$ & 0.60 & (0.60, 0.75, 0.90) &  \\ 
- $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \bottomrule 
+ $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \\
+ 
+  & \multicolumn{2}{l}{Population Parameters} \\ \cmidrule{2-6}
+  Age  Group & Hospitalization & Death   & Long COVID & Vaccine Hesitancy & Front-Line Workers \\ 
+             & Rate            & Rate    & Rate       & \% of Population & \% of Population \\ 
+
+  \midrule
+Under 20   & 0.0062    & 0       & 0.04       & NA                & 0           \\ 
+20-29      & 0.0106    & 0       & 0.04       & 30               & 17          \\ 
+30-39      & 0.0246    & 0.00066 & 0.08       & 20               & 20          \\ 
+40-49      & 0.0340    & 0.00128 & 0.15       & 20               & 17          \\ 
+50-59      & 0.0583    & 0.00207 & 0.25       & 20               & 15          \\ 
+60-69      & 0.1175    & 0.00950 & 0.25       & 15              & 16          \\ 
+70-79      & 0.2450    & 0.03864 & 0.25       & 15              & 10          \\ 
+80+        & 0.2736    & 0.16859 & 0.25       & 15              & 0           \\
+ 
+ \bottomrule 
 
 \end{tabular}}
-\tabnote{$R_0$ is the basic reproduction number. $v_e$ is the effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against severe disease\\
-\textsuperscript{a} EMA base values and $\beta$ distributions are based on a report of 18 deaths among 68 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipient in Europe and the UK. \\
-\textsuperscript{b} NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported. }
+\tabnote{EMA base values and $\beta$ distributions are based on a report of 18 deaths among 68 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipient in Europe and the UK. NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported.\\
+$R_0$ is the basic reproduction number.\\ $v_e$ is the effectiveness of vaccine against transmission.\\ $v_p$ is effectiveness of vaccine against severe disease.\\ Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Hospitalization and death rates for under 50 age groups are from BCCDC Situation Report Week 12, 2021. Death rates for age groups above 50 are from the preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada (Table 13-26-0003) from January 1st, 2021 to April 9th, 2021 and accounts for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al.\\ }
 \label{harm-param}
 \end{table}
 
-We assumed the first dose of the vaccine, regardless of the manufacturer, to be, on average, 80% effective against illness and 75% effective in preventing transmission. We further assume that all British Columbians will be offered a first dose of one of the approved COVID-19 vaccines before July 1st, 2021, and a second dose before the end of September 2021. We assumed the second dose to have no effect other than prolonging the immunity acquired after the first dose and posing a risk for VIPIT again. We did not consider the risk for anaphylaxis, as all vaccines seem to have a similar risk in that regard and the risk can be mitigated in the vaccination clinic. Population estimates that were used in the model are summarized in Table 2. COVID-19 age-based case fatality and hospitalization rates were obtained from BC Centre for Disease Control (BCCDC) [@bccdc_british_2021] and Public Health Agency of Canada (Tables: 13-26-0003)[@statistics_canada_preliminary_2021]. For seniors, we used case fatality rates from January 1s, 2021 to April 9th, 2021 to account for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al[@sudre_attributes_2021]. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al [@mulberry_vaccine_2021]. Population of BC in each group was obtained from Statistics Canada [@statistics_canada_census_2017].
+We assumed the first dose of the vaccine, regardless of the manufacturer, to be, on average, 80% effective against illness and 75% effective in preventing transmission. We further assume that all British Columbians will be offered a first dose of one of the approved COVID-19 vaccines before July 1st, 2021, and a second dose before the end of September 2021. We assumed the second dose to have no effect other than prolonging the immunity acquired after the first dose and posing a risk for VIPIT again. We did not consider the risk for anaphylaxis, as all vaccines seem to have a similar risk in that regard and the risk can be mitigated in the vaccination clinic. Population estimates that were used in the model are summarized in Table 1. COVID-19 age-based case fatality and hospitalization rates were obtained from BC Centre for Disease Control (BCCDC) [@bccdc_british_2021] and Public Health Agency of Canada (Tables: 13-26-0003)[@statistics_canada_preliminary_2021]. For seniors, we used case fatality rates from January 1s, 2021 to April 9th, 2021 to account for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al[@sudre_attributes_2021]. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al [@mulberry_vaccine_2021]. Population of BC in each group was obtained from Statistics Canada [@statistics_canada_census_2017].
 
 For harm-benefit analysis at an individual risk level, we weighed the probability of VIPIT-related death or $P(\text{death})_{\text{VIPIT}} = P(\text{vaccine}) \times P(\text{VIPIT}|\text{vaccine}) \times P(\text{death}|\text{VIPIT})$, against the average probability of contracting COVID-19 and dying from it in each age groups, or $P(\text{death})_{\text{delayed vaccination}} = P(\text{COVID-19}) \times P(\text{death}|\text{COVID-19})$, where $P(\text{vaccine})$ is the probability of getting the AZ vaccine (assumed to be 1 here), and $P(\text{COVID-19})$ is the average probability of contracting COVID-19 due to delayed vaccination from April 1st, 2021 to July 1st, 2020.
 
 We used results from our compartmental model to project mortality risk from COVID-19 due to delayed vaccination, and conducted sensitivity analyses around model assumptions as outlined in Table 1. 
 
 All the analysis was performed using publicly-available data and code. This manuscript is produced by an open-source and reproducible R Markdown script, which is available on [Github](https://github.com/aminadibi/astrazenecaVIPIT).
-
-\begin{table}
-\tbl{Model parameters}
-{\begin{tabular}{llllll} \toprule
-Age  Group & Hospitalization & Death   & Long COVID & Vaccine Hesitancy & \% of Front-Line Workers \\ \hline
-Under 20   & 0.0062    & 0       & 0.04       & NA                & 0           \\ 
-20-29      & 0.0106    & 0       & 0.04       & 0.3               & 17          \\ 
-30-39      & 0.0246    & 0.00066 & 0.08       & 0.2               & 20          \\ 
-40-49      & 0.0340    & 0.00128 & 0.15       & 0.2               & 17          \\ 
-50-59      & 0.0583    & 0.00207 & 0.25       & 0.2               & 15          \\ 
-60-69      & 0.1175    & 0.00950 & 0.25       & 0.15              & 16          \\ 
-70-79      & 0.2450    & 0.03864 & 0.25       & 0.15              & 10          \\ 
-80+        & 0.2736    & 0.16859 & 0.25       & 0.15              & 0           \\ \bottomrule
-\end{tabular}}
-\tabnote{Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Hospitalization and death rates for under 50 age groups are from BCCDC Situation Report Week 12, 2021. Death rates for age groups above 50 are from the preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada (Tables: 13-26-0003) from January 1st, 2021 to April 9th, 2021 and accounts for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al. }
-\label{model-param}
-\end{table}
 
 # Results
 

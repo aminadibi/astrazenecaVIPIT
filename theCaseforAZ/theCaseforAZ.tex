@@ -224,22 +224,38 @@ model projections under these values against observed case counts for
 the January 1st to April 1st, 2021 period.
 
 \begin{table}
-\tbl{Harm-benefit parameters and their distributions}
-{\begin{tabular}{lllll} \toprule
- & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-4}
- Variable & EMA Base Value\textsuperscript{a} & EMA Probability Distribution & NACI Base Value\textsuperscript{b}  \\ \midrule
+\tbl{Harm-benefit parameters and model assumptions}
+{\begin{tabular}{llllll} \toprule
+ & \multicolumn{2}{l}{Estimates} \\ \cmidrule{2-6}
+ Variable & EMA & EMA  & NACI  \\
+  & Base Value & Probability Distribution & Base Value \\ \midrule
  $P(\text{VIPIT}|\text{vaccine})$ & 1 in 153,000 & $\beta(222, 3.4\times 10^7)$ & 1 in 100,000 \\
  $P(\text{death}|\text{VIPIT})$ & $21\%$ &  $\beta(18, 68)$ & $40\%$ \\ \\
- & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-4}
-  & Base Value & Sensitivity & \\
+ & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-6}
+ Parameter  & Base Value & Sensitivity & \\ \midrule
  $R_0$ & 1.35 & (1.15, 1.5) &  \\ 
  $v_e$ & 0.60 & (0.60, 0.75, 0.90) &  \\ 
- $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \bottomrule 
+ $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \\
+ 
+  & \multicolumn{2}{l}{Population Parameters} \\ \cmidrule{2-6}
+  Age  Group & Hospitalization & Death   & Long COVID & Vaccine Hesitancy & Front-Line Workers \\ 
+             & Rate            & Rate    & Rate       & \% of Population & \% of Population \\ 
+
+  \midrule
+Under 20   & 0.0062    & 0       & 0.04       & NA                & 0           \\ 
+20-29      & 0.0106    & 0       & 0.04       & 30               & 17          \\ 
+30-39      & 0.0246    & 0.00066 & 0.08       & 20               & 20          \\ 
+40-49      & 0.0340    & 0.00128 & 0.15       & 20               & 17          \\ 
+50-59      & 0.0583    & 0.00207 & 0.25       & 20               & 15          \\ 
+60-69      & 0.1175    & 0.00950 & 0.25       & 15              & 16          \\ 
+70-79      & 0.2450    & 0.03864 & 0.25       & 15              & 10          \\ 
+80+        & 0.2736    & 0.16859 & 0.25       & 15              & 0           \\
+ 
+ \bottomrule 
 
 \end{tabular}}
-\tabnote{$R_0$ is the basic reproduction number. $v_e$ is the effectiveness of vaccine against transmission. $v_p$ is effectiveness of vaccine against severe disease\\
-\textsuperscript{a} EMA base values and $\beta$ distributions are based on a report of 18 deaths among 68 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipient in Europe and the UK. \\
-\textsuperscript{b} NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported. }
+\tabnote{EMA base values and $\beta$ distributions are based on a report of 18 deaths among 68 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipient in Europe and the UK. NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported.\\
+$R_0$ is the basic reproduction number.\\ $v_e$ is the effectiveness of vaccine against transmission.\\ $v_p$ is effectiveness of vaccine against severe disease.\\ Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Hospitalization and death rates for under 50 age groups are from BCCDC Situation Report Week 12, 2021. Death rates for age groups above 50 are from the preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada (Table 13-26-0003) from January 1st, 2021 to April 9th, 2021 and accounts for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al.\\ }
 \label{harm-param}
 \end{table}
 
@@ -253,7 +269,7 @@ prolonging the immunity acquired after the first dose and posing a risk
 for VIPIT again. We did not consider the risk for anaphylaxis, as all
 vaccines seem to have a similar risk in that regard and the risk can be
 mitigated in the vaccination clinic. Population estimates that were used
-in the model are summarized in Table 2. COVID-19 age-based case fatality
+in the model are summarized in Table 1. COVID-19 age-based case fatality
 and hospitalization rates were obtained from BC Centre for Disease
 Control (BCCDC) \citep{bccdc_british_2021} and Public Health Agency of
 Canada (Tables: 13-26-0003)\citep{statistics_canada_preliminary_2021}.
@@ -285,23 +301,6 @@ This manuscript is produced by an open-source and reproducible R
 Markdown script, which is available on
 \href{https://github.com/aminadibi/astrazenecaVIPIT}{Github}.
 
-\begin{table}
-\tbl{Model parameters}
-{\begin{tabular}{llllll} \toprule
-Age  Group & Hospitalization & Death   & Long COVID & Vaccine Hesitancy & \% of Front-Line Workers \\ \hline
-Under 20   & 0.0062    & 0       & 0.04       & NA                & 0           \\ 
-20-29      & 0.0106    & 0       & 0.04       & 0.3               & 17          \\ 
-30-39      & 0.0246    & 0.00066 & 0.08       & 0.2               & 20          \\ 
-40-49      & 0.0340    & 0.00128 & 0.15       & 0.2               & 17          \\ 
-50-59      & 0.0583    & 0.00207 & 0.25       & 0.2               & 15          \\ 
-60-69      & 0.1175    & 0.00950 & 0.25       & 0.15              & 16          \\ 
-70-79      & 0.2450    & 0.03864 & 0.25       & 0.15              & 10          \\ 
-80+        & 0.2736    & 0.16859 & 0.25       & 0.15              & 0           \\ \bottomrule
-\end{tabular}}
-\tabnote{Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Hospitalization and death rates for under 50 age groups are from BCCDC Situation Report Week 12, 2021. Death rates for age groups above 50 are from the preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada (Tables: 13-26-0003) from January 1st, 2021 to April 9th, 2021 and accounts for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al. }
-\label{model-param}
-\end{table}
-
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
@@ -331,12 +330,12 @@ perspective}\label{harm-benefit-from-a-societal-perspective}}
 EMA evidence as of April 4th, 2021 suggests that if we immediately offer
 a first dose of the AZ vaccine to all eligible front-line workers in BC,
 the expected number of VIPIT-related deaths by the end of June 2021 is
-0.337 {[}95\% CI 0.205-0.494{]}, which means the probability of
+0.336 {[}95\% CI 0.207-0.497{]}, which means the probability of
 observing at least one VIPIT-related death in the same period is 28.6\%.
 Adding the risk from the second dose, the expected number of
-VIPIT-related deaths until the end of summer is 0.677 {[}95\% CI
-0.421-0.998{]}. The probability of observing at least one VIPIT-related
-death till the end of the summer will be 49\%.
+VIPIT-related deaths until the end of summer is 0.675 {[}95\% CI
+0.414-0.986{]}. The probability of observing at least one VIPIT-related
+death till the end of the summer will be 49.2\%.
 
 NACI had based its analysis on the PEI estimates of a chance of 1 in
 100,000 for VIPIT, and a mortality probability of 40\%, based on the
