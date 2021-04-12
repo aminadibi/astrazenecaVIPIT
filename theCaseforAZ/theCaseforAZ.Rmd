@@ -167,7 +167,7 @@ df <- personalRisk %>% pivot_longer(c(`A-NACI`,`A-EMA`, `B`), names_to = "Scenar
 
 df$Scenario = factor(df$Scenario, levels = c("B", "A-EMA", "A-NACI"))
 ggplot(df, aes(y = Risk*100, x=age, fill=Scenario)) + geom_col(position = "dodge") +
-       geom_errorbar(aes(ymin = 100*(Risk-1.96*sd), ymax = 100*(Risk+1.96*sd)), position = "dodge", width = 0.3, alpha=0.5 ) + 
+#       geom_errorbar(aes(ymin = 100*(Risk-1.96*sd), ymax = 100*(Risk+1.96*sd)), position = "dodge", width = 0.3, alpha=0.5 ) + 
        labs(x="", y="Excess Risk %",
        caption="Excess individual mortality risk due to COVID-19 and VIPIT from April 1st to October 1st, 2021,\n based on receiving two doses of any vaccine.") + facet_wrap(~R0, labeller=label_both) + 
   theme_ipsum_rc(grid="Y", axis_text_size = 10) 
