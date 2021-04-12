@@ -1,69 +1,58 @@
 \section{Appendices}
 
-Any appendices should be placed after the list of references, beginning with the command \verb"\appendix" followed by the command \verb"\section" for each appendix title, e.g.
-\begin{verbatim}
-\appendix
-\section{This is the title of the first appendix}
-\section{This is the title of the second appendix}
-\end{verbatim}
-produces:\medskip
-
-\noindent\textbf{Appendix A. This is the title of the first appendix}\medskip
-
-\noindent\textbf{Appendix B. This is the title of the second appendix}\medskip
-
-\noindent Subsections, equations, figures, tables, etc.\ within appendices will then be automatically numbered as appropriate. Some theorem-like environments may need to have their counters reset manually (e.g.\ if they are not numbered within sections in the main text). You can achieve this by using \verb"\numberwithin{remark}{section}" (for example) just after the \verb"\appendix" command.
-
-Please note that if the \verb"endfloat" package is used on a document containing appendices, the \verb"\processdelayedfloats" command must be included immediately before the \verb"\appendix" command in order to ensure that the floats in the main body of the text are numbered as such.
-
-%\processdelayedfloats %%% See above for an explanation of why this command might be needed.
-
 \appendix
 
-\section{Troubleshooting}
+\section{Calculations for expected number of death}
 
 Assuming that BC allocates all 246,700 doses to front-line workers, we can estimate the expected number of deaths due to VIPIT, $E(death)_{VIPIT}$, as shown below. To err on the side of caution, we assume that each dose of the vaccine is independently associated with the risk for VIPIT and that the risk of VIPIT is uniform across all age groups. We also assume that there is enough uptake that BC is able to administer all these doses.
 
 $$
-E(death)_{VIPIT}  = d \times P(VIPIT|AZ) \times P(death|VIPIT, AZ)
+E(\text{death})_{\text{VIPIT}}  = d \times P(\text{VIPIT}|\text{vaccine}) \times P(\text{death}|\text{VIPIT})
 $$
-where $d$ is the number of doses administered, $P(VIPIT|AZ)$ is the risk of VIPIT after receiving each dose, and $P(death|VIPIT, AZ)$ is the case fatality for VIPIT. 
+
+where d is the number of doses administered,  $P(\text{VIPIT}|\text{vaccine})$ is the risk of VIPIT after receiving each dose, and $P(\text{death}|\text{VIPIT})$ is the case fatality for VIPIT. 
 
 According to the most recent data from UK and EU submitted to EudraVigilance (as of April 4th, 2021):
+
 $$
 \begin{aligned}
-E(death)_{VIPIT} & = d \times \frac{1}{153,000} \times \frac{21}{100} \\
+E(\text{death})_{\text{VIPIT}} & = d \times \frac{1}{153,000} \times \frac{21}{100} \\
 & = 246,700 \times \frac{2.1}{1,530,000} \\
-& \approx 0.34
+& \approx 0.338
 \end{aligned}
 $$
 
-NACI had based its analysis on the more pessimistic estimates of a chance of 1 in 100,000 for VIPIT, and a mortality probability of 40%. In this worst-case scenario analysis, the expected number of deaths in BC would be 1:
+Considering both doses of the vaccine, we will have:
 
 $$
 \begin{aligned}
-E(death)_{VIPIT-Worst Case} & = d \times \frac{1}{100,000} \times \frac{40}{100} \\
+E(\text{death})_{\text{VIPIT}} & = d \times \frac{1}{153,000} \times \frac{21}{100} \\
+& = 2 \times 246,700 \times \frac{2.1}{1,530,000} \\
+& \approx 0.677
+\end{aligned}
+$$
+
+NACI had based its analysis on the more pessimistic estimates of a chance of 1 in 100,000 for VIPIT, and a mortality probability of 40\%. In this worst-case scenario analysis, the expected number of deaths in BC would be 1:
+
+$$
+\begin{aligned}
+E(\text{death})_{\text{VIPIT-Worst Case}} & = d \times \frac{1}{100,000} \times \frac{40}{100} \\
 & = 246,700 \times \frac{4}{1,000,000} \\
 & \approx 1
 \end{aligned}
 $$
 
-Authors may occasionally encounter problems with the preparation of a manuscript using \LaTeX. The appropriate action to take will depend on the nature of the problem:
-\begin{enumerate}
-\item[(i)] If the problem is with \LaTeX\ itself, rather than with the actual macros, please consult an appropriate \LaTeXe\ manual for initial advice. If the solution cannot be found, or if you suspect that the problem does lie with the macros, then please contact Taylor \& Francis for assistance (\texttt{latex.helpdesk@tandf.co.uk}).
-\item[(ii)] Problems with page make-up (e.g.\ occasional overlong lines of text; figures or tables appearing out of order): please do not try to fix these using `hard' page make-up commands -- the typesetter will deal with such problems. (You may, if you wish, draw attention to particular problems when submitting the final version of your manuscript.)
-\item[(iii)] If a required font is not available on your system, allow \TeX\ to substitute the font and specify which font is required in a covering letter accompanying your files.
-\end{enumerate}
+Considering both doses of the vaccine, the expected number of deaths in BC would be 2. 
+
+\section{Sensitivity Analysis}
+
+Figure A1 summarizes projected COVID-19 case counts, hospitalizations, and deaths, for a wider range of values for $R_0$ and the effectiveness of the vaccine against transmission, $v_e$. Sensitivity analysis on vaccine effectiveness against severe disease, $v_p$, lead to similar results and conclusions with a slight variation in number of outcomes. As $v_p$ increased, both the overall number of deaths and the number of deaths prevented decreased.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/fig-barplots.pdf"}
+\caption{COVID-19 outcomes under different vaccination scenarios for different age groups and front-line workers (FLW)}
+\end{center}
+\end{figure}
 
 
-\section{Obtaining the template and class file}
-
-\subsection{Via the Taylor \& Francis website}
-
-This article template and the \texttt{interact} class file may be obtained via the `Instructions for Authors' pages of selected Taylor \& Francis journals.
-
-Please note that the class file calls up the open-source \LaTeX\ packages booktabs.sty, epsfig.sty and rotating.sty, which will, for convenience, unpack with the downloaded template and class file. The template calls for natbib.sty and subfigure.sty, which are also supplied for convenience.
-
-\subsection{Via e-mail}
-
-This article template, the \texttt{interact} class file and the associated open-source \LaTeX\ packages are also available via e-mail. Requests should be addressed to \texttt{latex.helpdesk@tandf.co.uk}, clearly stating for which journal you require the template and class file.

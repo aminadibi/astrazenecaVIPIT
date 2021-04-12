@@ -30,6 +30,7 @@
 % Pandoc citation processing
 
 \usepackage{hyperref}
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \def\tightlist{}
 
@@ -269,7 +270,7 @@ prolonging the immunity acquired after the first dose and posing a risk
 for VIPIT again. We did not consider the risk for anaphylaxis, as all
 vaccines seem to have a similar risk in that regard and the risk can be
 mitigated in the vaccination clinic. Population estimates that were used
-in the model are summarized in Table 1. COVID-19 age-based case fatality
+in the model are summarized in Table 2. COVID-19 age-based case fatality
 and hospitalization rates were obtained from BC Centre for Disease
 Control (BCCDC) \citep{bccdc_british_2021} and Public Health Agency of
 Canada (Tables: 13-26-0003)\citep{statistics_canada_preliminary_2021}.
@@ -330,11 +331,11 @@ perspective}\label{harm-benefit-from-a-societal-perspective}}
 EMA evidence as of April 4th, 2021 suggests that if we immediately offer
 a first dose of the AZ vaccine to all eligible front-line workers in BC,
 the expected number of VIPIT-related deaths by the end of June 2021 is
-0.336 {[}95\% CI 0.207-0.497{]}, which means the probability of
+0.337 {[}95\% CI 0.205-0.496{]}, which means the probability of
 observing at least one VIPIT-related death in the same period is 28.6\%.
 Adding the risk from the second dose, the expected number of
-VIPIT-related deaths until the end of summer is 0.675 {[}95\% CI
-0.414-0.986{]}. The probability of observing at least one VIPIT-related
+VIPIT-related deaths until the end of summer is 0.67 {[}95\% CI
+0.412-0.986{]}. The probability of observing at least one VIPIT-related
 death till the end of the summer will be 49.2\%.
 
 NACI had based its analysis on the PEI estimates of a chance of 1 in
@@ -342,7 +343,7 @@ NACI had based its analysis on the PEI estimates of a chance of 1 in
 data that was available in late March. In this worst-case scenario, the
 expected number of deaths in BC would be 1 after the first dose is
 completed for all front-line workers and 2 after the second doses are
-delivered
+delivered. Details of the calculations can be found in Appendix A.
 
 \begin{figure}
 
@@ -361,22 +362,9 @@ offered a dose of the vaccine and then offer them an mRNA vaccine (B).
 
 In our analysis, Scenario A led to 27175 fewer cases of COVID-19, 506
 fewer hospitalizations, 87 fewer deaths, and 1462 fewer cases of Long
-COVID, assuming \(R_0=1.35\). Figure 3 shows results for a wider range
-of values for \(R_0\) and the effectiveness of the vaccine against
-transmission, \(v_e\). Sensitivity analysis on vaccine effectiveness
-against severe disease, \(v_p\), lead to similar results and conclusions
-with a slight variation in number of outcomes. As \(v_p\) increased,
-both the overall number of deaths and the number of deaths prevented
-decreased.
-
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth]{../figures/fig-barplots} 
-
-}
-
-\caption{COVID-19 outcomes under different vaccination scenarios for different age groups and front-line workers (FLW)}\label{fig:fig2}
-\end{figure}
+COVID, assuming \(R_0=1.35\). Appendix B includes results of the
+sensitivity analysis for a wider range of values for \(R_0\) and the
+effectiveness of the vaccine against transmission, \(v_e\).
 
 \hypertarget{harm-benefit-from-an-individual-risk-perspective}{%
 \subsection{Harm-benefit from an individual risk
@@ -388,10 +376,10 @@ perspective}\label{harm-benefit-from-an-individual-risk-perspective}}
 
 }
 
-\caption{Mortality risk comparison for different age groups based on the estimated risk for VIPIT by the EMA and NACI}\label{fig:covidvsvipit}
+\caption{ Comparison of excess mortality risk for different age groups based on the COVID-19 risk caused by delayed vaccination (B) and estimated residual COVID-19 and VIPIT risk (A) by the EMA and NACI}\label{fig:covidvsvipit}
 \end{figure}
 
-Figure 4 compares the risk of VIPIT-related mortality from 2 doses of
+Figure 3 compares the risk of VIPIT-related mortality from 2 doses of
 the AZ vaccine and residual risk from COVID-19, with the mortality risk
 from COVID-19 due to delayed vaccination from April 1st to October 1st,
 2021. We did the comparison under two scenarios of an \(R_0\) of 1.15 or
@@ -572,6 +560,7 @@ and societal considerations into account.
 \bibliography{AZVIPIT.bib}
 
 
+\input{"appendix.tex"}
 
 
 \end{document}
