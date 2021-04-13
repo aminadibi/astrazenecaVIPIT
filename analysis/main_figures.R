@@ -30,13 +30,13 @@ gg_vax <- res %>%
 
 
 fig1a = ggarrange(gg_vax$plot[[1]]+
-                    labs(title = "", subtitle = 'A: 80+, 70-79, FLW, 60-69, ...') +
+                    labs(title = "", subtitle = 'A: 80+, 70-79, 60-69, FLW, 50-59, ...') +
                     scale_color_viridis(discrete = T)+
                     ylab ("prop. vaccinated") +
                     theme_ipsum_rc(grid="XY") + 
                     theme(axis.title.x = element_blank(),text=element_text(size=16))
                     ,
-                  gg_vax$plot[[2]]+labs(title = "", subtitle='B: 80+, 70-79, 60-69, FLW, 50-59, ...') +
+                  gg_vax$plot[[2]]+labs(title = "", subtitle='B: Oldest to Youngest') +
                     scale_color_viridis(discrete = T)+
                     ylab ("prop. vaccinated") +
                     theme_ipsum_rc(grid="XY"),
@@ -145,28 +145,28 @@ oo <- compare_sims_data(sim1 = filter(res, R==1.35 & scen==1 & ve==0.60),
                                                name1=labels[1], name2=labels[2], startDate=startDate, 
                                                textsize = 16)
 
-risk60sR1 <- oo %>% filter (age_band == "60-69" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                                 date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk60sR1 <- oo %>% filter (age_band == "60-69" & scen == "B: Oldest to Youngest" & 
+                                 date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
    select(newdeaths) %>% summarise_all(sum) / 611615
 risk60sR1$age <- "60-69"
 
-risk50sR1 <- oo %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                 date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk50sR1 <- oo %>% filter (age_band == "50-59" & scen == "B: Oldest to Youngest" & 
+                 date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 709300
 risk50sR1$age <- "50-59"
 
-risk40sR1 <- oo %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                 date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk40sR1 <- oo %>% filter (age_band == "40-49" & scen == "B: Oldest to Youngest" & 
+                 date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 617410
 risk40sR1$age <- "40-49"
 
-risk30sR1 <- oo %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                 date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk30sR1 <- oo %>% filter (age_band == "30-39" & scen == "B: Oldest to Youngest" & 
+                 date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 607340
 risk30sR1$age <- "30-39"
 
-risk20sR1 <-oo %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                 date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk20sR1 <-oo %>% filter (age_band == "20-29" & scen == "B: Oldest to Youngest" & 
+                 date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 590560
 risk20sR1$age <- "20-29"
 
@@ -178,28 +178,28 @@ ooR2 <- compare_sims_data(sim1 = filter(res, R==1.15 & scen==1 & ve==0.60),
                           name1=labels[1], name2=labels[2], startDate=startDate, 
                           textsize = 16)
 
-risk60sR2 <- ooR2 %>% filter (age_band == "60-69" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                                date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk60sR2 <- ooR2 %>% filter (age_band == "60-69" & scen == "B: Oldest to Youngest" & 
+                                date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 611615
 risk60sR2$age <- "60-69"
 
-risk50sR2 <- ooR2 %>% filter (age_band == "50-59" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                                date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk50sR2 <- ooR2 %>% filter (age_band == "50-59" & scen == "B: Oldest to Youngest" & 
+                                date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 709300
 risk50sR2$age <- "50-59"
 
-risk40sR2 <- ooR2 %>% filter (age_band == "40-49" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                                date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk40sR2 <- ooR2 %>% filter (age_band == "40-49" & scen == "B: Oldest to Youngest" & 
+                                date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 617410
 risk40sR2$age <- "40-49"
 
-risk30sR2 <-ooR2 %>% filter (age_band == "30-39" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                               date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk30sR2 <-ooR2 %>% filter (age_band == "30-39" & scen == "B: Oldest to Youngest" & 
+                               date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 607340
 risk30sR2$age <- "30-39"
 
-risk20sR2 <-ooR2 %>% filter (age_band == "20-29" & scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ..." & 
-                               date<ymd("2021-10-01") & date>ymd("2021-04-01")) %>%
+risk20sR2 <-ooR2 %>% filter (age_band == "20-29" & scen == "B: Oldest to Youngest" & 
+                               date<ymd("2021-10-01") & date>ymd("2021-04-15")) %>%
   select(newdeaths) %>% summarise_all(sum) / 590560
 risk20sR2$age <- "20-29"
 
@@ -216,8 +216,8 @@ write_csv(covidRisk, "personalRisk.csv")
 
 
 ####### Validation
-#cases <- read_csv('http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv')
-cases <- readRDS("./bcCDCCases.RDS")
+cases <- read_csv('http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv')
+#cases <- readRDS("./bcCDCCases.RDS")
 counts <- cases %>% filter (Reported_Date > ymd("2020-12-01")) %>% 
   group_by(Reported_Date) %>% tally()
 
@@ -227,9 +227,9 @@ observed <- as_tibble(counts) %>% rename(date = Reported_Date) %>%
 
 
 predicted <- oo %>% 
-  filter(scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") %>% 
+  filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date) %>% summarize(incid = sum(incid)) %>% 
-  filter (date < ymd("2021-04-05") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-04-12") & date > ymd("2021-01-02"))
 
 validation <- predicted %>% left_join(observed, by="date")
 validation %>% 
@@ -242,13 +242,13 @@ validation %>%
 
 
 predictedDeath <- oo %>% 
-  filter(scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") %>% 
+  filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date) %>% summarize(newdeaths = sum(newdeaths)) %>% 
-  filter (date < ymd("2021-04-05") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-04-12") & date > ymd("2021-01-02"))
 
 observedDeath <- read_csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-download.csv") %>%
   rename (province = "prname") %>% filter (province == "British Columbia") %>%
-  select(date, numdeathstoday) %>%  filter (date < ymd("2021-04-05") & date > ymd("2021-01-02")) %>%
+  select(date, numdeathstoday) %>%  filter (date < ymd("2021-04-12") & date > ymd("2021-01-02")) %>%
   mutate(observedDeaths= zoo::rollmean(numdeathstoday, k = 7, fill = NA))
 
 validationDeath <- predictedDeath %>% left_join(observedDeath, by="date")
@@ -283,10 +283,10 @@ countsPerAge <- cases %>% filter (Reported_Date > ymd("2020-12-01")) %>%
 
 
 predictedPerAge <- oo %>% 
-  filter(scen == "B: 80+, 70-79, 60-69, FLW, 50-59, ...") %>% 
+  filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date, age_band) %>% summarize(incid = sum(incid)) %>% 
   rename (predicted = incid) %>%
-  filter (date < ymd("2021-04-05") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-04-12") & date > ymd("2021-01-02"))
 
 observedPerAge <- as_tibble(countsPerAge) %>% rename(date = Reported_Date) %>%
   mutate(observed7day = zoo::rollmean(n, k = 7, fill = NA))
