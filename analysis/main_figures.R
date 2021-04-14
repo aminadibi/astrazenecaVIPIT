@@ -216,7 +216,8 @@ write_csv(covidRisk, "personalRisk.csv")
 
 
 ####### Validation
-cases <- read_csv('http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv')
+cases <- read_csv('http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv')  %>% 
+  mutate(Reported_Date = mdy(Reported_Date))
 #cases <- readRDS("./bcCDCCases.RDS")
 counts <- cases %>% filter (Reported_Date > ymd("2020-12-01")) %>% 
   group_by(Reported_Date) %>% tally()
