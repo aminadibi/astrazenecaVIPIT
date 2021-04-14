@@ -62,19 +62,17 @@ Sadatsafavi. Email: \href{mailto:msafavi@mail.ubc.ca}{\nolinkurl{msafavi@mail.ub
 \maketitle
 
 \begin{abstract}
-\textbf{Background:} On March 29th, 2021, Canada's National Advisory
-Committee on Immunization (NACI) recommended against using the
-AstraZeneca COVID-19 vaccine in younger adults pending further review of
-the risk for Vaccine-Induced Prothrombotic Immune Thrombocytopenia
-(VIPIT). As an example, we consider the Canadian province of British
-Columbia (BC) which halted its front-line workers vaccination program
-which used the AstraZeneca vaccine. The province received an additional
-246,700 doses of AstraZeneca vaccine through US and COVAX in the weeks
-before April 11th, enough to provide the first dose of vaccine to all
-unvaccinated front-line workers. It is unclear whether the alternative,
-mRNA vaccines can be immediately made available to front-line workers.
-We evaluated the harms and benefits of delaying vaccination of
-front-line workers in BC.
+\textbf{Background:} In March 2021, a number of regulatory and advisory
+bodies around the world recommended against using the AstraZeneca
+COVID-19 vaccine in younger adults pending further review of the risk
+for vaccine-induced prothrombotic immune thrombocytopenia (VIPIT). As an
+example, we consider the Canadian province of British Columbia (BC)
+which halted its front-line workers vaccination program with the
+AstraZeneca vaccine. The province received an additional 246,700 doses
+of AstraZeneca vaccine in the weeks before April 11th, enough to provide
+the first dose of vaccine to all unvaccinated front-line workers. It is
+unclear whether the alternative, mRNA vaccines can be immediately made
+available to front-line workers.
 
 \textbf{Methods:} We reviewed the latest available evidence and used
 compartmental modelling to \emph{1)} compare the expected number of
@@ -103,16 +101,12 @@ and 69 years of age. For those under 30, immediate vaccination with the
 AstraZeneca vaccine posed a higher risk than delayed vaccination with an
 mRNA vaccine, regardless of the level of transmission in the community.
 
-\textbf{Conclusions:} The benefits of immediately continuing
-immunization of front-line workers with the AstraZeneca vaccine far
-outweigh the risk both at a societal level and at a personal risk level
-for those over 40, and those over 30 in high-risk areas.
+\textbf{Conclusions:} The benefits of continuing immunization of
+front-line workers with the AstraZeneca vaccine far outweigh the risk
+both at a societal level and at a personal risk level for those over 40,
+and those over 30 in high-risk areas.
 \end{abstract}
 
-\begin{keywords}
-COVID19; vaccination; front-line workers; blood clots; vaccine-induced
-prothrombotic immune thrombocytopenia; harm-benefit; British Columbia
-\end{keywords}
 
 \hypertarget{background}{%
 \section{Background}\label{background}}
@@ -160,7 +154,7 @@ NACI's recommendation, BC paused using the AZ vaccine for those under 60
 and put the front-line workers vaccination program on hold.
 
 Canadian provinces received 1.5 million doses of the AZ vaccine from the
-US and another 316,800 doses from the COVAX program between in the two
+US and another 316,800 doses from the COVAX program in between the two
 weeks period ending on April 11th
 \citep{government_of_canada_vaccines_2021}. British Columbia received
 246,700 doses from these two AZ deliveries, enough to finish providing
@@ -189,7 +183,7 @@ societal and individual risk perspective.
 We assumed that BC allocates all 246,700 doses to front-line workers and
 that there is enough uptake that BC is able to administer all these
 doses. We compared immediately prioritizing front-line workers for the
-AZ vaccine (\emph{Scenario A}) and asking them to wait to receivemRNA
+AZ vaccine (\emph{Scenario A}) and asking them to wait to receive mRNA
 vaccines as part of the current age-based program (\emph{Scenario B}).
 For harm-benefit analysis from a societal perspective, we compared
 expected number of deaths under each vaccination strategy.
@@ -239,9 +233,9 @@ the January 1st to April 15th, 2021 period.
  $P(\text{death}|\text{VIPIT})$ & $21\%$ &  $\beta(18, 86-18)$ & $40\%$ \\ \\
  & \multicolumn{2}{l}{Assumptions} \\ \cmidrule{2-6}
  Parameter  & Base Value & Sensitivity & \\ \midrule
- $R_0$ & 1.35 & (1.15, 1.5) &  \\ 
- $v_e$ & 0.60 & (0.60, 0.75, 0.90) &  \\ 
- $v_p$ & 0.80 & (0.60, 0.75, 0.90) &  \\ \\
+ $R_0$ & 1.35 & 1.15, 1.5 &  \\ 
+ $v_e$ & 0.60 & 0.60, 0.75, 0.90 &  \\ 
+ $v_p$ & 0.80 & 0.60, 0.75, 0.90 &  \\ \\
  
   & \multicolumn{2}{l}{Population Parameters} \\ \cmidrule{2-6}
   Age  Group & Hospitalization & Death   & Long COVID & Vaccine Hesitancy & Front-Line Workers \\ 
@@ -260,30 +254,31 @@ Under 20   & 0.0062    & 0       & 0.04       & NA                & 0           
  \bottomrule 
 
 \end{tabular}}
-\tabnote{EMA base values and $\beta$ distributions are based on a report of 18 deaths among 86 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipient in Europe and the UK. NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported.\\
+\tabnote{EMA base values and $\beta$ distributions are based on a report of 18 deaths among 86 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipients in Europe and the UK. NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported.\\
 $R_0$ is the basic reproduction number.\\ $v_e$ is the effectiveness of vaccine against transmission.\\ $v_p$ is effectiveness of vaccine against severe disease.\\ Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Hospitalization and death rates for under 50 age groups are from BCCDC Situation Report Week 12, 2021. Death rates for age groups above 50 are from the preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada (Table 13-26-0003) from January 1st, 2021 to April 9th, 2021 and accounts for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al.\\ }
 \label{harm-param}
 \end{table}
 
 We assumed the first dose of the vaccine, regardless of the
-manufacturer, to be, on average, 80\% effective against illness and 75\%
-effective in preventing transmission. We further assume that all British
-Columbians will be offered a first dose of one of the approved COVID-19
-vaccines before July 1st, 2021, and a second dose before the end of
-September 2021. We assumed the second dose to have no effect other than
-prolonging the immunity acquired after the first dose and posing a risk
-for VIPIT again. We did not consider the risk for anaphylaxis, as all
-vaccines seem to have a similar risk in that regard and the risk can be
-mitigated in the vaccination clinic. Population estimates that were used
-in the model are summarized in Table 1. COVID-19 age-based case fatality
-and hospitalization rates were obtained from BC Centre for Disease
-Control (BCCDC) \citep{bccdc_british_2021} and Public Health Agency of
-Canada (Table: 13-26-0003)\citep{statistics_canada_preliminary_2021}.
-For seniors, we used case fatality rates from January 1s, 2021 to April
-9th, 2021 to account for the immunity already acquired in long-term care
-homes. Rates of Long COVID are Mulberry et al's estimations from data in
-Sudre et al\citep{sudre_attributes_2021}. The proportion of essential
-workers by age was taken from the COVID Speak survey per Mulberry et al
+manufacturer, to be, on average, 80\% effective against severe COVID-19
+and 60\% effective in preventing transmission. We further assume that
+all British Columbians will be offered a first dose of one of the
+approved COVID-19 vaccines before July 1st, 2021, and a second dose
+before the end of September 2021. We assumed the second dose to have no
+effect other than prolonging the immunity acquired after the first dose
+and posing a risk for VIPIT again. We did not consider the risk for
+anaphylaxis, as all vaccines seem to have a similar risk in that regard
+and the risk can be mitigated in the vaccination clinic. Population
+estimates that were used in the model are summarized in Table 1.
+COVID-19 age-based case fatality and hospitalization rates were obtained
+from BC Centre for Disease Control (BCCDC) \citep{bccdc_british_2021}
+and Public Health Agency of Canada (Table:
+13-26-0003)\citep{statistics_canada_preliminary_2021}. For seniors, we
+used case fatality rates from January 1st, 2021 to April 9th, 2021 to
+account for the immunity already acquired in long-term care homes. Rates
+of Long COVID are Mulberry et al's estimations from data in Sudre et
+al\citep{sudre_attributes_2021}. The proportion of essential workers by
+age was taken from the COVID Speak survey per Mulberry et al
 \citep{mulberry_vaccine_2021}. Population of BC in each group was
 obtained from Statistics Canada \citep{statistics_canada_census_2017}.
 
@@ -335,12 +330,12 @@ perspective}\label{harm-benefit-from-a-societal-perspective}}
 EMA evidence as of April 4th, 2021 suggests that if we immediately offer
 a first dose of the AZ vaccine to all eligible front-line workers in BC,
 the expected number of VIPIT-related deaths by the end of June 2021 is
-0.338 {[}95\% CI 0.206-0.495{]}, which means the probability of
-observing at least one VIPIT-related death in the same period is 28.6\%.
+0.336 {[}95\% CI 0.207-0.501{]}, which means the probability of
+observing at least one VIPIT-related death in the same period is 28.7\%.
 Adding the risk from the second dose, the expected number of
-VIPIT-related deaths until the end of summer is 0.673 {[}95\% CI
-0.411-0.993{]}. The probability of observing at least one VIPIT-related
-death till the end of the summer will be 48.9\%.
+VIPIT-related deaths until the end of summer is 0.674 {[}95\% CI
+0.412-0.992{]}. The probability of observing at least one VIPIT-related
+death till the end of the summer will be 49.2\%.
 
 NACI had based its analysis on the PEI estimates of a chance of 1 in
 100,000 for VIPIT, and a mortality probability of 40\%, based on the
@@ -425,8 +420,10 @@ associated risk of venous thromboembolism (VTE; Rates are about 2 folds
 higher in hospitalized COVID-19 patients than that of medical
 non-COVID-19 inpatients \citep{alberta_health_services_covid-19_2021}),
 and Long COVID, as well as preventing onward transmission of the virus,
-as evident in the recent sharp decline of COVID-19 cases in the UK
-\citep{govuk_official_2021}.
+as as suggested by the recent sharp decline of COVID-19 cases in the UK
+\citep{govuk_official_2021} and possible emerging signal in a recent
+observational healthcare worker/household study
+\citep{shah_effect_2021}.
 
 The UK vaccination program started on December 8th with the
 Pfizer-BioNTech vaccine and was complemented with the AZ vaccine since
@@ -438,7 +435,7 @@ February 22, 2021 when a roadmap to easing the lockdown was announced,
 to about 6000 cases per day on March 8, 2021 when the first phase of
 easing public health restrictions was commenced
 \citep{bbc_lockdown_2021} and has continuously declined since then to
-just under 2500 cases as of April 13th, 2021, when 61\% of the UK
+just under 2500 cases as of April 14th, 2021, when 61.4\% of the UK
 population had received one dose of a COVID-19 vaccine
 \citep{govuk_official_2021}.
 
@@ -501,12 +498,14 @@ and the more general principle of justice in bioethics
 10th, 2021, no VIPIT cases have been linked to COVID-19 mRNA vaccines.
 From a vaccine efficacy point of view, determining the
 \emph{superiority} of one vaccine to the other is not straightforward;
-there is more to the apparent but variable 5\%-33\% efficacy gap
+there is more to the apparent but variable 4\%-33\% efficacy gap
 (symptomatic COVID-19; 7-14 days after second dose) between mRNA and AZ
 COVID-19 vaccines
 \citep{polack_safety_2020, baden_efficacy_2021, astrazeneca_azd1222_2021, emary_efficacy_2021}
 than meets the eye, including differences in study populations,
-settings, time periods, and vaccine storage requirements
+settings, time periods (i.e.~different incidence rates of COVID-19 from
+both non-variant of concern {[}VOC{]} and VOC SARS-CoV-2) at different
+times of the year), and vaccine storage requirements
 \citep{ledford_why_2021}. Importantly, these vaccines were comparable in
 efficacy against severe COVID-19 in phase 3 trials
 \citep{abdool_karim_new_2021, astrazeneca_azd1222_2021}. Considering
@@ -557,7 +556,7 @@ risk, both at a societal and at a personal level for those over 40 years
 of age, and those over 30 years of age in high-risk areas. Ultimately,
 in dynamic situations like this where the evidence is uncertain and
 evolving, vaccine roll-out decisions are judgment calls that need to
-take a complex network of medical, epidemiological, ethical, logistics,
+take a complex network of medical, epidemiological, ethical, logistical,
 and societal considerations into account.
 
 \bibliographystyle{tfcad}
