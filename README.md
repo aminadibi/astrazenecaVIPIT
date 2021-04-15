@@ -2,7 +2,8 @@
 
 Accompanying analysis and reproducible R Markdown manscript for *Continuing COVID-19 Vaccination of Front-Line Workers in BC with the AstraZeneca Vaccine: Benefits in the Face of Increased Risk for Prothrombotic Thrombocytopenia* (Adibi et al. 2021).
 The preprint is on medRxiv: [https://www.medrxiv.org/content/10.1101/2021.04.11.21255138v1](https://www.medrxiv.org/content/10.1101/2021.04.11.21255138v1) 
-The compartmental model used here is based on [Mulberry et al., 2021](https://github.com/nmulberry/essential-workers-vaccine/)
+
+The compartmental model used here is based on [Mulberry et al., 2021](https://github.com/nmulberry/essential-workers-vaccine/).
 
 ## Abstract
 
