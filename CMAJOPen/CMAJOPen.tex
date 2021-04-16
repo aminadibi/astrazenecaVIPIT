@@ -368,12 +368,12 @@ perspective}\label{harm-benefit-from-a-societal-perspective}}
 EMA evidence as of April 4th, 2021 suggests that if we immediately offer
 a first dose of the AZ vaccine to all eligible front-line workers in BC,
 the expected number of VIPIT-related deaths by the end of June 2021 is
-0.337 {[}95\% CI 0.206-0.498{]}, which means the probability of
+0.338 {[}95\% CI 0.205-0.491{]}, which means the probability of
 observing at least one VIPIT-related death in the same period is 28.6\%.
 Adding the risk from the second dose, the expected number of
 VIPIT-related deaths until the end of summer is 0.674 {[}95\% CI
-0.412-0.988{]}. The probability of observing at least one VIPIT-related
-death till the end of the summer will be 49.1\%.
+0.413-0.987{]}. The probability of observing at least one VIPIT-related
+death till the end of the summer will be 49\%.
 
 NACI had based its analysis on the PEI estimates of a chance of 1 in
 100,000 for VIPIT, and a mortality probability of 40\%, based on the
@@ -600,6 +600,152 @@ and societal considerations into account.
 \hypertarget{references}{%
 \section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
+
+\newpage
+
+\hypertarget{appendices}{%
+\section{Appendices}\label{appendices}}
+
+\hypertarget{calculations-for-expected-number-of-death}{%
+\subsection{Calculations for expected number of
+death}\label{calculations-for-expected-number-of-death}}
+
+Assuming that BC allocates all 246,700 doses to front-line workers, we
+can estimate the expected number of deaths due to VIPIT,
+\(E(death)_{VIPIT}\), as shown below. To err on the side of caution, we
+assume that each dose of the vaccine is independently associated with
+the risk for VIPIT and that the risk of VIPIT is uniform across all age
+groups. We also assume that there is enough uptake that BC is able to
+administer all these doses.
+
+\[
+E(\text{death})_{\text{VIPIT}}  = d \times P(\text{VIPIT}|\text{vaccine}) \times P(\text{death}|\text{VIPIT})
+\]
+
+where d is the number of doses administered,
+\(P(\text{VIPIT}|\text{vaccine})\) is the risk of VIPIT after receiving
+each dose, and \(P(\text{death}|\text{VIPIT})\) is the case fatality for
+VIPIT.
+
+According to the most recent data from UK and EU submitted to
+EudraVigilance (as of April 4th, 2021):
+
+\[
+\begin{aligned}
+E(\text{death})_{\text{VIPIT}} & = d \times \frac{1}{153,000} \times \frac{21}{100} \\
+& = 246,700 \times \frac{2.1}{1,530,000} \\
+& \approx 0.338
+\end{aligned}
+\]
+
+Considering both doses of the vaccine, we will have:
+
+\[
+\begin{aligned}
+E(\text{death})_{\text{VIPIT}} & = d \times \frac{1}{153,000} \times \frac{21}{100} \\
+& = 2 \times 246,700 \times \frac{2.1}{1,530,000} \\
+& \approx 0.677
+\end{aligned}
+\]
+
+NACI had based its analysis on the more pessimistic estimates of a
+chance of 1 in 100,000 for VIPIT, and a mortality probability of 40\%.
+In this worst-case scenario analysis, the expected number of deaths in
+BC would be 1:
+
+\[
+\begin{aligned}
+E(\text{death})_{\text{VIPIT-Worst Case}} & = d \times \frac{1}{100,000} \times \frac{40}{100} \\
+& = 246,700 \times \frac{4}{1,000,000} \\
+& \approx 1
+\end{aligned}
+\]
+
+Considering both doses of the vaccine, the expected number of deaths in
+BC would be 2.
+
+\hypertarget{sensitivity-analysis}{%
+\subsection{Sensitivity Analysis}\label{sensitivity-analysis}}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/fig-barplots.pdf"}
+\caption{COVID-19 outcomes under different vaccination scenarios for different age groups and front-line workers (FLW) when $v_p=0.80$}
+\end{center}
+\end{figure}
+
+Figure B1 summarizes projected COVID-19 case counts, hospitalizations,
+and deaths, for a wider range of values for \(R_0\) and the
+effectiveness of the vaccine against transmission, \(v_e\). Sensitivity
+analysis on vaccine effectiveness against severe disease, \(v_p\), lead
+to similar results and conclusions with a slight variation in number of
+outcomes. As \(v_p\) increased, both the overall number of deaths and
+the number of deaths prevented decreased. Specifically, under
+\(v_p=0.90\), Scenario A led to 46779 fewer cases of COVID-19, 730 fewer
+hospitalizations, 102 fewer deaths, and 2137 fewer cases of Long COVID,
+assuming \(R_0\)= 1.35. Figures B2 to B5 summarize main results when
+\(v_p=0.90\).
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/vp0.90/fig-validation.pdf"}
+\caption{Observed and predicted case counts for different age groups when $v_p=0.90$}
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/vp0.90/fig-trajectoriesFull.pdf"}
+\caption{Top Panel: Projection of the progression of the vaccination for different age groups and front-line workers (FLW). Bottom Panel: Projection of COVID-19 cases, hospitalizations, and deaths from January 1st to October 1st, 2021 for $v_p=0.90$}
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/vp0.90/fig3.pdf"}
+\caption{Comparison of excess mortality risk for different age groups based on the COVID-19 risk caused by delayed vaccination (B) and estimated residual COVID-19 and VIPIT risk (A) by the EMA and NACI when $v_p=0.90$}
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/vp0.90/fig-barplots.pdf"}
+\caption{COVID-19 outcomes under different vaccination scenarios for different age groups and front-line workers (FLW) when $v_p=0.90$}
+\end{center}
+\end{figure}
+
+Under \(v_p=0.60\), Scenario A led to 43706 fewer cases of COVID-19, 910
+fewer hospitalizations, 179 fewer deaths, and 2553 fewer cases of Long
+COVID, assuming R 0 = 1.35. Figures B6 to B9 summarize main results when
+\(v_p=0.60\).
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/vp0.60/fig-validation.pdf"}
+\caption{Observed and predicted case counts for different age groups when $v_p=0.60$}
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/vp0.60/fig-trajectoriesFull.pdf"}
+\caption{Top Panel: Projection of the progression of the vaccination for different age groups and front-line workers (FLW). Bottom Panel: Projection of COVID-19 cases, hospitalizations, and deaths from January 1st to October 1st, 2021 for $v_p=0.60$}
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/vp0.60/fig3.pdf"}
+\caption{Comparison of excess mortality risk for different age groups based on the COVID-19 risk caused by delayed vaccination (B) and estimated residual COVID-19 and VIPIT risk (A) by the EMA and NACI when $v_p=0.90$}
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=6in]{"../figures/vp0.60/fig-barplots.pdf"}
+\caption{COVID-19 outcomes under different vaccination scenarios for different age groups and front-line workers (FLW) when $v_p=0.90$}
+\end{center}
+\end{figure}
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{0}{0}
