@@ -151,7 +151,7 @@ All the analysis was performed using publicly-available data and code. This manu
 
 ## Model validation
 
-```{r figValidation, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Face validity of model case counts"), echo=FALSE}
+```{r figValidation, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Validation of model case counts"), echo=FALSE}
 knitr::include_graphics("../figures/fig-validation.pdf")
 ```
 Predicted epidemiological curve and age-stratified case counts showed good agreement with observed counts reported by BC CDC, except for the 80 and above age category where the model underestimated case counts (Figure 1), however, this age group had almost no implications on the compared scenarios.
