@@ -5,7 +5,7 @@ source('./analysis/setup.R')
 pars <- crossing(R=c(1.15, 1.35, 1.4, 1.5), ve = c(0.60, 0.75, 0.9), vp = 0.80, scen=c(1,2))
 
 # RUN (according to piecewise scenario)
-res <- pars %>%  future_pmap_dfr(run_over_scen_2, .progress=TRUE)
+res <- pars %>%  future_pmap_dfr(run_over_scen_3, .progress=TRUE)
 
 ############################
 # FIGURE 1 (trajectories)
@@ -217,7 +217,7 @@ write_csv(covidRisk, "personalRisk.csv")
 
 ####### Validation
 cases <- read_csv('http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv')  %>% 
-  mutate(Reported_Date = mdy(Reported_Date))
+  mutate(Reported_Date = ymd(Reported_Date))
 #cases <- readRDS("./bcCDCCases.RDS")
 counts <- cases %>% filter (Reported_Date > ymd("2020-12-01")) %>% 
   group_by(Reported_Date) %>% tally()
@@ -287,7 +287,7 @@ predictedPerAge <- oo %>%
   filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date, age_band) %>% summarize(incid = sum(incid)) %>% 
   rename (predicted = incid) %>%
-  filter (date < ymd("2021-04-12") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-04-24") & date > ymd("2021-01-02"))
 
 observedPerAge <- as_tibble(countsPerAge) %>% rename(date = Reported_Date) %>%
   mutate(observed7day = zoo::rollmean(n, k = 7, fill = NA))

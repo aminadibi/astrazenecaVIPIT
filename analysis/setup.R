@@ -204,16 +204,20 @@ run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
    C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                               target_R0=R_surge, in_school=TRUE, alpha_factor=alpha)
    
-   df2 <- run_sim_basic(C, I_0=I_0, percent_vax =1.0, strategy=list(9), num_perday=n,
-                        v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
-                        u = u_var, num_days=T2, with_essential=TRUE, H=H) 
+   # df2 <- run_sim_basic(C, I_0=I_0, percent_vax =1.0, strategy=list(8), num_perday=n,
+   #                      v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
+   #                      u = u_var, num_days=T2, with_essential=TRUE, H=H) 
+   
+   df2 <- run_sim_restart(C, df_0=tail(df0, n=1), percent_vax =1.0, strategy= list(8), num_perday=n,
+                          v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
+                          u = u_var, num_days=T2, with_essential=TRUE, H=H)
    
    
    # Final stage
    n <- sum(age_demo[-c(9, 8)])/T3
    C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                               target_R0=R, in_school=TRUE, alpha_factor=alpha)
-   df <- run_sim_restart(C, df_0=tail(df0, n=1), percent_vax =1.0, strategy= strategies[[scen]], num_perday=n,
+   df <- run_sim_restart(C, df_0=tail(df2, n=1), percent_vax =1.0, strategy= strategies[[scen]], num_perday=n,
                          v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
                          u = u_var, num_days=T3, with_essential=TRUE, H=H)
    # combine 
