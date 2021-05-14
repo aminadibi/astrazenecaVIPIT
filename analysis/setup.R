@@ -39,7 +39,7 @@ IFR <- #Based on BC CDC Situation Report Week 17, May 12 2021
          0.003171753,
          0.01296075,
          0.058012027,
-         0.291503268)
+         0.168)
 
 
 #IHR <- readRDS("./data/ihr_vec_CAN.RData")
@@ -53,7 +53,7 @@ IHR <-
      0.06181927,
      0.116095229,
      0.243721259,
-     0.295642702
+     0.27
    )
 
 
@@ -188,7 +188,7 @@ run_over_scen_2 = function(R, ve, vp, scen,alpha=0.0){
 ########################
 run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
    T1 <- 70
-   T2 <- 25
+   T2 <- 30
    T3 <- 270 - T1 - T2
    # Initial stage (vax all 80+), low R0
    R_init <- 1.03

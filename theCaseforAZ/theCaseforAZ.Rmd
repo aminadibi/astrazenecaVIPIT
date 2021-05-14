@@ -112,20 +112,21 @@ We ran the model from January 2021 to September 2021, which is when the vaccinat
              & Rate            & Rate    & Rate       & \% of Population & \% of Population \\ 
 
   \midrule
-Under 20   & 0.0062    & 0       & 0.04       & NA                & 0           \\ 
-20-29      & 0.0106    & 0       & 0.04       & 30               & 17          \\ 
-30-39      & 0.0246    & 0.00066 & 0.08       & 20               & 20          \\ 
-40-49      & 0.0340    & 0.00128 & 0.15       & 20               & 17          \\ 
-50-59      & 0.0583    & 0.00207 & 0.25       & 20               & 15          \\ 
-60-69      & 0.1175    & 0.00950 & 0.25       & 15              & 16          \\ 
-70-79      & 0.2450    & 0.03864 & 0.25       & 15              & 10          \\ 
-80+        & 0.2736    & 0.16859 & 0.25       & 15              & 0           \\
+Under 20   & 0.0055    & 0.000096& 0.04       & NA                & 0           \\ 
+20-29      & 0.0105    & 0.00003 & 0.04       & 30               & 17          \\ 
+30-39      & 0.0252    & 0.00057 & 0.08       & 20               & 20          \\ 
+40-49      & 0.0370    & 0.00097 & 0.15       & 20               & 17          \\ 
+50-59      & 0.0618    & 0.00317 & 0.25       & 20               & 15          \\ 
+60-69      & 0.1161    & 0.01296 & 0.25       & 15              & 16          \\ 
+70-79      & 0.2437    & 0.05801 & 0.25       & 15              & 10          \\ 
+80+        & 0.2956    & 0.29150 & 0.25       & 15              & 0           \\
  
  \bottomrule 
 
+
 \end{tabular}}
 \tabnote{EMA base values and $\beta$ distributions are based on a report of 18 deaths among 86 cases of VIPIT, and 222 cases of VIPIT among 34 million vaccine recipients in Europe and the UK. NACI base values are based on NACI's rapid response published on March 29th, 2021. A probability distribution could not be calculated as numerators and denominators were not reported.\\
-$R_0$ is the basic reproduction number.\\ $v_e$ is the effectiveness of vaccine against transmission.\\ $v_p$ is effectiveness of vaccine against severe disease.\\ Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Hospitalization and death rates are from BCCDC Situation Report Week 12, 2021. Death rates for age groups above 50 are from the preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada (Table 13-26-0003) from January 1st, 2021 to April 9th, 2021 and accounts for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al.\\ }
+$R_0$ is the basic reproduction number.\\ $v_e$ is the effectiveness of vaccine against transmission.\\ $v_p$ is effectiveness of vaccine against severe disease.\\ Hospitalization, death, and Long COVID rates are number of people with the outcome divided by the number of concluded cases. Hospitalization and death rates are from BCCDC Situation Report Week 17, 2021. Death rates are from the preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada (Table 13-26-0003) from January 1st, 2021 to April 9th, 2021 and accounts for the immunity already acquired in long-term care homes. Rates of Long COVID are Mulberry et al's estimations from data in Sudre et al. The proportion of essential workers by age was taken from the COVID Speak survey per Mulberry et al.\\ }
 \label{harm-param}
 \end{table}
 
