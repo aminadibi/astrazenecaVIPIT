@@ -184,8 +184,8 @@ run_over_scen_2 = function(R, ve, vp, scen,alpha=0.0){
 #  followed by a third phase of reduced transmission in late April
 ########################
 run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
-   T1 <- 70 
-   T2 <- 30 
+   T1 <- 70
+   T2 <- 25
    T3 <- 270 - T1 - T2
    # Initial stage (vax all 80+), low R0
    R_init <- 1.03
@@ -195,7 +195,7 @@ run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
    
    df0 <- run_sim_basic(C, I_0=I_0, percent_vax =1.0, strategy=list(9), num_perday=n,
                         v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
-                        u = u_var, num_days=T1, with_essential=TRUE, H=H) 
+                        u = u_var, num_days=T1, with_essential=TRUE, H=H)
    
    
    # second stage (vax 70+) high R0
@@ -204,25 +204,24 @@ run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
    C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                               target_R0=R_surge, in_school=TRUE, alpha_factor=alpha)
    
-   # df2 <- run_sim_basic(C, I_0=I_0, percent_vax =1.0, strategy=list(8), num_perday=n,
-   #                      v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
-   #                      u = u_var, num_days=T2, with_essential=TRUE, H=H) 
    
    df2 <- run_sim_restart(C, df_0=tail(df0, n=1), percent_vax =1.0, strategy= list(8), num_perday=n,
                           v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
                           u = u_var, num_days=T2, with_essential=TRUE, H=H)
-   
+   df2$time <- df2$time+T1+1
    
    # Final stage
    n <- sum(age_demo[-c(9, 8)])/T3
    C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                               target_R0=R, in_school=TRUE, alpha_factor=alpha)
+   
    df <- run_sim_restart(C, df_0=tail(df2, n=1), percent_vax =1.0, strategy= strategies[[scen]], num_perday=n,
                          v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
                          u = u_var, num_days=T3, with_essential=TRUE, H=H)
-   # combine 
-   df$time <- df$time+T1+T2+1
+   # combine
+   df$time <- df$time+T1+T2+2
    df <- combine_age_groups(rbind(df0,df2, df))
+   
    # add pars
    df$R <- R
    df$ve <- ve
@@ -231,6 +230,7 @@ run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
    df$scen <- scen
    df$alpha <- alpha
    return(df)}
+
 
 
 ########################
