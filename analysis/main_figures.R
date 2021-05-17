@@ -2,7 +2,7 @@ library(Cairo)
 source('./analysis/setup.R')
 
 # parameter space
-pars <- crossing(R=c(0.86, 0.95, 1.15, 1.35, 1.5), ve = c(0.60, 0.75, 0.9), vp = 0.80, scen=c(1,2))
+pars <- crossing(R=c(0.86, 0.95, 1, 1.15, 1.35), ve = c(0.60, 0.75, 0.9), vp = 0.80, scen=c(1,2))
 
 # RUN (according to piecewise scenario)
 res <- pars %>%  future_pmap_dfr(run_over_scen_3, .progress=TRUE)

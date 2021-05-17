@@ -29,32 +29,32 @@ mu_other <-  readRDS("./generated-data/mu_other_essential.rds")
 
 # RATES (10-yr age bins, 0-9,10-19,...,80+)
 YLL_vec <- readRDS("./data/yll_vec_CAN.RData")
-#IFR <- readRDS("./data/ifr_vec_CAN.RData")
-IFR <- #Based on BC CDC Situation Report Week 17, May 12 2021
-       c(0.000280584,
-         0,
-         3.34526E-05,
-         0.000574194,
-         0.00096638,
-         0.003171753,
-         0.01296075,
-         0.058012027,
-         0.168)
+IFR <- readRDS("./data/ifr_vec_CAN.rds")
+# IFR <- #Based on BC CDC Situation Report Week 17, May 12 2021
+#        c(0.000280584,
+#          0,
+#          3.34526E-05,
+#          0.000574194,
+#          0.00096638,
+#          0.003171753,
+#          0.01296075,
+#          0.058012027,
+#          0.168)
 
 
-#IHR <- readRDS("./data/ihr_vec_CAN.RData")
+IHR <- readRDS("./data/ihr_vec_CAN.rds")
 #Based on BC CDC Situation Report Week 17, May 12 2021
-IHR <- 
-   c(0.008698092,
-     0.003915029,
-     0.010537584,
-     0.025223526,
-     0.036976756,
-     0.06181927,
-     0.116095229,
-     0.243721259,
-     0.27
-   )
+# IHR <- 
+#    c(0.008698092,
+#      0.003915029,
+#      0.010537584,
+#      0.025223526,
+#      0.036976756,
+#      0.06181927,
+#      0.116095229,
+#      0.243721259,
+#      0.27
+#    )
 
 
 # Symptom duration lognormal. log sigma=0.8. log  mu are 1.9, 2.2, 2.5, 2.8,
