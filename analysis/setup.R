@@ -91,6 +91,7 @@ I_0 <- c(133.0,
          203.2,
          111.2,
          155.0,
+         
          122.2, 
          91.0,  
          78.8,
@@ -107,7 +108,7 @@ u_var <- c(0.48, 0.30,
 
 percent_vax <- 1.0 # just a limit we can't exceed
 
-H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.15,0.15,0.10,
+H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.2,0.15,0.15,
       0.3,0.2,0.2,0.2,0.15,0.15)*N_i # Hesitancy. Increased for 80+ to match cases
 
 # H = c(1,
@@ -187,11 +188,11 @@ run_over_scen_2 = function(R, ve, vp, scen,alpha=0.0){
 #  followed by a third phase of reduced transmission in late April
 ########################
 run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
-   T1 <- 70
-   T2 <- 30
+   T1 <- 73
+   T2 <- 20
    T3 <- 270 - T1 - T2
    # Initial stage (vax all 80+), low R0
-   R_init <- 1.03
+   R_init <- 1.05
    n <- (age_demo[9])/T1
    C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                               target_R0=R_init, in_school=TRUE, alpha_factor=alpha)
@@ -202,7 +203,7 @@ run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
    
    
    # second stage (vax 70+) high R0
-   R_surge <- 1.35
+   R_surge <- 1.38
    n <- (age_demo[8])/T2
    C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
                               target_R0=R_surge, in_school=TRUE, alpha_factor=alpha)
