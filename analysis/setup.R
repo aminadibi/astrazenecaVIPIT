@@ -29,30 +29,33 @@ mu_other <-  readRDS("./generated-data/mu_other_essential.rds")
 
 # RATES (10-yr age bins, 0-9,10-19,...,80+)
 YLL_vec <- readRDS("./data/yll_vec_CAN.RData")
-#IFR <- readRDS("./data/ifr_vec_CAN.RData")
-IFR <- #Based on BC and Yukon data from Preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada, updated on April 9th, 2021
-       c(0      ,
-         0      ,
-         0      ,
-         0.00066,
-         0.00128,
-         0.00207,
-         0.00950,
-         0.03864,
-         0.16859)
-#IHR <- readRDS("./data/ihr_vec_CAN.RData")
+IFR <- readRDS("./data/ifr_vec_CAN.rds")
+# IFR <- #Based on BC CDC Situation Report Week 17, May 12 2021
+#        c(0.000280584,
+#          0,
+#          3.34526E-05,
+#          0.000574194,
+#          0.00096638,
+#          0.003171753,
+#          0.01296075,
+#          0.058012027,
+#          0.168)
 
-IHR <- #Based on BC and Yukon data from Preliminary dataset on confirmed cases of COVID-19, Public Health Agency of Canada, updated on April 9th, 2021
-   c(0.006152945,
-     0.006152945,
-     0.010558274,
-     0.02462661 ,
-     0.034003631,
-     0.058250081,
-     0.11746988 ,
-     0.244958753,
-     0.273594378
-   )
+
+IHR <- readRDS("./data/ihr_vec_CAN.rds")
+#Based on BC CDC Situation Report Week 17, May 12 2021
+# IHR <- 
+#    c(0.008698092,
+#      0.003915029,
+#      0.010537584,
+#      0.025223526,
+#      0.036976756,
+#      0.06181927,
+#      0.116095229,
+#      0.243721259,
+#      0.27
+#    )
+
 
 # Symptom duration lognormal. log sigma=0.8. log  mu are 1.9, 2.2, 2.5, 2.8,
 # for ages under 30, 30-39, 40-49, over 50.
@@ -88,6 +91,7 @@ I_0 <- c(133.0,
          203.2,
          111.2,
          155.0,
+         
          122.2, 
          91.0,  
          78.8,
@@ -104,7 +108,7 @@ u_var <- c(0.48, 0.30,
 
 percent_vax <- 1.0 # just a limit we can't exceed
 
-H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.15,0.15,0.10,
+H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.2,0.20,0.20,
       0.3,0.2,0.2,0.2,0.15,0.15)*N_i # Hesitancy. Increased for 80+ to match cases
 
 # H = c(1,
@@ -175,6 +179,62 @@ run_over_scen_2 = function(R, ve, vp, scen,alpha=0.0){
    df$scen <- scen
    df$alpha <- alpha
    return(df)}
+
+#######################
+# Another scneario, three phases 
+# scenario. Start with first phase
+# of vaccinating 80+ slowly. Then
+# move on to a second phase of faster vaccination for those above 70. 
+#  followed by a third phase of reduced transmission in late April
+########################
+run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
+   T1 <- 73
+   T2 <- 22
+   T3 <- 270 - T1 - T2
+   # Initial stage (vax all 80+), low R0
+   R_init <- 1.05
+   n <- (age_demo[9])/T1
+   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
+                              target_R0=R_init, in_school=TRUE, alpha_factor=alpha)
+   
+   df0 <- run_sim_basic(C, I_0=I_0, percent_vax =1.0, strategy=list(9), num_perday=n,
+                        v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
+                        u = u_var, num_days=T1, with_essential=TRUE, H=H)
+   
+   
+   # second stage (vax 70+) high R0
+   R_surge <- 1.38
+   n <- (age_demo[8])/T2
+   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
+                              target_R0=R_surge, in_school=TRUE, alpha_factor=alpha)
+   
+   
+   df2 <- run_sim_restart(C, df_0=tail(df0, n=1), percent_vax =1.0, strategy= list(8), num_perday=n,
+                          v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
+                          u = u_var, num_days=T2, with_essential=TRUE, H=H)
+   df2$time <- df2$time+T1+1
+   
+   # Final stage
+   n <- sum(age_demo[-c(9, 8)])/T3
+   C <- construct_C_from_prem(home=mu_home, work=mu_work, school=mu_school, other=mu_other, u=u_var,
+                              target_R0=R, in_school=TRUE, alpha_factor=alpha)
+   
+   df <- run_sim_restart(C, df_0=tail(df2, n=1), percent_vax =1.0, strategy= strategies[[scen]], num_perday=n,
+                         v_e = rep(ve, num_groups), v_p=rep(vp, num_groups),
+                         u = u_var, num_days=T3, with_essential=TRUE, H=H)
+   # combine
+   df$time <- df$time+T1+T2+2
+   df <- combine_age_groups(rbind(df0,df2, df))
+   
+   # add pars
+   df$R <- R
+   df$ve <- ve
+   df$vp <- vp
+   df$type <- labels[[scen]]
+   df$scen <- scen
+   df$alpha <- alpha
+   return(df)}
+
 
 
 ########################
