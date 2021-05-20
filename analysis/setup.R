@@ -108,7 +108,7 @@ u_var <- c(0.48, 0.30,
 
 percent_vax <- 1.0 # just a limit we can't exceed
 
-H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.2,0.15,0.15,
+H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.2,0.20,0.20,
       0.3,0.2,0.2,0.2,0.15,0.15)*N_i # Hesitancy. Increased for 80+ to match cases
 
 # H = c(1,
@@ -189,7 +189,7 @@ run_over_scen_2 = function(R, ve, vp, scen,alpha=0.0){
 ########################
 run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
    T1 <- 73
-   T2 <- 20
+   T2 <- 22
    T3 <- 270 - T1 - T2
    # Initial stage (vax all 80+), low R0
    R_init <- 1.05
