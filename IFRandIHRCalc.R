@@ -15,9 +15,9 @@ hospPHAC <- CasesPHAC %>% group_by(age) %>% filter(hosp==1 | hosp==2) %>% tally(
   rename (IHR=n) 
 
 IFRIHR <- CasesPHACCount %>% left_join(deathPHAC) %>% left_join(hospPHAC)%>% 
-  mutate(IFR = IFR/n, IHR = IHR/n) %>% filter(age != 99) %>% 
+  mutate(IFR = IFR/n, IHR = IHR/n) %>% select(-n) %>% filter(age != 99) %>% 
   mutate (age = case_when(
-    age == 1 ~ "0-19",
+    age == 1 ~ "0-9",
     age == 2 ~ "20-29",
     age == 3 ~ "30-39",
     age == 4 ~ "40-49",
@@ -25,13 +25,15 @@ IFRIHR <- CasesPHACCount %>% left_join(deathPHAC) %>% left_join(hospPHAC)%>%
     age == 6 ~ "60-69",
     age == 7 ~ "70-79",
     age == 8 ~ "80+",
-  ))
+  )) %>% add_row(age = "10-19", IHR = IFRIHR$IHR[1]) %>% arrange (age)
 
 # Missing IFRs added from BCCDC Report May 12 2021 Week 17
 IFRIHR$IFR[1] = 9.559772e-05
-IFRIHR$IFR[2] = 3.345265e-05
-IFRIHR$IFR[3] = 0.0005741941
-IFRIHR$IFR[4] = 0.0009663801
+IFRIHR$IFR[2] = 9.559772e-05
+
+IFRIHR$IFR[3] = 3.345265e-05
+IFRIHR$IFR[4] = 0.0005741941
+IFRIHR$IFR[5] = 0.0009663801
 
 saveRDS(IFRIHR$IFR, "./data/ifr_vec_CAN.rds")
 saveRDS(IFRIHR$IHR, "./data/ihr_vec_CAN.rds")
