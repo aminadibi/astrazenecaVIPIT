@@ -1,8 +1,8 @@
 library(tidyverse)
 library(readr)
 
-# Cases in BC and Yukon since January 1st, 2021
-CasesPHAC <- read_csv("COVID19-eng-may14th.csv") %>% filter (COV_EY == 21 & COV_REG == 5) %>% 
+# Cases in BC and Yukon since January 7th, 2021
+CasesPHAC <- read_csv("COVID19-eng-may14th.csv") %>% filter (COV_EY == 21 & COV_REG == 5 & COV_EW > 0) %>% 
   select(COV_ID, COV_AGR, COV_HSP, COV_DTH) %>% rename (ID = COV_ID, age=COV_AGR, hosp = COV_HSP, death=COV_DTH)
 
 CasesPHACCount <- CasesPHAC %>% group_by(age) %>% tally()

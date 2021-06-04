@@ -11,8 +11,8 @@ res <- pars %>%  future_pmap_dfr(run_over_scen_3, .progress=TRUE)
 # FIGURE 1 (trajectories)
 #############################
 # Look at trajectories
-trajA <- compare_sims(sim1 = filter(res, R==0.98 & scen==1 & ve==0.60), 
-                             sim2=filter(res, R==0.98 & scen ==2 & ve==0.60),
+trajA <- compare_sims(sim1 = filter(res, R==0.95 & scen==1 & ve==0.60), 
+                             sim2=filter(res, R==0.95 & scen ==2 & ve==0.60),
                              name1=labels[1], name2=labels[2], startDate=startDate, 
                              textsize = 16)
 
@@ -23,7 +23,7 @@ trajA <- compare_sims(sim1 = filter(res, R==0.98 & scen==1 & ve==0.60),
 
 # Look at number vaccinated
 gg_vax <- res %>% 
-    filter(R==0.98) %>% # note: all R values will give approx. the same plot
+    filter(R==0.95) %>% # note: all R values will give approx. the same plot
     group_by(type)%>% 
     nest()%>%
     summarize(plot=map(data, display_prop_vax, startDate, type, textsize=16))
@@ -77,7 +77,7 @@ res2 <- res %>%
 
 saveRDS(res2, "res2.rds")
 
-R_vec <- c(0.98,1.35) # R vals to plot
+R_vec <- c(0.95,1.35) # R vals to plot
 
 g1 <- ggplot(filter(res2, R %in% R_vec), aes(x=ve, y=cases, group=type, fill=type))+
   geom_col(position='dodge', alpha=1)+ 
@@ -140,8 +140,8 @@ ggsave('figures/fig-barplots.pdf', width=14, height=10,  device = cairo_pdf)
 
 ### Personal Risk
 
-oo <- compare_sims_data(sim1 = filter(res, R==0.98 & scen==1 & ve==0.60), 
-                                               sim2=filter(res, R==0.98 & scen ==2 & ve==0.60),
+oo <- compare_sims_data(sim1 = filter(res, R==0.95 & scen==1 & ve==0.60), 
+                                               sim2=filter(res, R==0.95 & scen ==2 & ve==0.60),
                                                name1=labels[1], name2=labels[2], startDate=startDate, 
                                                textsize = 16)
 
@@ -171,10 +171,10 @@ risk20sR1 <-oo %>% filter (age_band == "20-29" & scen == "B: Oldest to Youngest"
 risk20sR1$age <- "20-29"
 
 RiskR1 <- rbind.data.frame(risk60sR1, risk50sR1, risk40sR1, risk30sR1, risk20sR1) %>% 
-              mutate(R0 = 0.98)
+              mutate(R0 = 0.95)
 
-ooR2 <- compare_sims_data(sim1 = filter(res, R==0.98 & scen==1 & ve==0.60), 
-                          sim2=filter(res, R==0.98 & scen ==2 & ve==0.60),
+ooR2 <- compare_sims_data(sim1 = filter(res, R==0.95 & scen==1 & ve==0.60), 
+                          sim2=filter(res, R==0.95 & scen ==2 & ve==0.60),
                           name1=labels[1], name2=labels[2], startDate=startDate, 
                           textsize = 16)
 
@@ -204,7 +204,7 @@ risk20sR2 <-ooR2 %>% filter (age_band == "20-29" & scen == "B: Oldest to Younges
 risk20sR2$age <- "20-29"
 
 RiskR2 <- rbind.data.frame(risk60sR2, risk50sR2, risk40sR2, risk30sR2, risk20sR2) %>% 
-  mutate(R0 = 0.98)
+  mutate(R0 = 0.95)
 
 covidRisk <- rbind(RiskR1, RiskR2) %>% 
   rename(`B` = newdeaths) %>% 
@@ -230,7 +230,7 @@ observed <- as_tibble(counts) %>% rename(date = Reported_Date) %>%
 predicted <- oo %>% 
   filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date) %>% summarize(incid = sum(incid)) %>% 
-  filter (date < ymd("2021-05-12") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-06-02") & date > ymd("2021-01-02"))
 
 validation <- predicted %>% left_join(observed, by="date")
 validation %>% 
@@ -245,11 +245,11 @@ validation %>%
 predictedDeath <- oo %>% 
   filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date) %>% summarize(newdeaths = sum(newdeaths)) %>% 
-  filter (date < ymd("2021-05-12") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-06-02") & date > ymd("2021-01-02"))
 
 observedDeath <- read_csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-download.csv") %>%
   rename (province = "prname") %>% filter (province == "British Columbia") %>%
-  select(date, numdeathstoday) %>%  filter (date < ymd("2021-05-12") & date > ymd("2021-01-02")) %>%
+  select(date, numdeathstoday) %>%  filter (date < ymd("2021-06-02") & date > ymd("2021-01-02")) %>%
   mutate(observedDeaths= zoo::rollmean(numdeathstoday, k = 7, fill = NA))
 
 validationDeath <- predictedDeath %>% left_join(observedDeath, by="date")
@@ -287,7 +287,7 @@ predictedPerAge <- oo %>%
   filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date, age_band) %>% summarize(incid = sum(incid)) %>% 
   rename (predicted = incid) %>%
-  filter (date < ymd("2021-05-12") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-06-02") & date > ymd("2021-01-02"))
 
 observedPerAge <- as_tibble(countsPerAge) %>% rename(date = Reported_Date) %>%
   mutate(observed7day = zoo::rollmean(n, k = 7, fill = NA))
