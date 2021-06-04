@@ -108,8 +108,8 @@ u_var <- c(0.48, 0.30,
 
 percent_vax <- 1.0 # just a limit we can't exceed
 
-H = c(0.0,0.0,0.3,0.2,0.2,0.2,0.2,0.20,0.20,
-      0.3,0.2,0.2,0.2,0.15,0.15)*N_i # Hesitancy. Increased for 80+ to match cases
+H = c(0.0,0.3,0.3,0.2,0.2,0.2,0.2,0.20,0.20,
+      0.3,0.2,0.2,0.2,0.20,0.20)*N_i # Hesitancy. Increased for 80+ to match cases
 
 # H = c(1,
 #       1,
@@ -137,8 +137,8 @@ labels <- c(#'A: Oldest to Youngest',
             'B: Oldest to Youngest')
 
 strategies <- list(#list(9, c(8,15),c(7,14), c(6,13), c(5,12), c(4,11), c(3,10)), 
-                   list(9, 8, 7, 10:15, 6, 5, 4, 3),
-                   list(9, c(8,15),c(7,14), c(6,13), c(5,12), c(4,11), c(3,10)))
+                   list(9, 8, 7, 10:15, 6, 5, 4, 3, 2),
+                   list(9, c(8,15),c(7,14), c(6,13), c(5,12), c(4,11), c(3,10), 2))
 
 
 #######################
@@ -189,8 +189,8 @@ run_over_scen_2 = function(R, ve, vp, scen,alpha=0.0){
 ########################
 run_over_scen_3 = function(R, ve, vp, scen,alpha=0.0){
    T1 <- 73
-   T2 <- 22
-   T3 <- 270 - T1 - T2
+   T2 <- 23
+   T3 <- 240 - T1 - T2
    # Initial stage (vax all 80+), low R0
    R_init <- 1.05
    n <- (age_demo[9])/T1
