@@ -230,7 +230,7 @@ observed <- as_tibble(counts) %>% rename(date = Reported_Date) %>%
 predicted <- oo %>% 
   filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date) %>% summarize(incid = sum(incid)) %>% 
-  filter (date < ymd("2021-06-02") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-06-07") & date > ymd("2021-01-02"))
 
 validation <- predicted %>% left_join(observed, by="date")
 validation %>% 
@@ -245,11 +245,11 @@ validation %>%
 predictedDeath <- oo %>% 
   filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date) %>% summarize(newdeaths = sum(newdeaths)) %>% 
-  filter (date < ymd("2021-06-02") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-06-07") & date > ymd("2021-01-02"))
 
 observedDeath <- read_csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-download.csv") %>%
   rename (province = "prname") %>% filter (province == "British Columbia") %>%
-  select(date, numdeathstoday) %>%  filter (date < ymd("2021-06-02") & date > ymd("2021-01-02")) %>%
+  select(date, numdeathstoday) %>%  filter (date < ymd("2021-06-07") & date > ymd("2021-01-02")) %>%
   mutate(observedDeaths= zoo::rollmean(numdeathstoday, k = 7, fill = NA))
 
 validationDeath <- predictedDeath %>% left_join(observedDeath, by="date")
@@ -287,7 +287,7 @@ predictedPerAge <- oo %>%
   filter(scen == "B: Oldest to Youngest") %>% 
   group_by(date, age_band) %>% summarize(incid = sum(incid)) %>% 
   rename (predicted = incid) %>%
-  filter (date < ymd("2021-06-02") & date > ymd("2021-01-02"))
+  filter (date < ymd("2021-06-07") & date > ymd("2021-01-02"))
 
 observedPerAge <- as_tibble(countsPerAge) %>% rename(date = Reported_Date) %>%
   mutate(observed7day = zoo::rollmean(n, k = 7, fill = NA))
